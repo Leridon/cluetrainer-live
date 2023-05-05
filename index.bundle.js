@@ -34297,7 +34297,7 @@ class ScanTreeMethodLayer extends _solutionlayer__WEBPACK_IMPORTED_MODULE_1__.Sc
             if (relevant && !p.spot.is_far_away)
                 bounds.extend(p.getBounds());
         });
-        if (this.scantree.area(areas[0]).is_far_away) {
+        if (areas[0] && this.scantree.area(areas[0]).is_far_away) {
             bounds = this.polygons.find((p) => p.spot.name == areas[0]).getBounds();
         }
         this._map.fitBounds(bounds.pad(0.1), {
