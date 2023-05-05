@@ -29543,7 +29543,7 @@ function loadScanMethods() {
             { "x": 2832, "y": 9813, "level": 0 },
             { "x": 2822, "y": 9826, "level": 0 }
         ], [
-            //{name: "A", spot: {x: 2910, y: 3421}}, Hidden because it destroys the view for now
+            { name: "A", area: { topleft: { x: 2908, y: 3423 }, botright: { x: 2912, y: 3419 } }, is_far_away: true },
             { name: "B", area: { topleft: { x: 2918, y: 9702 }, botright: { x: 2924, y: 9700 } } },
             { name: "C", area: { topleft: { x: 2906, y: 9722 }, botright: { x: 2909, y: 9719 } } },
             { name: "D", area: { topleft: { x: 2908, y: 9742 }, botright: { x: 2912, y: 9742 } } },
@@ -29717,11 +29717,11 @@ function loadScanMethods() {
             .triple(9)
             .single(digAt(7))
             .double(digAt(8)))
-            .single(goTo("F")
+            .single(goTo("G", "Archaeology Teleport to {}.")
             .why("The spot has been narrowed down to just 3 candidates, two of which are at Soran.")
             .triple(10, 11)
             .double(digAt(12))))
-            .single(goTo("B")
+            .single(goTo("B", "Dive to {}.")
             .double(decide("The spot is along the southern wall")
             .answer("13", digAt(13))
             .answer("14", digAt(14))
@@ -30162,6 +30162,9 @@ class ScanTree extends Method {
     spot(number) {
         return this.dig_spot_mapping[number - 1];
     }
+    area(name) {
+        return this.scan_spots.find((s) => s.name == name);
+    }
     explanation() {
         return $("<div>");
     }
@@ -30231,7 +30234,13 @@ class ScanTreeNode {
         return this._children.map((e) => e[1]);
     }
     sendToUI(app) {
-        app.howtotabs.map.getMethodLayer().spotsLeft(this.candidates());
+        {
+            let rel = [this.where];
+            if (this.parent)
+                rel.push(this.parent.node.where);
+            let layer = app.howtotabs.map.getMethodLayer();
+            layer.setRelevant(this.candidates(), rel, true);
+        }
         {
             let path = this.path();
             let list = $("#pathview").empty();
@@ -34071,13 +34080,6 @@ class TileMarker extends leaflet__WEBPACK_IMPORTED_MODULE_0__.FeatureGroup {
             this.marker.remove();
         this.marker = leaflet__WEBPACK_IMPORTED_MODULE_0__.marker([this.spot.y, this.spot.x], {
             icon: icon,
-            /*icon: new DivIcon({
-                html: $("<div>").text(`[${spot.x}, ${spot.y}]`)
-                    .css("color", "gold")
-                    .css("font-size", "18pt")
-                    .get()[0]
-
-            }),*/
             title: `[${this.spot.x}, ${this.spot.y}]`
         }).addTo(this);
         return this;
@@ -34239,8 +34241,42 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _model_coordinates__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../model/coordinates */ "./model/coordinates.ts");
 /* harmony import */ var _solutionlayer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./solutionlayer */ "./uicontrol/map/solutionlayer.ts");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! leaflet */ "../node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_2__);
 
 
+
+class SpotPolygon extends leaflet__WEBPACK_IMPORTED_MODULE_2__.FeatureGroup {
+    constructor(spot) {
+        super();
+        this.spot = spot;
+        this.polygon = spot.area ? (0,_model_coordinates__WEBPACK_IMPORTED_MODULE_0__.boxPolygon)(spot.area) : (0,_model_coordinates__WEBPACK_IMPORTED_MODULE_0__.tilePolygon)(spot.spot);
+        this.label = leaflet__WEBPACK_IMPORTED_MODULE_2__.tooltip({
+            interactive: false,
+            permanent: true,
+            className: "area-name",
+            offset: [0, 0],
+            direction: "center",
+            content: spot.name
+        });
+        this.polygon
+            .setStyle({
+            color: "#00FF21",
+            fillColor: "#00FF21",
+            interactive: false,
+        })
+            .bindTooltip(this.label)
+            .addTo(this);
+    }
+    setActive(active) {
+        let opacity = active ? 1 : 0.2;
+        this.polygon.setStyle(Object.assign(this.polygon.options, {
+            opacity: opacity,
+            fillOpacity: opacity * 0.2,
+        }));
+        this.label.setOpacity(opacity);
+    }
+}
 class ScanTreeMethodLayer extends _solutionlayer__WEBPACK_IMPORTED_MODULE_1__.ScanSolutionLayer {
     spotsLeft(candidates) {
         this.markers.forEach((e, i) => {
@@ -34248,63 +34284,38 @@ class ScanTreeMethodLayer extends _solutionlayer__WEBPACK_IMPORTED_MODULE_1__.Sc
         });
     }
     setRelevant(spots, areas, fit) {
-    }
-    drawAreas(areas, relevant) {
+        let bounds = leaflet__WEBPACK_IMPORTED_MODULE_2__.latLngBounds([]);
+        this.markers.forEach((e, i) => {
+            let relevant = spots.includes(i + 1);
+            e.setActive(relevant);
+            if (relevant)
+                bounds.extend(e.getBounds());
+        });
+        this.polygons.forEach((p) => {
+            let relevant = areas.includes(p.spot.name);
+            p.setActive(relevant);
+            if (relevant && !p.spot.is_far_away)
+                bounds.extend(p.getBounds());
+        });
+        if (this.scantree.area(areas[0]).is_far_away) {
+            bounds = this.polygons.find((p) => p.spot.name == areas[0]).getBounds();
+        }
+        this._map.fitBounds(bounds.pad(0.1), {
+            maxZoom: 4
+        });
     }
     constructor(scantree) {
         super(scantree.clue);
         this.scantree = scantree;
+        this.polygons = [];
         // sort markers to correlate to the spot mapping
         this.markers.sort((a, b) => scantree.spotToNumber(a.getSpot()) - scantree.spotToNumber(b.getSpot()));
+        this.polygons = this.scantree.scan_spots.map((s) => new SpotPolygon(s));
+        this.polygons.forEach((p) => p.addTo(this));
         // Create labels
         this.markers.forEach((m, i) => {
             m.withLabel((i + 1).toString(), "spot-number", [0, 10]);
         });
-        for (let spot of scantree.scan_spots) {
-            /*
-            let self = this
-
-            let clear = function (bounds: leaflet.Bounds): boolean {
-                for (let spot of self.scantree.scan_spots) if (bounds.overlaps(toBounds(spot.area))) return false
-                for (let spot of self.scantree.dig_spot_mapping) if (bounds.contains(leaflet.point(spot))) return false
-
-                return true
-            }
-
-            let bounds = toBounds(spot.area)
-            let size = bounds.getSize().x * bounds.getSize().y
-
-            let offset: Vector2
-
-            // TODO: Figure out a good spot for labels
-            // TODO: Actually implement something smart
-
-            if (size >= 3) offset = {x: 0, y: 0}
-            else offset = {x: 0, y: 0}*/
-            let polygon = spot.area ? (0,_model_coordinates__WEBPACK_IMPORTED_MODULE_0__.boxPolygon)(spot.area) : (0,_model_coordinates__WEBPACK_IMPORTED_MODULE_0__.tilePolygon)(spot.spot);
-            polygon
-                .setStyle({
-                color: "#00FF21",
-                fillColor: "#00FF21",
-                interactive: false
-            })
-                .bindTooltip(spot.name, {
-                interactive: false,
-                permanent: true,
-                className: "area-name",
-                offset: [0, 0],
-                direction: "center"
-            })
-                .addTo(this);
-            /*
-            leaflet.marker([spot.coords.y + 2, spot.coords.x], {
-                icon: leaflet.divIcon({
-                    className: "area-name",
-                    html: spot.name
-                }),
-                interactive: false,
-            }).addTo(layer)*/
-        }
     }
 }
 
