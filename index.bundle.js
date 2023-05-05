@@ -29230,6 +29230,8 @@ function loadScanMethods() {
             return this;
         }
         propagateMethods(methods, parent = null) {
+            if (this.spotName && !this.node.solved)
+                this.node.where = this.spotName;
             let m_key = parent ? `${parent.spotName}-${this.spotName}` : `-${this.spotName}`;
             let ht = methods[m_key] || {};
             if (this._why) {
@@ -29278,7 +29280,7 @@ function loadScanMethods() {
         }
         triple(...spot) {
             spot.forEach((s) => {
-                let child = new ScanBuilder(new _model_methods__WEBPACK_IMPORTED_MODULE_0__.ScanTreeNode(`Dig at spot ${s}`, s, [], {}), s.toString());
+                let child = new ScanBuilder(new _model_methods__WEBPACK_IMPORTED_MODULE_0__.ScanTreeNode(`Dig at spot ${s}`, s, null, [], {}), s.toString());
                 this.child({
                     key: `${this.spotName}3/Spot ${s}`,
                     kind: _model_methods__WEBPACK_IMPORTED_MODULE_0__.PingType.TRIPLE
@@ -29293,13 +29295,13 @@ function loadScanMethods() {
     }
     function goTo(where, how = "Go to {}.") {
         let instruction = how.replace("{}", where);
-        return new ScanBuilder(new _model_methods__WEBPACK_IMPORTED_MODULE_0__.ScanTreeNode(instruction, null, [], {}), where);
+        return new ScanBuilder(new _model_methods__WEBPACK_IMPORTED_MODULE_0__.ScanTreeNode(instruction, null, where, [], {}), where);
     }
     function digAt(spot) {
-        return new ScanBuilder(new _model_methods__WEBPACK_IMPORTED_MODULE_0__.ScanTreeNode(`Dig at spot ${spot}`, spot, [], {}), spot.toString());
+        return new ScanBuilder(new _model_methods__WEBPACK_IMPORTED_MODULE_0__.ScanTreeNode(`Dig at spot ${spot}`, spot, null, [], {}), spot.toString());
     }
     function decide(text) {
-        return new ScanBuilder(new _model_methods__WEBPACK_IMPORTED_MODULE_0__.ScanTreeNode(text, null, [], {}), null);
+        return new ScanBuilder(new _model_methods__WEBPACK_IMPORTED_MODULE_0__.ScanTreeNode(text, null, null, [], {}), null);
     }
     let videos = {
         ardounge: {
@@ -30160,6 +30162,9 @@ class ScanTree extends Method {
     spot(number) {
         return this.dig_spot_mapping[number - 1];
     }
+    explanation() {
+        return $("<div>");
+    }
 }
 var PingType;
 (function (PingType) {
@@ -30183,9 +30188,10 @@ function prettykey(key) {
     }
 }
 class ScanTreeNode {
-    constructor(instruction, solved, _children, howto, is_synthetic_triple_node = false) {
+    constructor(instruction, solved, where, _children, howto, is_synthetic_triple_node = false) {
         this.instruction = instruction;
         this.solved = solved;
+        this.where = where;
         this._children = _children;
         this.howto = howto;
         this.is_synthetic_triple_node = is_synthetic_triple_node;
@@ -30300,7 +30306,7 @@ class ScanTreeNode {
                         this.sendToUI(app); // This does nothing
                     }
                     else {
-                        let synthetic = new ScanTreeNode("Which spot?", null, triples.map((e) => {
+                        let synthetic = new ScanTreeNode("Which spot?", null, this.where, triples.map((e) => {
                             return [{
                                     key: e.solved.toString(),
                                     kind: PingType.TRIPLE
@@ -33582,9 +33588,13 @@ class CluePanelControl {
     constructor(app) {
         this.app = app;
         this.clue_panel = $("#solutionpanel");
+        this.selected_clue = null;
         this.clue_panel.hide();
     }
     selectClue(clue) {
+        if (this.selected_clue && this.selected_clue.id == clue.id)
+            return;
+        this.selected_clue = clue;
         this.clue_panel.show();
         $("#clue-panel-title").attr("title", clue.id);
         $("#cluetext").text(clue.clue);
@@ -34193,7 +34203,7 @@ class GameMapControl {
             this.activeLayer = preferred;
             this.activeLayer.addTo(this.map);
             if (fit)
-                this.map.fitBounds(this.activeLayer.getBounds().pad(0.1), { maxZoom: 2 });
+                this.map.fitBounds(this.activeLayer.getBounds().pad(0.1), { maxZoom: 4 });
         }
     }
     setSolutionLayer(layer, fit = true) {
@@ -34236,6 +34246,10 @@ class ScanTreeMethodLayer extends _solutionlayer__WEBPACK_IMPORTED_MODULE_1__.Sc
         this.markers.forEach((e, i) => {
             e.setActive(candidates.findIndex((j) => j == (i + 1)) >= 0);
         });
+    }
+    setRelevant(spots, areas, fit) {
+    }
+    drawAreas(areas, relevant) {
     }
     constructor(scantree) {
         super(scantree.clue);
@@ -69941,14 +69955,14 @@ __webpack_require__(/*! !file-loader?name=[name].[ext]!./index.html */ "../node_
 __webpack_require__(/*! !file-loader?name=[name].[ext]!./style.css */ "../node_modules/file-loader/dist/cjs.js?name=[name].[ext]!./style.css");
 __webpack_require__(/*! !file-loader?name=[name].[ext]!./appconfig.json */ "../node_modules/file-loader/dist/cjs.js?name=[name].[ext]!./appconfig.json");
 (0,_data_methods__WEBPACK_IMPORTED_MODULE_2__.loadMethods)();
-//check if we are running inside alt1 by checking if the alt1 global exists
-if (window.alt1) {
-    //tell alt1 about the app
-    //this makes alt1 show the add app button when running inside the embedded browser
-    //also updates app settings if they are changed
-    alt1.identifyAppUrl("./appconfig.json");
-}
 document.addEventListener("DOMContentLoaded", (e) => {
+    //check if we are running inside alt1 by checking if the alt1 global exists
+    if (window.alt1) {
+        //tell alt1 about the app
+        //this makes alt1 show the add app button when running inside the embedded browser
+        //also updates app settings if they are changed
+        alt1.identifyAppUrl("./appconfig.json");
+    }
     (0,_application__WEBPACK_IMPORTED_MODULE_1__.initialize)();
 });
 
