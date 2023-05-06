@@ -29925,13 +29925,14 @@ function loadScanMethods() {
             { "x": 2739, "y": 5253, "level": 1 }], [
             { name: "A", area: { topleft: { x: 2721, y: 5266 }, botright: { x: 2724, y: 5263 } } },
             { name: "B", spot: { x: 2726, y: 5266 } },
-            { name: "C", area: { topleft: { x: 2713, y: 5281 }, botright: { x: 2714, y: 5281 } } },
-            { name: "D", area: { topleft: { x: 2713, y: 5285 }, botright: { x: 2714, y: 5285 } } },
-            { name: "E", spot: { x: 2713, y: 5294 } },
-            { name: "F", area: { topleft: { x: 2695, y: 5311 }, botright: { x: 2701, y: 5307 } } },
+            { name: "C", area: { topleft: { x: 2712, y: 5277 }, botright: { x: 2715, y: 5273 } } },
+            { name: "D", area: { topleft: { x: 2713, y: 5281 }, botright: { x: 2714, y: 5281 } } },
+            { name: "E", area: { topleft: { x: 2713, y: 5285 }, botright: { x: 2714, y: 5285 } } },
+            { name: "F", area: { topleft: { x: 2696, y: 5311 }, botright: { x: 2701, y: 5307 } } },
             { name: "G", spot: { x: 2701, y: 5305 } },
             { name: "H", area: { topleft: { x: 2701, y: 5336 }, botright: { x: 2701, y: 5328 } } },
             { name: "I", area: { topleft: { x: 2707, y: 5353 }, botright: { x: 2707, y: 5343 } } },
+            { name: "J", area: { topleft: { x: 2707, y: 5290 }, botright: { x: 2712, y: 5290 } } },
         ], {
             "-A": {},
             "-F": {
@@ -29990,13 +29991,14 @@ function loadScanMethods() {
             .triple(6)
             .double(digAt(7)))
             .single(goTo("C")
-            .double(goTo("E")
-            .why("Even though we will pass D, we already know that it will double ping.")
-            .triple(8, 9)
-            .double(digAt(10)))
-            .single(goTo("D", "Down the stairs to {}.")
+            .single(goTo("D", "Up the stairs to {}.")
+            .double(digAt(10))
+            .single(goTo("E", "Down the stairs to {}.")
             .double(digAt(11))
-            .single(digAt(12))))))
+            .single(digAt(12))))
+            .double(goTo("J")
+            .triple(8)
+            .double(digAt(9))))))
     });
     /*.child({
             key: "Upper",
@@ -34526,11 +34528,6 @@ class SpotPolygon extends leaflet__WEBPACK_IMPORTED_MODULE_2__.FeatureGroup {
     }
 }
 class ScanTreeMethodLayer extends _solutionlayer__WEBPACK_IMPORTED_MODULE_1__.ScanSolutionLayer {
-    spotsLeft(candidates) {
-        this.markers.forEach((e, i) => {
-            e.setActive(candidates.findIndex((j) => j == (i + 1)) >= 0);
-        });
-    }
     setRelevant(spots, areas, fit) {
         let bounds = leaflet__WEBPACK_IMPORTED_MODULE_2__.latLngBounds([]);
         this.markers.forEach((e, i) => {
@@ -34548,9 +34545,12 @@ class ScanTreeMethodLayer extends _solutionlayer__WEBPACK_IMPORTED_MODULE_1__.Sc
         if (areas[0] && this.scantree.area(areas[0]).is_far_away) {
             bounds = this.polygons.find((p) => p.spot.name == areas[0]).getBounds();
         }
-        this._map.fitBounds(bounds.pad(0.1), {
-            maxZoom: 4
-        });
+        if (fit) {
+            this._map.fitBounds(bounds.pad(0.1), {
+                maxZoom: 4
+            });
+        }
+        //this.draw_equivalence_classes(spots.map((s) => this.scantree.spot(s)))
     }
     constructor(scantree) {
         super(scantree.clue);
@@ -34609,6 +34609,8 @@ class ScanSolutionLayer extends Solutionlayer {
         super();
         this.clue = clue;
         this.ms = [];
+        this.equivalence_class_polygons = [];
+        this.cands = [];
         this.markers = clue.solution.candidates.map((e) => {
             return new TileMarkerWithActive(e).withMarker().withX("#B21319");
         });
@@ -34621,6 +34623,69 @@ class ScanSolutionLayer extends Solutionlayer {
             });
         });
         this.markers.forEach((m) => m.addTo(this));
+    }
+    draw_equivalence_classes(candidates) {
+        this.cands = candidates;
+        function rainbow(h) {
+            // This function generates vibrant, "evenly spaced" colours (i.e. no clustering). This is ideal for creating easily distinguishable vibrant markers in Google Maps and other apps.
+            // Adam Cole, 2011-Sept-14
+            // HSV to RBG adapted from: http://mjijackson.com/2008/02/rgb-to-hsl-and-rgb-to-hsv-color-model-conversion-algorithms-in-javascript
+            var r, g, b;
+            var i = ~~(h * 6);
+            var f = h * 6 - i;
+            var q = 1 - f;
+            switch (i % 6) {
+                case 0:
+                    r = 1;
+                    g = f;
+                    b = 0;
+                    break;
+                case 1:
+                    r = q;
+                    g = 1;
+                    b = 0;
+                    break;
+                case 2:
+                    r = 0;
+                    g = 1;
+                    b = f;
+                    break;
+                case 3:
+                    r = 0;
+                    g = q;
+                    b = 1;
+                    break;
+                case 4:
+                    r = f;
+                    g = 0;
+                    b = 1;
+                    break;
+                case 5:
+                    r = 1;
+                    g = 0;
+                    b = q;
+                    break;
+            }
+            var c = "#" + ("00" + (~~(r * 255)).toString(16)).slice(-2) + ("00" + (~~(g * 255)).toString(16)).slice(-2) + ("00" + (~~(b * 255)).toString(16)).slice(-2);
+            return (c);
+        }
+        this.equivalence_class_polygons.forEach((p) => p.remove());
+        let range = this.clue.range + 5;
+        let bounds = leaflet__WEBPACK_IMPORTED_MODULE_1__.bounds(this.clue.solution.candidates.map((c) => leaflet__WEBPACK_IMPORTED_MODULE_1__.point(c.x, c.y)));
+        let class_cache = {};
+        for (let x = bounds.getTopLeft().x - range; x <= bounds.getTopRight().x + range; x++) {
+            for (let y = bounds.getTopLeft().y - range; y <= bounds.getBottomLeft().y + range; y++) {
+                let hash = JSON.stringify(candidates.map((s) => Math.min(2, Math.floor(Math.max(Math.abs(s.x - x) - 1, Math.abs(s.y - y) - 1) / range))));
+                if (!class_cache[hash]) {
+                    class_cache[hash] = rainbow(Math.random());
+                }
+                let color = class_cache[hash];
+                this.equivalence_class_polygons.push((0,_model_coordinates__WEBPACK_IMPORTED_MODULE_2__.tilePolygon)({ x: x, y: y }).setStyle({
+                    color: color,
+                    opacity: 0
+                }).addTo(this));
+            }
+        }
     }
     on_marker_set(marker) {
         if (this.radius_polygon) {
