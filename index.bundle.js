@@ -29211,8 +29211,15 @@ for (let i = 0; i < n; i++) {
     methods.push([]);
 }
 function associate(v) {
-    methods[v.id].push(v.method);
-    v.method.clue = _clues__WEBPACK_IMPORTED_MODULE_1__.clues.find((c) => c.id == v.id);
+    try {
+        let c = _clues__WEBPACK_IMPORTED_MODULE_1__.clues.find((c) => c.id == v.id);
+        let m = v.method(c);
+        methods[v.id].push(m);
+        m.clue = c;
+    }
+    catch (e) {
+        console.log(`ERROR: Skipped loading a method for ${v.id} due to an error: ${e}`);
+    }
 }
 function forClue(clue) {
     return methods[clue.id];
@@ -29233,7 +29240,11 @@ function loadScanMethods() {
             if (this.spotName && !this.node.solved)
                 this.node.where = this.spotName;
             let m_key = parent ? `${parent.spotName}-${this.spotName}` : `-${this.spotName}`;
-            let ht = methods[m_key] || {};
+            let ht = methods[m_key];
+            if (!ht) {
+                console.log(`Method for ${this.node.root.clue.scantext} misses howto for: ${m_key}`);
+                ht = {};
+            }
             if (this._why) {
                 if (ht.text)
                     ht.text += "\n\n<b>Why:</b> " + this._why;
@@ -29289,9 +29300,11 @@ function loadScanMethods() {
             return this;
         }
     }
-    function tree(coordinates, spots, methods, tree) {
+    function tree(clue, coordinates, spots, methods, tree) {
+        // create the full tree before propagating the method, so it has access to root and the clue step
+        let t = new _model_methods__WEBPACK_IMPORTED_MODULE_0__.ScanTree(clue, coordinates, spots, tree.node);
         tree.propagateMethods(methods);
-        return new _model_methods__WEBPACK_IMPORTED_MODULE_0__.ScanTree(coordinates, spots, tree.node);
+        return t;
     }
     function goTo(where, how = "Go to {}.") {
         let instruction = how.replace("{}", where);
@@ -29357,7 +29370,7 @@ function loadScanMethods() {
     //zanaris
     associate({
         id: 361,
-        method: tree([
+        method: (clue) => tree(clue, [
             { x: 2406, y: 4428 },
             { x: 2429, y: 4431 },
             { x: 2417, y: 4444 },
@@ -29443,7 +29456,7 @@ function loadScanMethods() {
     //lumbridge
     associate({
         id: 362,
-        method: tree([
+        method: (clue) => tree(clue, [
             { "x": 3233, "y": 9547, "level": 0 },
             { "x": 3210, "y": 9557, "level": 0 },
             { "x": 3210, "y": 9571, "level": 0 },
@@ -29516,7 +29529,7 @@ function loadScanMethods() {
     //taverley
     associate({
         id: 357,
-        method: tree([
+        method: (clue) => tree(clue, [
             { "x": 2884, "y": 9799, "level": 0 },
             { "x": 2904, "y": 9809, "level": 0 },
             { "x": 2875, "y": 9805, "level": 0 },
@@ -29630,7 +29643,7 @@ function loadScanMethods() {
     //Varrock
     associate({
         id: 351,
-        method: tree([
+        method: (clue) => tree(clue, [
             { "x": 3231, "y": 3439, "level": 0 },
             { "x": 3197, "y": 3423, "level": 0 },
             { "x": 3196, "y": 3415, "level": 0 },
@@ -29743,6 +29756,99 @@ function loadScanMethods() {
             .single(decide("It's either 21 or 22.")
             .answer("21", digAt(21))
             .answer("22", digAt(22))))))))
+    });
+    associate({
+        id: 353,
+        method: (clue) => tree(clue, [
+            { "x": 2937, "y": 10191, "level": 0 },
+            { "x": 2936, "y": 10206, "level": 0 },
+            { "x": 2924, "y": 10191, "level": 0 },
+            { "x": 2906, "y": 10202, "level": 0 },
+            { "x": 2904, "y": 10193, "level": 0 },
+            { "x": 2922, "y": 10179, "level": 0 },
+            { "x": 2938, "y": 10179, "level": 0 },
+            { "x": 2905, "y": 10162, "level": 0 },
+            { "x": 2924, "y": 10162, "level": 0 },
+            { "x": 2938, "y": 10162, "level": 0 },
+            { "x": 2856, "y": 10192, "level": 0 },
+            { "x": 2860, "y": 10215, "level": 0 },
+            { "x": 2837, "y": 10209, "level": 0 },
+            { "x": 2873, "y": 10194, "level": 0 },
+            { "x": 2841, "y": 10189, "level": 0 },
+            { "x": 2872, "y": 10181, "level": 0 },
+            { "x": 2822, "y": 10193, "level": 0 },
+            { "x": 2846, "y": 10233, "level": 0 }
+        ], [
+            { name: "A", spot: { x: 2939, y: 10198 } },
+            { name: "B", spot: { x: 2924, y: 10191 } },
+            { name: "C", spot: { x: 2910, y: 10178 } },
+            { name: "D", area: { topleft: { x: 2856, y: 10201 }, botright: { x: 2860, y: 10197 } } },
+            { name: "E", spot: { x: 2853, y: 10199 } },
+            { name: "F", spot: { x: 2858, y: 10199 } },
+            //{name: "B", area: {topleft: {x: 2923, y: 10195}, botright: {x: 2926, y: 10189}}}
+        ], {
+            "-A": {
+                text: "A is the spot you land in after exiting lava flow cave. Go there using the max guild portal with the grace of the elves.",
+                video: { ref: "assets/scanassets/keldagrim/toA.webm", contributor: "Leridon" },
+            },
+            "A-B": {
+                text: "B is also a potential clue spot and can be reached by diving diagonally south west from a spot along the northern wall of the building.",
+                video: { ref: "assets/scanassets/keldagrim/AtoB.webm", contributor: "Leridon" },
+            },
+            "B-C": {
+                text: "C can be reached by lining up a surge south-west.",
+                video: { ref: "assets/scanassets/keldagrim/BtoC.webm", contributor: "Leridon" },
+            },
+            "B-D": {
+                text: "D is the area you land in when using the Luck of the Dwarves to teleport to Keldagrim.",
+                video: { ref: "assets/scanassets/keldagrim/BtoD.webm", contributor: "Leridon" },
+            },
+            "D-E": {},
+            "E-F": {},
+            "A-1": {},
+            "A-2": {},
+            "A-3": {},
+            "B-4": {},
+            "B-6": {},
+            "B-7": {},
+            "C-5": {},
+            "C-8": {},
+            "C-9": {},
+            "C-10": {},
+            "D-11": {},
+            "D-12": {},
+            "D-14": {
+                text: "You can dive onto spot 14 immediately after entering the door.",
+                video: { ref: "assets/scanassets/keldagrim/Dto14.webm", contributor: "Leridon" },
+            },
+            "D-16": {},
+            "E-12": {},
+            "E-13": {},
+            "E-15": {},
+            "F-14": {},
+            "F-16": {},
+            "E-17": {},
+            "E-18": {},
+        }, goTo("A", "GotE Lava Flow Mine to {}.")
+            .triple(1, 2, 3)
+            .double(goTo("B", "Run/Dive to {}.")
+            .triple(6, 7)
+            .double(digAt(4)))
+            .single(goTo("B", "Run/Dive to {}.")
+            .double(goTo("C", "Run/Dive to {}")
+            .triple(5, 8, 9)
+            .double(digAt(10)))
+            .single(goTo("D", "LotD teleport to {}.")
+            .why("The spot can no longer be on the eastern part of the city, so we continue west.")
+            .triple(11, 12, 14, 16)
+            .double(goTo("E")
+            .triple(12, 13, 15)
+            .double(goTo("F")
+            .triple(14)
+            .double(digAt(16))))
+            .single(goTo("E")
+            .double(digAt(17))
+            .single(digAt(18))))))
     });
     /*
     associate({
@@ -30141,12 +30247,12 @@ class Method {
     }
 }
 class ScanTree extends Method {
-    constructor(dig_spot_mapping, scan_spots, root) {
+    constructor(clue, dig_spot_mapping, scan_spots, root) {
         super("scantree");
+        this.clue = clue;
         this.dig_spot_mapping = dig_spot_mapping;
         this.scan_spots = scan_spots;
         this.root = root;
-        this.clue = null;
         root.setRoot(this);
     }
     sendToUi(app) {
