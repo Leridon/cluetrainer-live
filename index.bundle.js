@@ -29109,24 +29109,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _uicontrol_CluePanelControl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./uicontrol/CluePanelControl */ "./uicontrol/CluePanelControl.ts");
 /* harmony import */ var _uicontrol_HowToTabControl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./uicontrol/HowToTabControl */ "./uicontrol/HowToTabControl.ts");
 /* harmony import */ var _uicontrol_MenuBarControl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./uicontrol/MenuBarControl */ "./uicontrol/MenuBarControl.ts");
+/* harmony import */ var _uicontrol_widgets_modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./uicontrol/widgets/modal */ "./uicontrol/widgets/modal.ts");
 
 
 
 
+
+class BetaNoticeModal extends _uicontrol_widgets_modal__WEBPACK_IMPORTED_MODULE_4__.Modal {
+    constructor(id, app) {
+        super(id);
+        this.understand_button = $("#beta-notice-dismiss").on("click", () => {
+            app.startup_settings.map((s) => {
+                s.hide_beta_notice = true;
+            });
+        });
+    }
+}
+class PatchNotesModal extends _uicontrol_widgets_modal__WEBPACK_IMPORTED_MODULE_4__.Modal {
+    constructor(id, app) {
+        super(id);
+        this.app = app;
+        this.sections = $(".patchnotesection").get().map($).map((e) => {
+            return {
+                el: e,
+                patchnotes: e.data("patchnotes")
+            };
+        });
+    }
+    hasNewPatchnotes() {
+        let seen = this.app.startup_settings.get().seen_changelogs;
+        return this.sections.some((e) => !seen.includes(e.patchnotes));
+    }
+    showNew() {
+        let seen = this.app.startup_settings.get().seen_changelogs;
+        this.sections.forEach((el) => {
+            if (seen.includes(el.patchnotes))
+                el.el.hide();
+            else
+                el.el.show();
+        });
+        this.app.startup_settings.map((s) => {
+            s.seen_changelogs = this.sections.map((e) => e.patchnotes);
+        });
+        return this.show();
+    }
+}
 class Application {
     constructor() {
         this.in_alt1 = !!window.alt1;
         this.menubar = new _uicontrol_MenuBarControl__WEBPACK_IMPORTED_MODULE_3__["default"](this);
         this.howtotabs = new _uicontrol_HowToTabControl__WEBPACK_IMPORTED_MODULE_2__["default"](this);
         this.cluepanel = new _uicontrol_CluePanelControl__WEBPACK_IMPORTED_MODULE_1__["default"](this);
+        this.startup_settings = new _util_storage__WEBPACK_IMPORTED_MODULE_0__.storage.Variable("preferences/startupsettings", {
+            hide_beta_notice: false,
+            seen_changelogs: []
+        });
+        this.beta_notice_modal = new BetaNoticeModal("modal-public-beta", this);
+        this.patch_notes_modal = new PatchNotesModal("modal-patchnotes", this);
+    }
+    async start() {
+        if (!this.startup_settings.get().hide_beta_notice)
+            await this.beta_notice_modal.show();
+        if (this.patch_notes_modal.hasNewPatchnotes())
+            await this.patch_notes_modal.showNew();
     }
 }
 let scantrainer = null;
-const VERSION = 0;
 function initialize() {
-    let version = new _util_storage__WEBPACK_IMPORTED_MODULE_0__.storage.Variable("lastrunversion", -1);
     scantrainer = new Application();
-    version.set(VERSION);
+    scantrainer.start();
     //scantrainer.select(clues.find((c) => c.id == 361)) // zanaris
     //scantrainer.select(clues.find((c) => c.id == 399)) // compass
 }
@@ -29470,12 +29521,12 @@ function loadScanMethods() {
             { "x": 3167, "y": 9546, "level": 0 },
             { "x": 3172, "y": 9570, "level": 0 }
         ], [
-            { name: "A", spot: { x: 3226, y: 9542 } },
-            { name: "B", spot: { x: 3226, y: 9547 } },
-            { name: "C", spot: { x: 3221, y: 9552 } },
-            { name: "D", spot: { x: 3221, y: 9556 } },
-            { name: "E", spot: { x: 3206, y: 9553 } },
-            { name: "F", spot: { x: 3204, y: 9553 } },
+            { name: "A", tile: { x: 3226, y: 9542 } },
+            { name: "B", tile: { x: 3226, y: 9547 } },
+            { name: "C", tile: { x: 3221, y: 9552 } },
+            { name: "D", tile: { x: 3221, y: 9556 } },
+            { name: "E", tile: { x: 3206, y: 9553 } },
+            { name: "F", tile: { x: 3204, y: 9553 } },
         ], {
             "-A": {
                 text: "Teleport to Tears of Guthix with the quest cape/Games necklace and run through the tunnel. A is the spot you are in after crawling through.",
@@ -29560,8 +29611,8 @@ function loadScanMethods() {
             { name: "B", area: { topleft: { x: 2918, y: 9702 }, botright: { x: 2924, y: 9700 } } },
             { name: "C", area: { topleft: { x: 2906, y: 9722 }, botright: { x: 2909, y: 9719 } } },
             { name: "D", area: { topleft: { x: 2908, y: 9742 }, botright: { x: 2912, y: 9742 } } },
-            { name: "E", spot: { x: 2914, y: 9742 } },
-            { name: "F", spot: { x: 2886, y: 9795 } },
+            { name: "E", tile: { x: 2914, y: 9742 } },
+            { name: "F", tile: { x: 2886, y: 9795 } },
             { name: "G", area: { topleft: { x: 2881, y: 9833 }, botright: { x: 2887, y: 9828 } } },
         ], {
             "-A": {
@@ -29673,8 +29724,8 @@ function loadScanMethods() {
             { name: "B", area: { topleft: { x: 3223, y: 3424 }, botright: { x: 3224, y: 3422 } } },
             { name: "C", area: { topleft: { x: 3233, y: 3414 }, botright: { x: 3234, y: 3412 } } },
             { name: "D", area: { topleft: { x: 3242, y: 3418 }, botright: { x: 3244, y: 3417 } } },
-            { name: "E", spot: { x: 3254, y: 3449 } },
-            { name: "F", spot: { x: 3244, y: 3459 } },
+            { name: "E", tile: { x: 3254, y: 3449 } },
+            { name: "F", tile: { x: 3244, y: 3459 } },
             { name: "G", area: { topleft: { x: 3179, y: 3420 }, botright: { x: 3183, y: 3416 } } },
             { name: "H", area: { topleft: { x: 3162, y: 3466 }, botright: { x: 3163, y: 3462 } } },
         ], {
@@ -29779,12 +29830,12 @@ function loadScanMethods() {
             { "x": 2822, "y": 10193, "level": 0 },
             { "x": 2846, "y": 10233, "level": 0 }
         ], [
-            { name: "A", spot: { x: 2939, y: 10198 } },
-            { name: "B", spot: { x: 2924, y: 10191 } },
-            { name: "C", spot: { x: 2910, y: 10178 } },
+            { name: "A", tile: { x: 2939, y: 10198 } },
+            { name: "B", tile: { x: 2924, y: 10191 } },
+            { name: "C", tile: { x: 2910, y: 10178 } },
             { name: "D", area: { topleft: { x: 2856, y: 10201 }, botright: { x: 2860, y: 10197 } } },
-            { name: "E", spot: { x: 2853, y: 10199 } },
-            { name: "F", spot: { x: 2858, y: 10199 } },
+            { name: "E", tile: { x: 2853, y: 10199 } },
+            { name: "F", tile: { x: 2858, y: 10199 } },
             //{name: "B", area: {topleft: {x: 2923, y: 10195}, botright: {x: 2926, y: 10189}}}
         ], {
             "-A": {
@@ -29924,12 +29975,12 @@ function loadScanMethods() {
             { "x": 2738, "y": 5301, "level": 1 },
             { "x": 2739, "y": 5253, "level": 1 }], [
             { name: "A", area: { topleft: { x: 2721, y: 5266 }, botright: { x: 2724, y: 5263 } } },
-            { name: "B", spot: { x: 2726, y: 5266 } },
+            { name: "B", tile: { x: 2726, y: 5266 } },
             { name: "C", area: { topleft: { x: 2712, y: 5277 }, botright: { x: 2715, y: 5273 } } },
             { name: "D", area: { topleft: { x: 2713, y: 5281 }, botright: { x: 2714, y: 5281 } } },
             { name: "E", area: { topleft: { x: 2713, y: 5285 }, botright: { x: 2714, y: 5285 } } },
             { name: "F", area: { topleft: { x: 2696, y: 5311 }, botright: { x: 2701, y: 5307 } } },
-            { name: "G", spot: { x: 2701, y: 5305 } },
+            { name: "G", tile: { x: 2701, y: 5305 } },
             { name: "H", area: { topleft: { x: 2701, y: 5336 }, botright: { x: 2701, y: 5328 } } },
             { name: "I", area: { topleft: { x: 2707, y: 5353 }, botright: { x: 2707, y: 5343 } } },
             { name: "J", area: { topleft: { x: 2707, y: 5290 }, botright: { x: 2712, y: 5290 } } },
@@ -30057,79 +30108,80 @@ function loadScanMethods() {
                 )
             )
     )*/
-    /*
     associate({
-        id: 352, // ardounge
-        method: tree("assets/scanassets/ardounge/ardoungemap.png",
-            step("Ardounge teleport to", "A")
-                .howto({
-                    video: videos.ardounge.toA,
-                    text: "Teleport to ardounge (Spot A)."
-                })
-                .triple(1)
-                .triple(2)
-                .double(step("Dive to", "B")
-                    .triple(2)
-                    .triple(3)
-                    .triple(4)
-                    .double(step("Teleport to ardounge lodestone")
-                        .howto({
-                            text: "The spot is to the north, use the lodestone."
-                        })
-                        .double(solved(5))
-                        .triple(6)
-                        .triple(7)
-                    )
-                )
-                .single(step("Dave's spellbook to", "C")
-                    .howto({
-                        video: videos.ardounge.AtoC,
-                        text: "Ruled out most of east ardounge, teleport to C with Dave's spellbook (4)."
-                    })
-                    .triple(8)
-                    .triple(9)
-                    .triple(10)
-                    .triple(11)
-                    .single(step("The spot is at the western end")
-                        .howto({
-                            text: "Dive/Surge to the west. Hug the north wall of the long buildings so you don't miss 26."
-                        })
-                        .solution(23)
-                        .solution(24)
-                        .solution(25)
-                        .solution(26)
-                        .solution(27)
-                        .solution(28)
-                    )
-                    .double(step("Step/Dive to", "D")
-                        .howto({
-                            video: videos.ardounge.CtoD,
-                            text: "Walk 1 square west then dive to D, to have E accessible via surge. D is the tile directly east of the manhole cover."
-                        })
-                        .triple(12)
-                        .single(step("Go through the manhole")
-                            .triple(21)
-                            .triple(22)
-                        )
-                        .double(step("Surge to", "E")
-                            .triple(13)
-                            .triple(14)
-                            .triple(15)
-                            .triple(16)
-                            .double(step("Go through the manhole")
-                                .triple(17)
-                                .triple(18)
-                            )
-                            .single(step("Teleport back to C and use the gate")
-                                .triple(19)
-                                .double(solved(20))
-                            )
-                        )
-                    )
-                )
-        )
-    })
-
+        id: 352,
+        method: (clue) => tree(clue, [{ "x": 2662, "y": 3304, "level": 0 },
+            { "x": 2635, "y": 3313, "level": 0 },
+            { "x": 2623, "y": 3311, "level": 0 },
+            { "x": 2625, "y": 3292, "level": 0 },
+            { "x": 2662, "y": 3338, "level": 0 },
+            { "x": 2633, "y": 3339, "level": 0 },
+            { "x": 2613, "y": 3337, "level": 0 },
+            { "x": 2537, "y": 3306, "level": 0 },
+            { "x": 2540, "y": 3331, "level": 0 },
+            { "x": 2520, "y": 3318, "level": 0 },
+            { "x": 2517, "y": 3281, "level": 0 },
+            { "x": 2509, "y": 3330, "level": 0 },
+            { "x": 2500, "y": 3290, "level": 0 },
+            { "x": 2496, "y": 3282, "level": 0 },
+            { "x": 2512, "y": 3267, "level": 0 },
+            { "x": 2529, "y": 3270, "level": 0 },
+            { "x": 2569, "y": 3340, "level": 0 },
+            { "x": 2570, "y": 3321, "level": 0 },
+            { "x": 2582, "y": 3314, "level": 0 },
+            { "x": 2583, "y": 3265, "level": 0 },
+            { "x": 2589, "y": 3330, "level": 0 },
+            { "x": 2589, "y": 3319, "level": 0 },
+            { "x": 2483, "y": 3313, "level": 0 },
+            { "x": 2475, "y": 3331, "level": 0 },
+            { "x": 2467, "y": 3319, "level": 0 },
+            { "x": 2462, "y": 3282, "level": 0 },
+            { "x": 2442, "y": 3310, "level": 0 },
+            { "x": 2440, "y": 3319, "level": 0 }], [
+            { name: "A", area: { topleft: { x: 2659, y: 3306 }, botright: { x: 2665, y: 3300 } } },
+            { name: "B", area: { topleft: { x: 2648, y: 3308 }, botright: { x: 2650, y: 3306 } } },
+            { name: "C", tile: { x: 2538, y: 3306 } },
+            { name: "D", tile: { x: 2531, y: 3303 } },
+            { name: "E", tile: { x: 2521, y: 3293 } },
+        ], {
+            "-A": {
+                video: videos.ardounge.toA,
+                text: "Teleport to ardounge (Spot A)."
+            },
+            "A-C": {
+                video: videos.ardounge.AtoC,
+                text: "Ruled out most of east ardounge, teleport to C with Dave's spellbook (4)."
+            },
+            "C-D": {}
+        }, goTo("A", "Ardounge teleport to {}.")
+            .triple(1, 2)
+            .double(goTo("B", "Dive to {}.")
+            .triple(2, 3, 4)
+            .double(decide("Teleport to ardounge lodestone")
+            .double(digAt(5))
+            .triple(6, 7)))
+            .single(goTo("C", "Dave's spellbook to {}.")
+            .triple(8, 9, 10, 11)
+            .single(decide("The spot is at the western end")
+            .answer("23", digAt(23))
+            .answer("24", digAt(24))
+            .answer("25", digAt(25))
+            .answer("26", digAt(26))
+            .answer("27", digAt(27))
+            .answer("28", digAt(28)))
+            .double(goTo("D", "Step/Dive to {}")
+            .triple(12)
+            .single(decide("Go through the manhole")
+            .triple(21, 22))
+            .double(goTo("E", "Surge to {}.")
+            .triple(13, 14, 15, 16)
+            .double(decide("Go through the manhole")
+            .triple(17, 18))
+            .single(goTo("C", "Teleport back to {} and use the gate")
+            .triple(19)
+            .double(digAt(20)))))))
+    });
+    /*
     associate({
         id: 355, // piscatoris
         method: tree("assets/scanassets/piscatoris/piscatoris.png",
@@ -30247,14 +30299,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "areaToPolygon": () => (/* binding */ areaToPolygon),
 /* harmony export */   "boxPolygon": () => (/* binding */ boxPolygon),
 /* harmony export */   "contains": () => (/* binding */ contains),
+/* harmony export */   "eq": () => (/* binding */ eq),
+/* harmony export */   "t": () => (/* binding */ t),
 /* harmony export */   "tilePolygon": () => (/* binding */ tilePolygon),
 /* harmony export */   "toBounds": () => (/* binding */ toBounds),
-/* harmony export */   "toCoords": () => (/* binding */ toCoords),
 /* harmony export */   "toLeafletLatLngExpression": () => (/* binding */ toLeafletLatLngExpression)
 /* harmony export */ });
 /* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "../node_modules/leaflet/dist/leaflet-src.js");
 /* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _util_raster__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../util/raster */ "./util/raster.ts");
 
+
+function eq(a, b) {
+    return a.x == b.x && a.y == b.y; // Ignores level for spot equality
+}
 function toBounds(box) {
     let tl = leaflet__WEBPACK_IMPORTED_MODULE_0__.point(box.topleft);
     let br = leaflet__WEBPACK_IMPORTED_MODULE_0__.point(box.botright);
@@ -30269,80 +30327,158 @@ function contains(box, tile) {
         && box.botright.x >= tile.x
         && box.botright.y >= tile.y;
 }
-function toCoords(point) {
-    return {
-        x: point.tile.x - 0.5 + Math.floor(point.corner / 2),
-        y: point.tile.y - 0.5 + (point.corner % 2)
-    };
-}
 function toLeafletLatLngExpression(point) {
     return [point.y, point.x];
 }
-function areaToPolygon(area) {
-    function a(coordinates) {
-        return area.tiles.findIndex((e) => e.x == coordinates.x && e.y == coordinates.y) >= 0;
+function t(area) {
+    let bounds = leaflet__WEBPACK_IMPORTED_MODULE_0__.bounds(area.tiles.map((c) => leaflet__WEBPACK_IMPORTED_MODULE_0__.point(c.x, c.y)));
+    let raster = new _util_raster__WEBPACK_IMPORTED_MODULE_1__.Raster({
+        left: bounds.getTopLeft().x - 1,
+        right: bounds.getTopRight().x + 1,
+        top: bounds.getBottomLeft().y + 1,
+        bottom: bounds.getTopLeft().y - 1
+    });
+    raster.data.fill(false);
+    area.tiles.forEach((t) => {
+        raster.data[raster.xyToI(t)] = true;
+    });
+}
+function areaToPolygon(raster, f, s) {
+    function area(i) {
+        let a = raster.data[i];
+        return a && f(a);
+    }
+    function toCoords(point) {
+        let xy = raster.iToXY(point.tile);
+        return {
+            x: xy.x - 0.5 + Math.floor(point.corner / 2),
+            y: xy.y - 0.5 + (point.corner % 2)
+        };
     }
     // Find a start point that is on the border of the shape. Assumes there are no holes in the shape
-    let startpoint = area.tiles[0];
-    while (a({ x: startpoint.x - 1, y: startpoint.y }))
-        startpoint = { x: startpoint.x - 1, y: startpoint.y };
+    let startpoint = s;
+    while (area(startpoint - 1))
+        startpoint -= 1;
+    while (area(startpoint - raster.size.x))
+        startpoint -= raster.size.x;
     let start = { tile: startpoint, corner: 0 };
     let current = { tile: startpoint, corner: 0 };
+    function done() {
+        return start.tile == current.tile && start.corner == current.corner;
+    }
+    let polygon = [];
+    do {
+        switch (current.corner) {
+            case 0: // Bottom left, going up
+                {
+                    let i = current.tile;
+                    while (area(i + raster.size.x) && !area(i + raster.size.x - 1))
+                        i += raster.size.x;
+                    polygon.push(toCoords({ tile: i, corner: 1 }));
+                    if (area(i + raster.size.x - 1))
+                        current = { tile: i + raster.size.x - 1, corner: 2 }; // Go left
+                    else
+                        current = { tile: i, corner: 1 }; // Go right
+                }
+                break;
+            case 1: { // Top left, going right
+                let i = current.tile;
+                while (area(i + 1) && !area(i + raster.size.x + 1))
+                    i += 1;
+                polygon.push(toCoords({ tile: i, corner: 3 }));
+                if (area(i + raster.size.x + 1))
+                    current = { tile: i + raster.size.x + 1, corner: 0 }; // Go up
+                else
+                    current = { tile: i, corner: 3 }; // Go down
+                break;
+            }
+            case 2: { // Bottom right, going left
+                let i = current.tile;
+                while (area(i - 1) && !area(i - raster.size.x - 1))
+                    i -= 1;
+                polygon.push(toCoords({ tile: i, corner: 0 }));
+                if (area(i - raster.size.x - 1))
+                    current = { tile: i - raster.size.x - 1, corner: 3 }; // Go down
+                else
+                    current = { tile: i, corner: 0 }; // Go up
+                break;
+            }
+            case 3: { // Top right, going down
+                let i = current.tile;
+                while (area(i - raster.size.x) && !area(i - raster.size.x + 1))
+                    i -= raster.size.x;
+                polygon.push(toCoords({ tile: i, corner: 2 }));
+                if (area(i - raster.size.x + 1))
+                    current = { tile: i - raster.size.x + 1, corner: 1 }; // Go right
+                else
+                    current = { tile: i, corner: 2 }; // Go left
+                break;
+            }
+        }
+    } while (!done());
+    return leaflet__WEBPACK_IMPORTED_MODULE_0__.polygon(polygon.map(toLeafletLatLngExpression));
+    /*
+    // Find a start point that is on the border of the shape. Assumes there are no holes in the shape
+    let startpoint = area.tiles[0]
+    while (a({x: startpoint.x - 1, y: startpoint.y})) startpoint = {x: startpoint.x - 1, y: startpoint.y}
+
+    let start: { tile: MapCoordinate, corner: corner } = {tile: startpoint, corner: 0}
+    let current: { tile: MapCoordinate, corner: corner } = {tile: startpoint, corner: 0}
+
     function done() {
         return start.tile.x == current.tile.x
             && start.tile.y == current.tile.y
             && start.corner == current.corner;
     }
-    let polygon = [toCoords(current)];
+
+    let polygon: MapCoordinate[] = [toCoords(current)]
+
     do {
         switch (current.corner) {
             case 0: // Bottom left
-                if (a({ x: current.tile.x - 1, y: current.tile.y })) {
-                    current = { tile: { x: current.tile.x - 1, y: current.tile.y }, corner: 2 };
-                }
-                else {
-                    current.corner = 1;
-                    polygon.push(toCoords(current));
+                if (a({x: current.tile.x - 1, y: current.tile.y})) {
+                    current = {tile: {x: current.tile.x - 1, y: current.tile.y}, corner: 2}
+                } else {
+                    current.corner = 1
+                    polygon.push(toCoords(current))
                 }
                 break;
             case 1: // Top left
-                if (a({ x: current.tile.x, y: current.tile.y + 1 })) {
-                    current = { tile: { x: current.tile.x, y: current.tile.y + 1 }, corner: 0 };
-                }
-                else {
-                    current.corner = 3;
-                    polygon.push(toCoords(current));
+                if (a({x: current.tile.x, y: current.tile.y + 1})) {
+                    current = {tile: {x: current.tile.x, y: current.tile.y + 1}, corner: 0}
+                } else {
+                    current.corner = 3
+                    polygon.push(toCoords(current))
                 }
                 break;
             case 2: // Bottom right
-                if (a({ x: current.tile.x, y: current.tile.y - 1 })) {
-                    current = { tile: { x: current.tile.x, y: current.tile.y - 1 }, corner: 3 };
-                }
-                else {
-                    current.corner = 0;
-                    polygon.push(toCoords(current));
+                if (a({x: current.tile.x, y: current.tile.y - 1})) {
+                    current = {tile: {x: current.tile.x, y: current.tile.y - 1}, corner: 3}
+                } else {
+                    current.corner = 0
+                    polygon.push(toCoords(current))
                 }
                 break;
             case 3: // Top right
-                if (a({ x: current.tile.x + 1, y: current.tile.y })) {
-                    current = { tile: { x: current.tile.x + 1, y: current.tile.y }, corner: 1 };
-                }
-                else {
-                    current.corner = 2;
-                    polygon.push(toCoords(current));
+                if (a({x: current.tile.x + 1, y: current.tile.y})) {
+                    current = {tile: {x: current.tile.x + 1, y: current.tile.y}, corner: 1}
+                } else {
+                    current.corner = 2
+                    polygon.push(toCoords(current))
                 }
                 break;
         }
-    } while (!done());
-    return leaflet__WEBPACK_IMPORTED_MODULE_0__.polygon(polygon.map((c) => [c.y, c.x]));
+    } while (!done())
+
+    return leaflet.polygon(polygon.map((c) => [c.y, c.x] as [number, number]))*/
 }
 function tilePolygon(tile) {
     return leaflet__WEBPACK_IMPORTED_MODULE_0__.polygon([
-        { tile: tile, corner: 0 },
-        { tile: tile, corner: 1 },
-        { tile: tile, corner: 3 },
-        { tile: tile, corner: 2 },
-    ].map(toCoords).map(toLeafletLatLngExpression));
+        { x: tile.x - 0.5, y: tile.y - 0.5 },
+        { x: tile.x - 0.5, y: tile.y + 0.5 },
+        { x: tile.x + 0.5, y: tile.y + 0.5 },
+        { x: tile.x + 0.5, y: tile.y - 0.5 },
+    ].map(toLeafletLatLngExpression));
 }
 function boxPolygon(tile) {
     return leaflet__WEBPACK_IMPORTED_MODULE_0__.polygon([
@@ -30383,11 +30519,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _application__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../application */ "./application.ts");
 /* harmony import */ var _uicontrol_map_methodlayer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../uicontrol/map/methodlayer */ "./uicontrol/map/methodlayer.ts");
+/* harmony import */ var _uicontrol_widgets_modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../uicontrol/widgets/modal */ "./uicontrol/widgets/modal.ts");
+
 
 
 class Method {
     constructor(type) {
         this.type = type;
+    }
+}
+class ScanExplanationModal extends _uicontrol_widgets_modal__WEBPACK_IMPORTED_MODULE_2__.Modal {
+    hidden() {
+        $("#pingexplanationvideo").get(0).pause();
     }
 }
 class ScanTree extends Method {
@@ -30398,6 +30541,9 @@ class ScanTree extends Method {
         this.scan_spots = scan_spots;
         this.root = root;
         root.setRoot(this);
+    }
+    explanationModal() {
+        return (0,_uicontrol_widgets_modal__WEBPACK_IMPORTED_MODULE_2__.modal)("modal-scantree-method-explanation", ScanExplanationModal);
     }
     sendToUi(app) {
         app.howtotabs.map.setMethodLayer(new _uicontrol_map_methodlayer__WEBPACK_IMPORTED_MODULE_1__.ScanTreeMethodLayer(this));
@@ -30414,9 +30560,6 @@ class ScanTree extends Method {
     }
     area(name) {
         return this.scan_spots.find((s) => s.name == name);
-    }
-    explanation() {
-        return $("<div>");
     }
 }
 var PingType;
@@ -30485,11 +30628,20 @@ class ScanTreeNode {
     }
     sendToUI(app) {
         {
-            let rel = [this.where];
-            if (this.parent)
-                rel.push(this.parent.node.where);
             let layer = app.howtotabs.map.getMethodLayer();
-            layer.setRelevant(this.candidates(), rel, true);
+            /*
+            let rel = [this.where]
+            if (this.parent) rel.push(this.parent.node.where);
+
+            let ca = this.solved != null ? [this.solved] : []
+
+
+            layer.setRelevant(
+                ca,
+                rel,
+                true
+            )*/
+            layer.setNode(this);
         }
         {
             let path = this.path();
@@ -30601,6 +30753,155 @@ class ScanTreeNode {
         this.children().filter((e) => (typeof e.parent.key.kind) == "string")
             .forEach((e) => e.generateList(depth, container, app));
     }
+}
+
+
+/***/ }),
+
+/***/ "./model/scans/scans.ts":
+/*!******************************!*\
+  !*** ./model/scans/scans.ts ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "EquivalenceClass": () => (/* binding */ EquivalenceClass),
+/* harmony export */   "ScanEquivalenceClasses": () => (/* binding */ ScanEquivalenceClasses),
+/* harmony export */   "area_pulse": () => (/* binding */ area_pulse),
+/* harmony export */   "get_pulse": () => (/* binding */ get_pulse),
+/* harmony export */   "information_gain": () => (/* binding */ information_gain)
+/* harmony export */ });
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "../node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _coordinates__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../coordinates */ "./model/coordinates.ts");
+/* harmony import */ var _util_raster__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../util/raster */ "./util/raster.ts");
+
+
+
+class EquivalenceClass {
+    constructor(id, parent, profile, area) {
+        this.id = id;
+        this.parent = parent;
+        this.profile = profile;
+        this.area = area;
+        this.polygon = null;
+        this.information_gain = information_gain(profile);
+    }
+    getPolygon() {
+        if (!this.polygon) {
+            let color = Math.abs(this.information_gain - this.parent.max_information) < 0.01
+                ? "blue"
+                : `rgb(${255 * (1 - (this.information_gain / this.parent.max_information))}, ${255 * this.information_gain / this.parent.max_information}, 0)`;
+            this.polygon = leaflet__WEBPACK_IMPORTED_MODULE_0__.featureGroup();
+            (0,_coordinates__WEBPACK_IMPORTED_MODULE_1__.areaToPolygon)(this.parent.raster, (p) => p.id == this.id, this.area[0]).setStyle({
+                color: "black",
+                opacity: 1,
+                weight: 3,
+                fillOpacity: 0.25,
+                fillColor: color
+            }).addTo(this.polygon);
+            leaflet__WEBPACK_IMPORTED_MODULE_0__.marker(this.polygon.getBounds().getCenter(), {
+                icon: leaflet__WEBPACK_IMPORTED_MODULE_0__.divIcon({
+                    iconSize: [50, 20],
+                    className: "equivalence-class-information",
+                    html: `${this.information_gain.toFixed(2)}b`,
+                }),
+            }).addTo(this.polygon);
+        }
+        return this.polygon;
+    }
+}
+class ScanEquivalenceClasses {
+    constructor(candidates, range) {
+        this.candidates = candidates;
+        this.range = range;
+        this.raster = null;
+        this.equivalence_classes = null;
+    }
+    calculate_classes() {
+        let bounds = leaflet__WEBPACK_IMPORTED_MODULE_0__.bounds(this.candidates.map((c) => leaflet__WEBPACK_IMPORTED_MODULE_0__.point(c.x, c.y)));
+        this.raster = new _util_raster__WEBPACK_IMPORTED_MODULE_2__.Raster({
+            left: bounds.getTopLeft().x - 2 * this.range,
+            right: bounds.getTopRight().x + 2 * this.range,
+            top: bounds.getBottomLeft().y + 2 * this.range,
+            bottom: bounds.getTopLeft().y - 2 * this.range
+        });
+        this.equivalence_classes = [];
+        function eq(a, b) {
+            if (a.length != b.length)
+                return false;
+            for (let i = 0; i < a.length; i++) {
+                if (a[i] != b[i])
+                    return false;
+            }
+            return true;
+        }
+        let next_id = 0;
+        for (let row = 0; row < this.raster.size.y; row++) {
+            for (let col = 0; col < this.raster.size.x; col++) {
+                let index = row * this.raster.size.x + col;
+                let tile = {
+                    x: this.raster.bounds.left + col,
+                    y: this.raster.bounds.bottom + row
+                };
+                let profile = this.get_scan_profile(tile);
+                if (col > 0) {
+                    let left_neighbour = this.raster.data[index - 1];
+                    if (eq(profile, left_neighbour.profile)) {
+                        this.raster.data[index] = left_neighbour;
+                        left_neighbour.area.push(index);
+                        continue;
+                    }
+                }
+                if (row > 0) {
+                    let down_neighour = this.raster.data[index - this.raster.size.x];
+                    if (eq(profile, down_neighour.profile)) {
+                        this.raster.data[index] = down_neighour;
+                        down_neighour.area.push(index);
+                        continue;
+                    }
+                }
+                // Create new equivalence class
+                this.raster.data[index] = new EquivalenceClass(next_id++, this, profile, [index]);
+                this.equivalence_classes.push(this.raster.data[index]);
+            }
+        }
+        this.max_information = Math.max(...this.equivalence_classes.map((c) => c.information_gain));
+    }
+    get_scan_profile(tile) {
+        return this.candidates.map((s) => get_pulse(tile, s, this.range));
+    }
+    getClasses() {
+        if (!this.equivalence_classes)
+            this.calculate_classes();
+        return this.equivalence_classes;
+    }
+}
+function get_pulse(spot, tile, range) {
+    let d_x = Math.abs(spot.x - tile.x);
+    let d_y = Math.abs(spot.y - tile.y);
+    let d = Math.max(d_x, d_y);
+    return 3 - Math.min(2, Math.floor(Math.max(0, (d - 1)) / range));
+}
+function area_pulse(spot, area, range) {
+    let dx_min = spot.x - area.topleft.x;
+}
+function information_gain(profile) {
+    let counts = [0, 0, 0];
+    profile.forEach((s) => counts[s - 1]++);
+    let number_of_singles = counts[0];
+    let number_of_doubles = counts[1];
+    let number_of_triples = counts[2];
+    let gain = 0;
+    if (number_of_singles > 0)
+        gain += Math.log2(profile.length / number_of_singles) * (number_of_singles / profile.length);
+    if (number_of_doubles > 0)
+        gain += Math.log2(profile.length / number_of_doubles) * (number_of_doubles / profile.length);
+    if (number_of_triples > 0)
+        gain += Math.log2(profile.length) * (number_of_triples / profile.length); // Triples are special: They narrow down to exactly one candidate instead of all triple candidates.
+    return gain;
 }
 
 
@@ -33847,8 +34148,12 @@ class CluePanelControl {
     constructor(app) {
         this.app = app;
         this.clue_panel = $("#solutionpanel");
+        this.active_method = null;
         this.selected_clue = null;
         this.clue_panel.hide();
+        $("#methodexplanation").on("click", () => {
+            this.active_method.explanationModal().show();
+        });
     }
     selectClue(clue) {
         if (this.selected_clue && this.selected_clue.id == clue.id)
@@ -33879,6 +34184,7 @@ class CluePanelControl {
         }
     }
     setMethod(method) {
+        this.active_method = method;
         $(".cluemethodcontent").hide();
         method.sendToUi(this.app);
         $(`.cluemethodcontent[data-methodtype=${method.type}]`).show();
@@ -34079,7 +34385,7 @@ class MenuBarControl {
         this.search = new _SearchControl__WEBPACK_IMPORTED_MODULE_0__["default"](app);
         this.solve = new _SolveControl__WEBPACK_IMPORTED_MODULE_2__["default"](app);
         // Hide for now
-        $("#infobutton").hide();
+        $("#infobutton").on("click", () => $("#modal-about").modal("show"));
         $("#settingsbutton").hide();
     }
 }
@@ -34239,6 +34545,51 @@ class SolveControl {
             window.clearInterval(this.interval);
             this.interval = null;
         }
+    }
+}
+
+
+/***/ }),
+
+/***/ "./uicontrol/map/CustomControl.ts":
+/*!****************************************!*\
+  !*** ./uicontrol/map/CustomControl.ts ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "CustomControl": () => (/* binding */ CustomControl),
+/* harmony export */   "ImageButton": () => (/* binding */ ImageButton)
+/* harmony export */ });
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "../node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
+
+class CustomControl extends leaflet__WEBPACK_IMPORTED_MODULE_0__.Control {
+    constructor(html, events = {}) {
+        super();
+        this.html = html;
+        for (let key of Object.keys(events))
+            this.html.on(key, events[key]);
+    }
+    onAdd(map) {
+        return this.html.get()[0];
+    }
+}
+class ImageButton extends CustomControl {
+    constructor(img_url, events = {}, options) {
+        let old_click = events["click"];
+        if (old_click) {
+            events["click"] = (e) => {
+                e.stopPropagation();
+                old_click(e);
+            };
+        }
+        let object = $(`<div title="Toggle equivalence classes"><img src='${img_url}'></div>`).addClass("leaflet-button");
+        if (options.title)
+            object.attr("title", options.title);
+        super(object, events);
     }
 }
 
@@ -34450,10 +34801,13 @@ class GameMapControl {
     updateActiveLayer(fit) {
         let preferred = this.methodLayer || this.solutionLayer;
         if (this.activeLayer != preferred) {
-            if (this.activeLayer)
+            if (this.activeLayer) {
                 this.activeLayer.remove();
+                this.activeLayer.deactivate();
+            }
             this.activeLayer = preferred;
             this.activeLayer.addTo(this.map);
+            this.activeLayer.activate(this);
             if (fit)
                 this.map.fitBounds(this.activeLayer.getBounds().pad(0.1), { maxZoom: 4 });
         }
@@ -34473,6 +34827,12 @@ class GameMapControl {
     getMethodLayer() {
         return this.methodLayer;
     }
+    tileFromMouseEvent(e) {
+        return {
+            x: Math.round(e.latlng.lng),
+            y: Math.round(e.latlng.lat)
+        };
+    }
 }
 
 
@@ -34489,77 +34849,89 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ScanTreeMethodLayer": () => (/* binding */ ScanTreeMethodLayer)
 /* harmony export */ });
-/* harmony import */ var _model_coordinates__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../model/coordinates */ "./model/coordinates.ts");
+/* harmony import */ var _model_methods__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../model/methods */ "./model/methods.ts");
 /* harmony import */ var _solutionlayer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./solutionlayer */ "./uicontrol/map/solutionlayer.ts");
 /* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! leaflet */ "../node_modules/leaflet/dist/leaflet-src.js");
 /* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_2__);
 
 
 
-class SpotPolygon extends leaflet__WEBPACK_IMPORTED_MODULE_2__.FeatureGroup {
-    constructor(spot) {
-        super();
-        this.spot = spot;
-        this.polygon = spot.area ? (0,_model_coordinates__WEBPACK_IMPORTED_MODULE_0__.boxPolygon)(spot.area) : (0,_model_coordinates__WEBPACK_IMPORTED_MODULE_0__.tilePolygon)(spot.spot);
-        this.label = leaflet__WEBPACK_IMPORTED_MODULE_2__.tooltip({
-            interactive: false,
-            permanent: true,
-            className: "area-name",
-            offset: [0, 0],
-            direction: "center",
-            content: spot.name
-        });
-        this.polygon
-            .setStyle({
-            color: "#00FF21",
-            fillColor: "#00FF21",
-            interactive: false,
-        })
-            .bindTooltip(this.label)
-            .addTo(this);
-    }
-    setActive(active) {
-        let opacity = active ? 1 : 0.2;
-        this.polygon.setStyle(Object.assign(this.polygon.options, {
-            opacity: opacity,
-            fillOpacity: opacity * 0.2,
-        }));
-        this.label.setOpacity(opacity);
-    }
-}
 class ScanTreeMethodLayer extends _solutionlayer__WEBPACK_IMPORTED_MODULE_1__.ScanSolutionLayer {
-    setRelevant(spots, areas, fit) {
+    /*
+        public setRelevant(spots: number[],
+                           areas: string[],
+                           fit: boolean,
+        ) {
+            let bounds = leaflet.latLngBounds([])
+
+            this.markers.forEach((e, i) => {
+                let relevant = spots.includes(i + 1)
+                e.setActive(relevant)
+
+                if (relevant) bounds.extend(e.getBounds())
+            })
+
+            this.areas.forEach((p) => {
+                let relevant = areas.includes(p.spot().name)
+
+                p.setActive(relevant)
+
+                if (relevant && !p.spot().is_far_away) bounds.extend(p.getBounds())
+            })
+
+            if (areas[0] && this.scantree.area(areas[0]).is_far_away) {
+                bounds = this.areas.find((p) => p.spot().name == areas[0]).getBounds()
+            }
+
+            if (fit) {
+                this._map.fitBounds(bounds.pad(0.1), {
+                    maxZoom: 4
+                })
+            }
+
+            this.set_remaining_candidates(spots.map((s) => this.scantree.spot(s)))
+        }*/
+    fit() {
         let bounds = leaflet__WEBPACK_IMPORTED_MODULE_2__.latLngBounds([]);
-        this.markers.forEach((e, i) => {
-            let relevant = spots.includes(i + 1);
-            e.setActive(relevant);
-            if (relevant)
-                bounds.extend(e.getBounds());
-        });
-        this.polygons.forEach((p) => {
-            let relevant = areas.includes(p.spot.name);
-            p.setActive(relevant);
-            if (relevant && !p.spot.is_far_away)
-                bounds.extend(p.getBounds());
-        });
-        if (areas[0] && this.scantree.area(areas[0]).is_far_away) {
-            bounds = this.polygons.find((p) => p.spot.name == areas[0]).getBounds();
+        // Include old location in bounds
+        if (this.node.parent && this.node.parent.node.where) {
+            let a = this.getArea(this.node.parent.node.where);
+            if (!a.spot().is_far_away)
+                bounds.extend(this.getArea(this.node.parent.node.where).getBounds());
         }
-        if (fit) {
-            this._map.fitBounds(bounds.pad(0.1), {
-                maxZoom: 4
-            });
-        }
-        //this.draw_equivalence_classes(spots.map((s) => this.scantree.spot(s)))
+        // Include next location in bounds
+        if (this.node.where)
+            bounds.extend(this.getArea(this.node.where).getBounds());
+        if (this.node.solved)
+            bounds.extend(this.getMarker(this.node.solved).getBounds());
+        // Include all triple children
+        this.node.children().filter((c) => c.parent.key.kind == _model_methods__WEBPACK_IMPORTED_MODULE_0__.PingType.TRIPLE).forEach((c) => {
+            bounds.extend(this.getMarker(c.solved).getBounds());
+        });
+        // If there are no valid bounds (because the above all don't apply), default to the scan area as a bound
+        if (!bounds.isValid())
+            this.markers.forEach((e) => bounds.extend(e.getBounds()));
+        this._map.fitBounds(bounds.pad(0.1), {
+            maxZoom: 4
+        });
+    }
+    setNode(node) {
+        this.node = node;
+        this.fit();
+        let candidates = this.node.candidates();
+        let relevant_areas = [this.node.where];
+        if (this.node.parent)
+            relevant_areas.push(this.node.parent.node.where);
+        this.set_remaining_candidates(candidates.map((c) => this.scantree.spot(c)));
+        this.markers.forEach((e, i) => e.setActive(candidates.includes(i + 1)));
+        this.areas.forEach((p) => p.setActive(relevant_areas.includes(p.spot().name)));
     }
     constructor(scantree) {
         super(scantree.clue);
         this.scantree = scantree;
-        this.polygons = [];
         // sort markers to correlate to the spot mapping
         this.markers.sort((a, b) => scantree.spotToNumber(a.getSpot()) - scantree.spotToNumber(b.getSpot()));
-        this.polygons = this.scantree.scan_spots.map((s) => new SpotPolygon(s));
-        this.polygons.forEach((p) => p.addTo(this));
+        this.setAreas(this.scantree.scan_spots);
         // Create labels
         this.markers.forEach((m, i) => {
             m.withLabel((i + 1).toString(), "spot-number", [0, 10]);
@@ -34579,6 +34951,7 @@ class ScanTreeMethodLayer extends _solutionlayer__WEBPACK_IMPORTED_MODULE_1__.Sc
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ScanEditLayer": () => (/* binding */ ScanEditLayer),
 /* harmony export */   "ScanSolutionLayer": () => (/* binding */ ScanSolutionLayer),
 /* harmony export */   "SimpleMarkerLayer": () => (/* binding */ SimpleMarkerLayer),
 /* harmony export */   "Solutionlayer": () => (/* binding */ Solutionlayer),
@@ -34589,11 +34962,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! leaflet */ "../node_modules/leaflet/dist/leaflet-src.js");
 /* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _model_coordinates__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../model/coordinates */ "./model/coordinates.ts");
+/* harmony import */ var _model_scans_scans__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../model/scans/scans */ "./model/scans/scans.ts");
+/* harmony import */ var _CustomControl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./CustomControl */ "./uicontrol/map/CustomControl.ts");
+
+
 
 
 
 class TileMarkerWithActive extends _map__WEBPACK_IMPORTED_MODULE_0__.TileMarker {
+    constructor() {
+        super(...arguments);
+        this.active = true;
+    }
+    isActive() {
+        return this.active;
+    }
     setActive(isActive) {
+        this.active = isActive;
         if (isActive)
             this.setOpacity(1);
         else
@@ -34601,91 +34986,228 @@ class TileMarkerWithActive extends _map__WEBPACK_IMPORTED_MODULE_0__.TileMarker 
     }
 }
 class Solutionlayer extends leaflet__WEBPACK_IMPORTED_MODULE_1__.FeatureGroup {
+    constructor() {
+        super(...arguments);
+        this.map = null;
+        this.controls = [];
+    }
+    addControl(control) {
+        this.controls.push(control);
+        if (this.map)
+            this.map.map.addControl(control);
+    }
+    activate(map) {
+        this.map = map;
+        this.controls.forEach((e) => e.addTo(map.map));
+    }
+    deactivate() {
+        this.map = null;
+        this.controls.forEach((e) => e.remove());
+    }
     on_marker_set(marker) {
+    }
+}
+class SpotPolygon extends leaflet__WEBPACK_IMPORTED_MODULE_1__.FeatureGroup {
+    constructor(_spot) {
+        super();
+        this._spot = _spot;
+        this.active = true;
+        this.update();
+    }
+    spot() {
+        return this._spot;
+    }
+    setSpot(spot) {
+        this._spot = spot;
+        this.update();
+    }
+    update() {
+        this.polygon = this._spot.area ? (0,_model_coordinates__WEBPACK_IMPORTED_MODULE_2__.boxPolygon)(this._spot.area) : (0,_model_coordinates__WEBPACK_IMPORTED_MODULE_2__.tilePolygon)(this._spot.tile);
+        this.label = leaflet__WEBPACK_IMPORTED_MODULE_1__.tooltip({
+            interactive: false,
+            permanent: true,
+            className: "area-name",
+            offset: [0, 0],
+            direction: "center",
+            content: this._spot.name
+        });
+        this.polygon
+            .setStyle({
+            color: "#00FF21",
+            fillColor: "#00FF21",
+            interactive: false,
+        })
+            .bindTooltip(this.label)
+            .addTo(this);
+        this.updateOpacity();
+    }
+    updateOpacity() {
+        let opacity = this.active ? 1 : 0.2;
+        this.polygon.setStyle(Object.assign(this.polygon.options, {
+            opacity: opacity,
+            fillOpacity: opacity * 0.2,
+        }));
+        this.label.setOpacity(opacity);
+    }
+    setActive(active) {
+        this.active = active;
+        this.updateOpacity();
     }
 }
 class ScanSolutionLayer extends Solutionlayer {
     constructor(clue) {
         super();
         this.clue = clue;
+        this.areas = [];
         this.ms = [];
-        this.equivalence_class_polygons = [];
-        this.cands = [];
+        this.dragstart = null;
+        this.drag_polygon = null;
+        this.remaining_candidates = this.clue.solution.candidates;
+        this.draw_equivalence_classes = false;
+        this.equivalence_classes = null;
+        this.range = clue.range + 5; // Always assume meerkats
         this.markers = clue.solution.candidates.map((e) => {
             return new TileMarkerWithActive(e).withMarker().withX("#B21319");
         });
+        /*
         // DO NOT REMOVE. Development code to easily assign numbers to scans
         this.markers.forEach((m) => {
             m.on("click", (e) => {
-                this.ms.push(e.target.getSpot());
-                e.target.withLabel(this.ms.length.toString(), "spot-number", [0, 0]);
-                console.log(JSON.stringify(this.ms));
-            });
-        });
+                this.ms.push(e.target.getSpot())
+                e.target.withLabel(this.ms.length.toString(), "spot-number", [0, 0])
+
+                console.log(JSON.stringify(this.ms))
+            })
+        })*/
         this.markers.forEach((m) => m.addTo(this));
-    }
-    draw_equivalence_classes(candidates) {
-        this.cands = candidates;
-        function rainbow(h) {
-            // This function generates vibrant, "evenly spaced" colours (i.e. no clustering). This is ideal for creating easily distinguishable vibrant markers in Google Maps and other apps.
-            // Adam Cole, 2011-Sept-14
-            // HSV to RBG adapted from: http://mjijackson.com/2008/02/rgb-to-hsl-and-rgb-to-hsv-color-model-conversion-algorithms-in-javascript
-            var r, g, b;
-            var i = ~~(h * 6);
-            var f = h * 6 - i;
-            var q = 1 - f;
-            switch (i % 6) {
-                case 0:
-                    r = 1;
-                    g = f;
-                    b = 0;
-                    break;
-                case 1:
-                    r = q;
-                    g = 1;
-                    b = 0;
-                    break;
-                case 2:
-                    r = 0;
-                    g = 1;
-                    b = f;
-                    break;
-                case 3:
-                    r = 0;
-                    g = q;
-                    b = 1;
-                    break;
-                case 4:
-                    r = f;
-                    g = 0;
-                    b = 1;
-                    break;
-                case 5:
-                    r = 1;
-                    g = 0;
-                    b = q;
-                    break;
-            }
-            var c = "#" + ("00" + (~~(r * 255)).toString(16)).slice(-2) + ("00" + (~~(g * 255)).toString(16)).slice(-2) + ("00" + (~~(b * 255)).toString(16)).slice(-2);
-            return (c);
-        }
-        this.equivalence_class_polygons.forEach((p) => p.remove());
-        let range = this.clue.range + 5;
-        let bounds = leaflet__WEBPACK_IMPORTED_MODULE_1__.bounds(this.clue.solution.candidates.map((c) => leaflet__WEBPACK_IMPORTED_MODULE_1__.point(c.x, c.y)));
-        let class_cache = {};
-        for (let x = bounds.getTopLeft().x - range; x <= bounds.getTopRight().x + range; x++) {
-            for (let y = bounds.getTopLeft().y - range; y <= bounds.getBottomLeft().y + range; y++) {
-                let hash = JSON.stringify(candidates.map((s) => Math.min(2, Math.floor(Math.max(Math.abs(s.x - x) - 1, Math.abs(s.y - y) - 1) / range))));
-                if (!class_cache[hash]) {
-                    class_cache[hash] = rainbow(Math.random());
+        this.set_remaining_candidates(clue.solution.candidates);
+        if (!window.alt1) { // Only if not Alt1, because is laggs heavily inside
+            this.addControl(new _CustomControl__WEBPACK_IMPORTED_MODULE_4__.ImageButton("assets/icons/eqclasses.png", {
+                "click": (e) => {
+                    this.setEquivalenceClassesEnabled(!this.draw_equivalence_classes);
                 }
-                let color = class_cache[hash];
-                this.equivalence_class_polygons.push((0,_model_coordinates__WEBPACK_IMPORTED_MODULE_2__.tilePolygon)({ x: x, y: y }).setStyle({
-                    color: color,
-                    opacity: 0
-                }).addTo(this));
-            }
+            }, {
+                title: "Toggle equivalence classes."
+            }).setPosition("topright"));
         }
+    }
+    activate(map) {
+        super.activate(map);
+        /*this.map.map.dragging.disable()
+
+        let self = this
+
+        this.map.map.on({
+            "mousedown": (e) => {
+                map.map.dragging.disable()
+
+                this.dragstart = map.tileFromMouseEvent(e)
+
+                this.drag_polygon = tilePolygon(this.dragstart)
+                    .setStyle({
+                        color: "#00FF21",
+                        fillColor: "#00FF21",
+                        interactive: false,
+                    })
+                    .addTo(self)
+            },
+            "mousemove": (e) => {
+                if (self.dragstart) {
+                    let now = map.tileFromMouseEvent(e)
+
+                    let area: Box =
+                        {
+                            topleft: {
+                                x: Math.min(self.dragstart.x, now.x),
+                                y: Math.max(self.dragstart.y, now.y),
+                            },
+                            botright: {
+                                x: Math.max(self.dragstart.x, now.x),
+                                y: Math.min(self.dragstart.y, now.y),
+                            }
+                        }
+
+
+                    self.drag_polygon.remove()
+                    self.drag_polygon = boxPolygon(area)
+                        .setStyle({
+                            color: "#00FF21",
+                            fillColor: "#00FF21",
+                            interactive: false,
+                        }).addTo(self)
+                    self.drag_polygon.addTo(self)
+                }
+            },
+
+            "mouseup": () => {
+                self.dragstart = null
+                self.drag_polygon = null
+
+                map.map.dragging.enable()
+            }
+        })*/
+    }
+    rule_out(spots) {
+        this.set_remaining_candidates(this.remaining_candidates.filter((c) => !spots.some((b) => (0,_model_coordinates__WEBPACK_IMPORTED_MODULE_2__.eq)(c, b))));
+    }
+    rule_out_but(spots) {
+        this.set_remaining_candidates(this.remaining_candidates.filter((c) => spots.some((b) => (0,_model_coordinates__WEBPACK_IMPORTED_MODULE_2__.eq)(c, b))));
+    }
+    set_remaining_candidates(spots) {
+        this.remaining_candidates = spots;
+        this.invalidateEquivalenceClasses();
+    }
+    pulse(spot, pulse) {
+        this.set_remaining_candidates(this.remaining_candidates.filter((s) => (0,_model_scans_scans__WEBPACK_IMPORTED_MODULE_3__.get_pulse)(spot, s, this.clue.range + 5) == pulse));
+    }
+    pulse_area(area, pulse) {
+    }
+    invalidateEquivalenceClasses() {
+        if (this.equivalence_classes) {
+            this.equivalence_classes.getClasses().forEach((c) => {
+                let p = c.getPolygon();
+                if (p)
+                    p.remove();
+            });
+            this.equivalence_classes = null;
+        }
+        if (this.draw_equivalence_classes)
+            this.createEquivalenceClasses();
+    }
+    createEquivalenceClasses() {
+        {
+            let startTime = performance.now();
+            this.equivalence_classes = new _model_scans_scans__WEBPACK_IMPORTED_MODULE_3__.ScanEquivalenceClasses(this.remaining_candidates, this.clue.range + 5);
+            console.log(this.equivalence_classes.getClasses().map((c) => c.information_gain));
+            let endTime = performance.now();
+            console.log(`Created ${this.equivalence_classes.equivalence_classes.length} classes in ${endTime - startTime} milliseconds`);
+        }
+        {
+            let startTime = performance.now();
+            this.equivalence_classes.getClasses().forEach((c) => {
+                c.getPolygon().addTo(this);
+            });
+            let endTime = performance.now();
+            console.log(`Created ${this.equivalence_classes.equivalence_classes.length} polygons in ${endTime - startTime} milliseconds`);
+        }
+    }
+    setEquivalenceClassesEnabled(enabled) {
+        this.draw_equivalence_classes = enabled;
+        this.invalidateEquivalenceClasses(); // Redraw
+    }
+    equivalenceClassesEnabled() {
+        return this.draw_equivalence_classes;
+    }
+    setAreas(spots) {
+        this.areas.forEach((a) => a.remove());
+        this.areas = spots.map((s) => new SpotPolygon(s));
+        this.areas.forEach((a) => a.addTo(this));
+    }
+    getArea(name) {
+        return this.areas.find((a) => a.spot().name == name);
+    }
+    getMarker(i) {
+        return this.markers[i - 1];
     }
     on_marker_set(marker) {
         if (this.radius_polygon) {
@@ -34704,14 +35226,22 @@ class ScanSolutionLayer extends Solutionlayer {
             topleft: { x: center.x - 2 * radius, y: center.y + 2 * radius },
             botright: { x: center.x + 2 * radius, y: center.y - 2 * radius }
         };
-        console.log("Center: " + JSON.stringify(center));
-        console.log("Inner: " + JSON.stringify(inner));
-        console.log("Outer: " + JSON.stringify(outer));
         this.radius_polygon = [
             (0,_model_coordinates__WEBPACK_IMPORTED_MODULE_2__.boxPolygon)(inner).setStyle({ color: "green", fillOpacity: 0.1 }),
             (0,_model_coordinates__WEBPACK_IMPORTED_MODULE_2__.boxPolygon)(outer).setStyle({ color: "yellow", fillOpacity: 0.1, dashArray: [5, 5] })
         ];
         this.radius_polygon.forEach((p) => p.addTo(this));
+    }
+}
+class ScanEditLayer extends Solutionlayer {
+    constructor() {
+        super();
+    }
+    activate(map) {
+        super.activate(map);
+    }
+    deactivate() {
+        super.deactivate();
     }
 }
 class SimpleMarkerLayer extends Solutionlayer {
@@ -35185,7 +35715,7 @@ const teles = [{
             { spot: { x: 2444, y: 3182 }, code: "1", hover: "Watchtower" },
             { spot: { x: 2794, y: 3419 }, code: "2", hover: "Camelot" },
             { spot: { x: 3006, y: 3321 }, code: "3", hover: "Falador" },
-            { spot: { x: 2538, y: 3308 }, code: "4", hover: "Ardounge" },
+            { spot: { x: 2538, y: 3306 }, code: "4", hover: "Ardounge" },
             { spot: { x: 3170, y: 3199 }, code: "5", hover: "Lumbridge" },
             { spot: { x: 3254, y: 3449 }, code: "6", hover: "Varrock" },
         ]
@@ -35224,12 +35754,12 @@ const teles = [{
     }, {
         id: "quiver", name: "Tirannwn quiver", img: "quiver.gif",
         spots: [
-            { spot: { x: 2348, y: 3172 }, hover: "Lletya" },
-            { spot: { x: 2186, y: 3148 }, hover: "Tyras Camp" },
-            { spot: { x: 2321, y: 3102 }, hover: "Poison Waste" },
-            { spot: { x: 2202, y: 3255 }, hover: "Elf Camp" },
-            { spot: { x: 2227, y: 3136 }, hover: "Mushroom Patch" },
-            { spot: { x: 2219, y: 3397 }, hover: "Harmony Pillars" },
+            { spot: { x: 2348, y: 3172 }, hover: "Lletya", code: "1" },
+            { spot: { x: 2186, y: 3148 }, hover: "Tyras Camp", code: "3" },
+            { spot: { x: 2321, y: 3102 }, hover: "Poison Waste", code: "4" },
+            { spot: { x: 2202, y: 3255 }, hover: "Elf Camp", code: "6" },
+            { spot: { x: 2227, y: 3136 }, hover: "Mushroom Patch", code: "7" },
+            { spot: { x: 2219, y: 3397 }, hover: "Harmony Pillars", code: "8" },
         ]
     }, {
         id: "sceptreofthegods", name: "Sceptre of the gods", img: "sotg.png",
@@ -35426,6 +35956,29 @@ const teles = [{
             { spot: { x: 3140, y: 2662 }, hover: "Menaphos" },
         ]
     },
+    {
+        id: "dragontrinkets", name: "Dragon Trinkets", img: "dragontrinkets.png",
+        spots: [
+            { spot: { x: 3303, y: 5468 }, hover: "Green Dragons", code: "1,1" },
+            { spot: { x: 2512, y: 3511 }, hover: "Brutal Green Dragons", code: "1,2" },
+            { spot: { x: 2891, y: 9769 }, hover: "Blue Dragons", code: "2" },
+            { spot: { x: 2731, y: 9529 }, hover: "Red Dragons", code: "3" },
+            { spot: { x: 2453, y: 4476 }, hover: "Black Dragons", code: "4,1" },
+            { spot: { x: 3051, y: 3519 }, hover: "King Black Dragon", code: "4,2" },
+            //{spot: {x: 0, y: 0}, hover: "Queen Black Dragon", code: "4,2"},
+        ]
+    },
+    {
+        id: "metallicdragontrinkets", name: "Metallic Dragon Trinkets", img: "metallicdragontrinkets.png",
+        spots: [
+            { spot: { x: 2723, y: 9486 }, hover: "Bronze Dragons", code: "1" },
+            { spot: { x: 2694, y: 9443 }, hover: "Iron Dragons", code: "2" },
+            { spot: { x: 2708, y: 9468 }, hover: "Steel Dragons", code: "3" },
+            { spot: { x: 1778, y: 5346 }, hover: "Mithril Dragons", code: "4" },
+            //{spot: {x: 0, y: 0}, hover: "Adamant Dragons", code: "5,1"},
+            { spot: { x: 2367, y: 3353 }, hover: "Rune Dragons", code: "5,2" },
+        ]
+    }
 ];
 class TeleportIcon extends leaflet__WEBPACK_IMPORTED_MODULE_0__.Icon {
     constructor(p) {
@@ -35482,6 +36035,59 @@ class TeleportLayer extends leaflet__WEBPACK_IMPORTED_MODULE_0__.FeatureGroup {
 
 /***/ }),
 
+/***/ "./uicontrol/widgets/modal.ts":
+/*!************************************!*\
+  !*** ./uicontrol/widgets/modal.ts ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Modal": () => (/* binding */ Modal),
+/* harmony export */   "modal": () => (/* binding */ modal)
+/* harmony export */ });
+class Modal {
+    constructor(id) {
+        this._modal = $(`#${id}`);
+        this._modal.on("shown.bs.modal", () => {
+            this.shown();
+        });
+        this._modal.on("hidden.bs.modal", () => {
+            this.hidden();
+        });
+    }
+    shown() {
+    }
+    hidden() {
+    }
+    show() {
+        this._modal.modal("show");
+        this.hidden_promise = new Promise((resolve) => {
+            this._modal.on("hidden.bs.modal", () => resolve());
+        });
+        return new Promise((resolve) => {
+            let listener = () => {
+                resolve();
+                this._modal.off("hidden.bs.modal", listener);
+            };
+            this._modal.on("hidden.bs.modal", listener);
+        });
+    }
+    hide() {
+        this._modal.modal("hide");
+    }
+}
+let modal_cache = {};
+function modal(id, constructor = Modal) {
+    if (!(id in modal_cache))
+        modal_cache[id] = new constructor(id);
+    return modal_cache[id];
+}
+
+
+/***/ }),
+
 /***/ "./uicontrol/widgets/togglebutton.ts":
 /*!*******************************************!*\
   !*** ./uicontrol/widgets/togglebutton.ts ***!
@@ -35516,6 +36122,37 @@ class ToggleButton {
     on_toggle(f) {
         this.handler = f;
         return this;
+    }
+}
+
+
+/***/ }),
+
+/***/ "./util/raster.ts":
+/*!************************!*\
+  !*** ./util/raster.ts ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Raster": () => (/* binding */ Raster)
+/* harmony export */ });
+class Raster {
+    constructor(bounds) {
+        this.bounds = bounds;
+        this.size = { x: bounds.right - bounds.left, y: bounds.top - bounds.bottom };
+        this.data = new Array(this.size.x * this.size.y);
+    }
+    xyToI(tile) {
+        return (tile.y - this.bounds.bottom) * this.size.x + (tile.x - this.bounds.left);
+    }
+    iToXY(i) {
+        return {
+            x: i % this.size.x + this.bounds.left,
+            y: Math.floor(i / this.size.x) + this.bounds.bottom
+        };
     }
 }
 
@@ -35558,6 +36195,13 @@ var storage;
         set(value) {
             this.value = value;
             set(this.key, value);
+        }
+        map(f) {
+            let old = this.get();
+            let n = f(this.get());
+            if (n == null)
+                n = old; // Assume f changed the value in place instead of constructing a new one
+            this.set(n);
         }
         save() {
             set(this.key, this.value);
