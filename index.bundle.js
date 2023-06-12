@@ -61197,11 +61197,15 @@ class GameMapControl extends _skillbertssolver_eventemitter__WEBPACK_IMPORTED_MO
         }).setView([3200, 3000], 0);
         this.floor = 0;
         this.map.addControl(new FloorControl(this).setPosition("bottomleft"));
-        fetch(this.backupUrl("versions.json", 0), { mode: "cors" }).then(async (q) => {
-            let content = await q.json();
+        // TODO: This is hardcoded, because I cant dynamically get the current version from runeapps because of CORS.
+        this.version = 1685523317;
+        this.updateBaseLayers();
+        /*fetch(this.backupUrl("versions.json", 0), {mode: "cors"}).then(async (q) => {
+            let content: { versions: { version: number, build: number, date: number, source: string }[] } = await q.json();
             this.version = content.versions[0].version;
-            this.updateBaseLayers();
-        });
+
+            this.updateBaseLayers()
+        });*/
     }
     setFloor(floor) {
         let old = this.floor;
