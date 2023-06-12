@@ -47811,7 +47811,7 @@ let raw = [
             {
                 "from": null,
                 "to": "A",
-                "short_instruction": "{{teleport fairyring aip}} to {{target}}."
+                "short_instruction": "{{teleport fairyring AIP}} to {{target}}."
             },
             {
                 "from": "A",
