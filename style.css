@@ -3,6 +3,7 @@ html, body, #main-content {
     margin: 0;
     display: inline-flex;
     font-family: monospace;
+    font-size: 10pt;
 }
 
 html, body {
@@ -187,6 +188,7 @@ html, body {
     box-shadow: none;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     color: gold;
+    text-decoration-color: gold;
 }
 
 .spot-number-on-map {
@@ -324,7 +326,7 @@ html, body {
 }
 
 .modal-content {
-    background-image: url('assets/style/background.png')
+    background-image: url('assets/nis/background.png')
 }
 
 .img-button {
@@ -542,4 +544,28 @@ video {
     transform: translate(-50%, -50%);
     font-size: 0.7em;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.lightlink {
+    text-decoration: underline;
+    cursor: pointer;
+    text-decoration-style: dotted;
+}
+
+.nis-inactive {
+    filter: grayscale(0.5) brightness(0.5);
+}
+
+.my-leaflet-topcenter {
+    max-width: 50%;
+    z-index: 10000;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    padding-top: 10px;
+    font-size: 12pt;
+}
+
+.nis-map-control-top {
+    padding: 5px;
 }

@@ -3039,10 +3039,10 @@ function autobind() {
 
 /***/ }),
 
-/***/ "../node_modules/file-loader/dist/cjs.js?name=[name].[ext]!./appconfig.json":
-/*!**********************************************************************************!*\
-  !*** ../node_modules/file-loader/dist/cjs.js?name=[name].[ext]!./appconfig.json ***!
-  \**********************************************************************************/
+/***/ "../node_modules/file-loader/dist/cjs.js?name=[name].[ext]!../static/appconfig.json":
+/*!******************************************************************************************!*\
+  !*** ../node_modules/file-loader/dist/cjs.js?name=[name].[ext]!../static/appconfig.json ***!
+  \******************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -3054,10 +3054,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "../node_modules/file-loader/dist/cjs.js?name=[name].[ext]!./index.html":
-/*!******************************************************************************!*\
-  !*** ../node_modules/file-loader/dist/cjs.js?name=[name].[ext]!./index.html ***!
-  \******************************************************************************/
+/***/ "../node_modules/file-loader/dist/cjs.js?name=[name].[ext]!../static/index.html":
+/*!**************************************************************************************!*\
+  !*** ../node_modules/file-loader/dist/cjs.js?name=[name].[ext]!../static/index.html ***!
+  \**************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -3069,10 +3069,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "../node_modules/file-loader/dist/cjs.js?name=[name].[ext]!./style.css":
-/*!*****************************************************************************!*\
-  !*** ../node_modules/file-loader/dist/cjs.js?name=[name].[ext]!./style.css ***!
-  \*****************************************************************************/
+/***/ "../node_modules/file-loader/dist/cjs.js?name=[name].[ext]!../static/style.css":
+/*!*************************************************************************************!*\
+  !*** ../node_modules/file-loader/dist/cjs.js?name=[name].[ext]!../static/style.css ***!
+  \*************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -46319,15 +46319,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _util_storage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./util/storage */ "./util/storage.ts");
 /* harmony import */ var _ui_SidePanelControl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ui/SidePanelControl */ "./ui/SidePanelControl.ts");
-/* harmony import */ var _ui_HowToTabControl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ui/HowToTabControl */ "./ui/HowToTabControl.ts");
-/* harmony import */ var _ui_MenuBarControl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ui/MenuBarControl */ "./ui/MenuBarControl.ts");
-/* harmony import */ var _ui_widgets_modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ui/widgets/modal */ "./ui/widgets/modal.ts");
-/* harmony import */ var _util_TemplateResolver__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./util/TemplateResolver */ "./util/TemplateResolver.ts");
-/* harmony import */ var _ui_map_teleportlayer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ui/map/teleportlayer */ "./ui/map/teleportlayer.ts");
-/* harmony import */ var _model_teleports__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./model/teleports */ "./model/teleports.ts");
-/* harmony import */ var _model_clues__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./model/clues */ "./model/clues.ts");
-/* harmony import */ var _data_accessors__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./data/accessors */ "./data/accessors.ts");
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./constants */ "./constants.ts");
+/* harmony import */ var _ui_MenuBarControl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ui/MenuBarControl */ "./ui/MenuBarControl.ts");
+/* harmony import */ var _ui_widgets_modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ui/widgets/modal */ "./ui/widgets/modal.ts");
+/* harmony import */ var _util_TemplateResolver__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util/TemplateResolver */ "./util/TemplateResolver.ts");
+/* harmony import */ var _ui_map_teleportlayer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ui/map/teleportlayer */ "./ui/map/teleportlayer.ts");
+/* harmony import */ var _model_teleports__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./model/teleports */ "./model/teleports.ts");
+/* harmony import */ var _model_clues__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./model/clues */ "./model/clues.ts");
+/* harmony import */ var _data_accessors__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./data/accessors */ "./data/accessors.ts");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./constants */ "./constants.ts");
+/* harmony import */ var _ui_map_map__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./ui/map/map */ "./ui/map/map.ts");
 
 
 
@@ -46339,7 +46339,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-class BetaNoticeModal extends _ui_widgets_modal__WEBPACK_IMPORTED_MODULE_4__.Modal {
+class BetaNoticeModal extends _ui_widgets_modal__WEBPACK_IMPORTED_MODULE_3__.Modal {
     constructor(id, app) {
         super(id);
         this.understand_button = $("#beta-notice-dismiss").on("click", () => {
@@ -46349,7 +46349,7 @@ class BetaNoticeModal extends _ui_widgets_modal__WEBPACK_IMPORTED_MODULE_4__.Mod
         });
     }
 }
-class PatchNotesModal extends _ui_widgets_modal__WEBPACK_IMPORTED_MODULE_4__.Modal {
+class PatchNotesModal extends _ui_widgets_modal__WEBPACK_IMPORTED_MODULE_3__.Modal {
     constructor(id, app) {
         super(id);
         this.app = app;
@@ -46392,7 +46392,7 @@ class PatchNotesModal extends _ui_widgets_modal__WEBPACK_IMPORTED_MODULE_4__.Mod
         return this.show();
     }
 }
-class AboutModal extends _ui_widgets_modal__WEBPACK_IMPORTED_MODULE_4__.Modal {
+class AboutModal extends _ui_widgets_modal__WEBPACK_IMPORTED_MODULE_3__.Modal {
     constructor(id, app) {
         super(id);
         this.app = app;
@@ -46407,24 +46407,24 @@ class AboutModal extends _ui_widgets_modal__WEBPACK_IMPORTED_MODULE_4__.Modal {
 class Application {
     constructor() {
         this.in_alt1 = !!window.alt1;
-        this.menubar = new _ui_MenuBarControl__WEBPACK_IMPORTED_MODULE_3__["default"](this);
-        this.howtotabs = new _ui_HowToTabControl__WEBPACK_IMPORTED_MODULE_2__["default"](this);
+        this.menubar = new _ui_MenuBarControl__WEBPACK_IMPORTED_MODULE_2__["default"](this);
+        this.map = new _ui_map_map__WEBPACK_IMPORTED_MODULE_10__.GameMapControl($("#map"));
         this.sidepanels = new _ui_SidePanelControl__WEBPACK_IMPORTED_MODULE_1__["default"](this);
         this.data = {
-            teleports: new _model_teleports__WEBPACK_IMPORTED_MODULE_7__.Teleports({
+            teleports: new _model_teleports__WEBPACK_IMPORTED_MODULE_6__.Teleports({
                 fairy_ring_favourites: [],
                 potas: [],
                 variants: []
             }),
-            clues: new _model_clues__WEBPACK_IMPORTED_MODULE_8__.ClueSteps(),
-            methods: new _data_accessors__WEBPACK_IMPORTED_MODULE_9__.Methods()
+            clues: new _model_clues__WEBPACK_IMPORTED_MODULE_7__.ClueSteps(),
+            methods: new _data_accessors__WEBPACK_IMPORTED_MODULE_8__.Methods()
         };
-        this.template_resolver = new _util_TemplateResolver__WEBPACK_IMPORTED_MODULE_5__["default"](new Map([
+        this.template_resolver = new _util_TemplateResolver__WEBPACK_IMPORTED_MODULE_4__["default"](new Map([
             ["surge", () => "<img class='text-icon' src='assets/icons/surge.png' title='Surge'>"],
             ["dive", () => "<img class='text-icon' src='assets/icons/dive.png' title='Dive'>"],
             ["bladeddive", () => "<img class='text-icon' src='assets/icons/bladeddive.png' title='Bladed Dive'>"],
             ["digspot", (args) => `<span class="spot-number">${args[0]}</span>`],
-            ["scanarea", (args) => `<span style="color: ${_constants__WEBPACK_IMPORTED_MODULE_10__.Constants.colors.scan_area}">${args[0]}</span>`],
+            ["scanarea", (args) => `<span style="color: ${_constants__WEBPACK_IMPORTED_MODULE_9__.Constants.colors.scan_area}">${args[0]}</span>`],
             ["teleport", (args) => {
                     let tele = this.data.teleports.get(args[0], args[1]);
                     if (!tele)
@@ -46439,9 +46439,9 @@ class Application {
         this.beta_notice_modal = new BetaNoticeModal("modal-public-beta", this);
         this.patch_notes_modal = new PatchNotesModal("modal-patchnotes", this);
         this.about_modal = new AboutModal("modal-about", this);
-        this.howtotabs.map.setTeleportLayer(new _ui_map_teleportlayer__WEBPACK_IMPORTED_MODULE_6__.TeleportLayer(this.data.teleports.getAll()));
+        this.map.setTeleportLayer(new _ui_map_teleportlayer__WEBPACK_IMPORTED_MODULE_5__.TeleportLayer(this.data.teleports.getAll()));
         this.data.teleports.on("refreshed", (t) => {
-            this.howtotabs.map.setTeleportLayer(new _ui_map_teleportlayer__WEBPACK_IMPORTED_MODULE_6__.TeleportLayer(this.data.teleports.getAll()));
+            this.map.setTeleportLayer(new _ui_map_teleportlayer__WEBPACK_IMPORTED_MODULE_5__.TeleportLayer(this.data.teleports.getAll()));
         });
     }
     async start() {
@@ -48146,8 +48146,7 @@ let raw = [
                 }
             ]
         }
-    },
-    {
+    }, {
         "type": "scantree",
         "clue": 351,
         "spot_ordering": [
@@ -48396,32 +48395,32 @@ let raw = [
             {
                 "from": "A",
                 "to": "B",
-                "short_instruction": "{{dive}} to {{target}}."
+                "short_instruction": "{{Surge}} to {{target}}."
             },
             {
                 "from": "B",
                 "to": "C",
-                "short_instruction": "Go to {{target}}."
+                "short_instruction": "{{Surge}} to {{target}}."
             },
             {
                 "from": "B",
                 "to": "D",
-                "short_instruction": "Go to {{target}}."
-            },
-            {
-                "from": "B",
-                "to": "G",
-                "short_instruction": "{{teleport archteleport soran}} Teleport to {{target}}."
+                "short_instruction": "{{Dive}}-{{Surge}} to {{target}}."
             },
             {
                 "from": "D",
                 "to": "E",
-                "short_instruction": "Go to {{target}}."
+                "short_instruction": "{{teleport davesspellbook varrock}} to {{target}}."
             },
             {
                 "from": "E",
                 "to": "F",
                 "short_instruction": "{{dive}} to {{target}}."
+            },
+            {
+                "from": "B",
+                "to": "G",
+                "short_instruction": "{{teleport archteleport soran}} Teleport to {{target}}."
             },
             {
                 "from": "E",
@@ -48495,32 +48494,6 @@ let raw = [
                 "short_instruction": "Dig at {{target}}"
             },
             {
-                "from": "B",
-                "to": [
-                    {
-                        "x": 3197,
-                        "y": 3383,
-                        "level": 0
-                    },
-                    {
-                        "x": 3211,
-                        "y": 3385,
-                        "level": 0
-                    },
-                    {
-                        "x": 3228,
-                        "y": 3383,
-                        "level": 0
-                    },
-                    {
-                        "x": 3240,
-                        "y": 3383,
-                        "level": 0
-                    }
-                ],
-                "short_instruction": "Check {{target}}"
-            },
-            {
                 "from": "C",
                 "to": [
                     {
@@ -48548,44 +48521,6 @@ let raw = [
                     {
                         "x": 3253,
                         "y": 3393,
-                        "level": 0
-                    }
-                ],
-                "short_instruction": "Dig at {{target}}"
-            },
-            {
-                "from": "D",
-                "to": [
-                    {
-                        "x": 3273,
-                        "y": 3398,
-                        "level": 0
-                    },
-                    {
-                        "x": 3284,
-                        "y": 3378,
-                        "level": 0
-                    }
-                ],
-                "short_instruction": "Check {{target}}"
-            },
-            {
-                "from": "F",
-                "to": [
-                    {
-                        "x": 3213,
-                        "y": 3484,
-                        "level": 0
-                    }
-                ],
-                "short_instruction": "Dig at {{target}}"
-            },
-            {
-                "from": "F",
-                "to": [
-                    {
-                        "x": 3241,
-                        "y": 3480,
                         "level": 0
                     }
                 ],
@@ -48625,6 +48560,48 @@ let raw = [
                 "short_instruction": "Dig at {{target}}"
             },
             {
+                "from": "B",
+                "to": [
+                    {
+                        "x": 3197,
+                        "y": 3383,
+                        "level": 0
+                    },
+                    {
+                        "x": 3211,
+                        "y": 3385,
+                        "level": 0
+                    },
+                    {
+                        "x": 3228,
+                        "y": 3383,
+                        "level": 0
+                    },
+                    {
+                        "x": 3240,
+                        "y": 3383,
+                        "level": 0
+                    }
+                ],
+                "short_instruction": "Check {{target}}"
+            },
+            {
+                "from": "D",
+                "to": [
+                    {
+                        "x": 3273,
+                        "y": 3398,
+                        "level": 0
+                    },
+                    {
+                        "x": 3284,
+                        "y": 3378,
+                        "level": 0
+                    }
+                ],
+                "short_instruction": "Check {{target}}"
+            },
+            {
                 "from": "H",
                 "to": [
                     {
@@ -48661,6 +48638,28 @@ let raw = [
                     }
                 ],
                 "short_instruction": "Check {{target}}"
+            },
+            {
+                "from": "F",
+                "to": [
+                    {
+                        "x": 3213,
+                        "y": 3484,
+                        "level": 0
+                    }
+                ],
+                "short_instruction": "Dig at {{target}}"
+            },
+            {
+                "from": "F",
+                "to": [
+                    {
+                        "x": 3241,
+                        "y": 3480,
+                        "level": 0
+                    }
+                ],
+                "short_instruction": "Dig at {{target}}"
             }
         ],
         "root": {
@@ -48668,13 +48667,19 @@ let raw = [
             "why": "",
             "children": [
                 {
-                    "key": { pulse: 2, different_level: false },
+                    "key": {
+                        "pulse": 2,
+                        "different_level": false
+                    },
                     "value": {
                         "where": "B",
                         "why": "",
                         "children": [
                             {
-                                "key": { pulse: 2, different_level: false },
+                                "key": {
+                                    "pulse": 2,
+                                    "different_level": false
+                                },
                                 "value": {
                                     "where": "C",
                                     "why": "",
@@ -48682,7 +48687,10 @@ let raw = [
                                 }
                             },
                             {
-                                "key": { pulse: 1, different_level: false },
+                                "key": {
+                                    "pulse": 1,
+                                    "different_level": false
+                                },
                                 "value": {
                                     "where": "G",
                                     "why": "",
@@ -48693,25 +48701,37 @@ let raw = [
                     }
                 },
                 {
-                    "key": { pulse: 1, different_level: false },
+                    "key": {
+                        "pulse": 1,
+                        "different_level": false
+                    },
                     "value": {
                         "where": "B",
                         "why": "",
                         "children": [
                             {
-                                "key": { pulse: 1, different_level: false },
+                                "key": {
+                                    "pulse": 1,
+                                    "different_level": false
+                                },
                                 "value": {
                                     "where": "D",
                                     "why": "",
                                     "children": [
                                         {
-                                            "key": { pulse: 1, different_level: false },
+                                            "key": {
+                                                "pulse": 1,
+                                                "different_level": false
+                                            },
                                             "value": {
                                                 "where": "E",
                                                 "why": "",
                                                 "children": [
                                                     {
-                                                        "key": { pulse: 2, different_level: false },
+                                                        "key": {
+                                                            "pulse": 2,
+                                                            "different_level": false
+                                                        },
                                                         "value": {
                                                             "where": "F",
                                                             "why": "",
@@ -48719,7 +48739,10 @@ let raw = [
                                                         }
                                                     },
                                                     {
-                                                        "key": { pulse: 1, different_level: false },
+                                                        "key": {
+                                                            "pulse": 1,
+                                                            "different_level": false
+                                                        },
                                                         "value": {
                                                             "where": "H",
                                                             "why": "",
@@ -49348,7 +49371,7 @@ let raw = [
             {
                 "from": "A",
                 "to": "C",
-                "short_instruction": "{{teleport davesspellbook ardougne}} spellbook to {{target}}."
+                "short_instruction": "{{teleport davesspellbook ardougne}} to {{target}}."
             },
             {
                 "from": "B",
@@ -55062,32 +55085,33 @@ const raw = [{
         name: "Lodestone",
         img: "homeport.png",
         spots: [
-            { subid: "alkharid", spot: { x: 3297, y: 3184 }, code: "A", hover: "Al-Kharid" },
-            { subid: "ardougne", spot: { x: 2634, y: 3348 }, code: "Alt+A", hover: "Ardounge" },
-            { subid: "ashdale", spot: { x: 2474, y: 2708, level: 2 }, code: "Shift+A", hover: "Ashdale" },
-            { subid: "banditcamp", spot: { x: 3214, y: 2954 }, code: "Alt+B", hover: "Bandit Camp" },
-            { subid: "burthope", spot: { x: 2899, y: 3544 }, code: "B", hover: "Burthope" },
-            { subid: "canifis", spot: { x: 3517, y: 3515 }, code: "Alt+C", hover: "Canifis" },
-            { subid: "catherby", spot: { x: 2811, y: 3449 }, code: "C", hover: "Cathery" },
-            { subid: "draynor", spot: { x: 3105, y: 3298 }, code: "D", hover: "Draynor" },
-            { subid: "eaglespeak", spot: { x: 2366, y: 3479 }, code: "Alt+E", hover: "Eagle's Peak" },
-            { subid: "edgeville", spot: { x: 3067, y: 3505 }, code: "E", hover: "Edgeville" },
-            { subid: "falador", spot: { x: 2967, y: 3403 }, code: "F", hover: "Falador" },
-            { subid: "fremmenik", spot: { x: 2712, y: 3677 }, code: "Alt+F", hover: "Fremmenik Province" },
-            { subid: "karamja", spot: { x: 2761, y: 3147 }, code: "K", hover: "Karamja" },
-            { subid: "lumbridge", spot: { x: 3233, y: 3221 }, code: "L", hover: "Lumbridge" },
-            { subid: "lunarisle", spot: { x: 2085, y: 3914 }, code: "Alt+L", hover: "Lunar Isle" },
-            { subid: "ooglog", spot: { x: 2532, y: 2871 }, code: "O", hover: "Oo'glog" },
-            { subid: "portsarim", spot: { x: 3011, y: 3215 }, code: "P", hover: "Port Sarim" },
-            { subid: "prifddinas", spot: { x: 2208, y: 3360, level: 1 }, code: "Alt+P", hover: "Prifddinas" },
-            { subid: "seersvillage", spot: { x: 2689, y: 3482 }, code: "S", hover: "Seers' Village" },
-            { subid: "taverley", spot: { x: 2880, y: 3443 }, code: "T", hover: "Taverley" },
-            { subid: "tirannwn", spot: { x: 2254, y: 3149 }, code: "Alt+T", hover: "Tirannwn" },
-            { subid: "varrock", spot: { x: 3214, y: 3376 }, code: "V", hover: "Varrock" },
-            { subid: "wilderness", spot: { x: 3143, y: 3635 }, code: "W", hover: "Wilderness" },
-            { subid: "yanille", spot: { x: 2529, y: 3094 }, code: "Y", hover: "Yanille" },
-            { subid: "menaphos", spot: { x: 3216, y: 2716 }, code: "M", hover: "Menaphos" },
-            { subid: "fortforinthry", spot: { x: 3298, y: 3525 }, code: "Alt+W", hover: "Fort Forinthry" },
+            { subid: "alkharid", img: { url: "lode_alkharid.png", width: 28 }, spot: { x: 3297, y: 3184 }, code: "A", hover: "Al-Kharid" },
+            { subid: "anachronia", img: { url: "lode_anachronia.png", height: 28 }, spot: { x: 5431, y: 2338 }, code: "A", hover: "Anachronia" },
+            { subid: "ardougne", img: { url: "lode_ardougne.png", height: 28 }, spot: { x: 2634, y: 3348 }, code: "Alt+A", hover: "Ardounge" },
+            { subid: "ashdale", img: { url: "lode_ashdale.png", height: 28 }, spot: { x: 2474, y: 2708, level: 2 }, code: "Shift+A", hover: "Ashdale" },
+            { subid: "banditcamp", img: { url: "lode_bandit.png", width: 28 }, spot: { x: 3214, y: 2954 }, code: "Alt+B", hover: "Bandit Camp" },
+            { subid: "burthorpe", img: { url: "lode_burthorpe.png", height: 28 }, spot: { x: 2899, y: 3544 }, code: "B", hover: "Burthope" },
+            { subid: "canifis", img: { url: "lode_canifis.png", height: 28 }, spot: { x: 3517, y: 3515 }, code: "Alt+C", hover: "Canifis" },
+            { subid: "catherby", img: { url: "lode_catherby.png", height: 28 }, spot: { x: 2811, y: 3449 }, code: "C", hover: "Cathery" },
+            { subid: "draynor", img: { url: "lode_draynor.png", height: 28 }, spot: { x: 3105, y: 3298 }, code: "D", hover: "Draynor" },
+            { subid: "eaglespeak", img: { url: "lode_eagles.png", height: 28 }, spot: { x: 2366, y: 3479 }, code: "Alt+E", hover: "Eagle's Peak" },
+            { subid: "edgeville", img: { url: "lode_edgeville.png", height: 28 }, spot: { x: 3067, y: 3505 }, code: "E", hover: "Edgeville" },
+            { subid: "falador", img: { url: "lode_falador.png", height: 28 }, spot: { x: 2967, y: 3403 }, code: "F", hover: "Falador" },
+            { subid: "fremmenik", img: { url: "lode_fremennik.png", height: 28 }, spot: { x: 2712, y: 3677 }, code: "Alt+F", hover: "Fremmenik Province" },
+            { subid: "karamja", img: { url: "lode_karamja.png", height: 28 }, spot: { x: 2761, y: 3147 }, code: "K", hover: "Karamja" },
+            { subid: "lumbridge", img: { url: "lode_lumbridge.png", height: 28 }, spot: { x: 3233, y: 3221 }, code: "L", hover: "Lumbridge" },
+            { subid: "lunarisle", img: { url: "lode_lunar.png", height: 28 }, spot: { x: 2085, y: 3914 }, code: "Alt+L", hover: "Lunar Isle" },
+            { subid: "ooglog", img: { url: "lode_ooglog.png", height: 28 }, spot: { x: 2532, y: 2871 }, code: "O", hover: "Oo'glog" },
+            { subid: "portsarim", img: { url: "lode_portsarim.png", height: 28 }, spot: { x: 3011, y: 3215 }, code: "P", hover: "Port Sarim" },
+            { subid: "prifddinas", img: { url: "lode_prifddinas.png", height: 28 }, spot: { x: 2208, y: 3360, level: 1 }, code: "Alt+P", hover: "Prifddinas" },
+            { subid: "seersvillage", img: { url: "lode_seers.png", height: 28 }, spot: { x: 2689, y: 3482 }, code: "S", hover: "Seers' Village" },
+            { subid: "taverley", img: { url: "lode_taverley.png", height: 28 }, spot: { x: 2880, y: 3443 }, code: "T", hover: "Taverley" },
+            { subid: "tirannwn", img: { url: "lode_tirannwn.png", height: 28 }, spot: { x: 2254, y: 3149 }, code: "Alt+T", hover: "Tirannwn" },
+            { subid: "varrock", img: { url: "lode_varrock.png", height: 28 }, spot: { x: 3214, y: 3376 }, code: "V", hover: "Varrock" },
+            { subid: "wilderness", img: { url: "lode_wilderness.png", height: 28 }, spot: { x: 3143, y: 3635 }, code: "W", hover: "Wilderness" },
+            { subid: "yanille", img: { url: "lode_yanille.png", height: 28 }, spot: { x: 2529, y: 3094 }, code: "Y", hover: "Yanille" },
+            { subid: "menaphos", img: { url: "lode_menaphos.png", height: 28 }, spot: { x: 3216, y: 2716 }, code: "M", hover: "Menaphos" },
+            { subid: "fortforinthry", img: { url: "lode_fortforinthry.png", height: 28 }, spot: { x: 3298, y: 3525 }, code: "Alt+W", hover: "Fort Forinthry" },
         ]
     }, {
         id: "normalspellbook",
@@ -55133,6 +55157,7 @@ const raw = [{
             { subid: "godwars", spot: { x: 2908, y: 3724 }, img: "tele-god.png", hover: "God Wars" },
             { subid: "trollheim", spot: { x: 2881, y: 3669 }, img: "tele-troll.png", hover: "Trollheim" },
             { subid: "apeatoll", spot: { x: 2798, y: 2791 }, img: "tele-ape.png", hover: "Ape Atoll" },
+            { subid: "mazcab", spot: { x: 4317, y: 814 }, img: "tele-mazcab.png", hover: "Mazcab" },
         ]
     }, {
         id: "ancientspellook",
@@ -55242,7 +55267,7 @@ const raw = [{
             },
         ]
     }, {
-        id: "teleportseeds",
+        id: "teleportseed",
         name: "Teleport Seed",
         img: "crystal.gif",
         spots: [
@@ -55288,57 +55313,61 @@ const raw = [{
         name: "Fairy Ring",
         img: "fairyring.gif",
         spots: [
-            { subid: "AIP", spot: { x: 2412, y: 4434 }, code: "" },
-            { subid: "AIQ", spot: { x: 2996, y: 3114 }, code: "AIQ" },
-            { subid: "AIR", spot: { x: 2700, y: 3247 }, code: "AIR" },
-            { subid: "AJR", spot: { x: 2780, y: 3613 }, code: "AJR" },
-            { subid: "AJS", spot: { x: 2500, y: 3896 }, code: "AJS" },
-            { subid: "AKQ", spot: { x: 2319, y: 3619 }, code: "AKQ" },
-            { subid: "AKS", spot: { x: 2571, y: 2956 }, code: "AKS" },
-            { subid: "ALP", spot: { x: 2473, y: 3028 }, code: "ALP" },
-            { subid: "ALQ", spot: { x: 3597, y: 3495 }, code: "ALQ" },
-            { subid: "ALS", spot: { x: 2644, y: 3495 }, code: "ALS" },
-            { subid: "BIP", spot: { x: 3410, y: 3324 }, code: "BIP" },
-            { subid: "BIQ", spot: { x: 3251, y: 3095 }, code: "BIQ" },
-            { subid: "BIS", spot: { x: 2635, y: 3266 }, code: "BIS" },
-            { subid: "BJS", spot: { x: 1936, y: 3137 }, code: "BJS" },
-            { subid: "BKP", spot: { x: 2385, y: 3035 }, code: "BKP" },
-            { subid: "BKR", spot: { x: 3469, y: 3431 }, code: "BKR" },
-            { subid: "BLP", spot: { x: 4622, y: 5147 }, code: "BLP" },
-            { subid: "BLR", spot: { x: 2740, y: 3351 }, code: "BLR" },
-            { subid: "CIP", spot: { x: 2513, y: 3884 }, code: "CIP" },
-            { subid: "CIQ", spot: { x: 2528, y: 3127 }, code: "CIQ" },
-            { subid: "CJR", spot: { x: 2705, y: 3576 }, code: "CJR" },
-            { subid: "CJS", spot: { x: 2901, y: 2930 }, code: "CJS" },
-            { subid: "CKQ", spot: { x: 3086, y: 2704 }, code: "CKQ" },
-            { subid: "CKR", spot: { x: 2801, y: 3003 }, code: "CKR" },
-            { subid: "CKS", spot: { x: 3447, y: 3470 }, code: "CKS" },
-            { subid: "CLP", spot: { x: 3082, y: 3206 }, code: "CLP" },
-            { subid: "CLS", spot: { x: 2682, y: 3081 }, code: "CLS" },
-            { subid: "CLR", spot: { x: 2735, y: 2742 }, code: "CLR" },
-            { subid: "DIP", spot: { x: 3763, y: 2930 }, code: "DIP" },
-            { subid: "DIS", spot: { x: 3092, y: 3137 }, code: "DIS" },
-            { subid: "DJP", spot: { x: 2658, y: 3230 }, code: "DJP" },
-            { subid: "DJR", spot: { x: 2676, y: 3587 }, code: "DJR" },
-            { subid: "DJS", spot: { x: 2130, y: 3369 }, code: "DJS" },
-            { subid: "DKP", spot: { x: 2900, y: 3111 }, code: "DKP" },
-            { subid: "DKR", spot: { x: 3129, y: 3496 }, code: "DKR" },
-            { subid: "DKS", spot: { x: 2744, y: 3719 }, code: "DKS" },
-            { subid: "DLQ", spot: { x: 3423, y: 3016 }, code: "DLQ" },
-            { subid: "DLR", spot: { x: 2213, y: 3099 }, code: "DLR" },
+            { subid: "AIP", spot: { x: 2412, y: 4434 }, code: "", hover: "Zanaris" },
+            { subid: "AIQ", spot: { x: 2996, y: 3114 }, code: "AIQ", hover: "Asgarnia: Mudskipper Point" },
+            { subid: "AIR", spot: { x: 2700, y: 3247 }, code: "AIR", hover: "Islands: South of Witchhaven" },
+            { subid: "AJQ", spot: { x: 2735, y: 5221 }, code: "AJQ", hover: "Dungeons: Dark cave south of Dorgesh-Kaan" },
+            { subid: "AJR", spot: { x: 2780, y: 3613 }, code: "AJR", hover: "Kandarin: Slayer cave south-east of Relekka" },
+            { subid: "AJS", spot: { x: 2500, y: 3896 }, code: "AJS", hover: "Islands: Penguins near Miscellania" },
+            { subid: "AKQ", spot: { x: 2319, y: 3619 }, code: "AKQ", hover: "Piscatoris Hunter area" },
+            { subid: "AKS", spot: { x: 2571, y: 2956 }, code: "AKS", hover: "Feldip Hills: Jungle Hunter area" },
+            { subid: "ALP", spot: { x: 2473, y: 3028 }, code: "ALP", hover: "Feldip Hills: Near Gu´Tanoth" },
+            { subid: "ALQ", spot: { x: 3597, y: 3495 }, code: "ALQ", hover: "Morytania: Haunted Woods east of Canifis" },
+            { subid: "ALS", spot: { x: 2644, y: 3495 }, code: "ALS", hover: "Kandarin: McGrubor´s Wood" },
+            { subid: "BIP", spot: { x: 3410, y: 3324 }, code: "BIP", hover: "Islands: Polypore Dungeon" },
+            { subid: "BIQ", spot: { x: 3251, y: 3095 }, code: "BIQ", hover: "Kharidian Desert: Near Kalphite Hive" },
+            { subid: "BIR", spot: { x: 2455, y: 4396 }, code: "BIS", hover: "Sparse Plane" },
+            { subid: "BIS", spot: { x: 2635, y: 3266 }, code: "BIS", hover: "Kandarin: Ardougne Zoo unicorns" },
+            { subid: "BJP", spot: { x: 3342, y: 3539 }, code: "BJP", hover: "Fort Forinthry: Woodcutters`s Grove" },
+            { subid: "BJQ", spot: { x: 1737, y: 5342 }, code: "BJQ", hover: "Dungeons: Ancient Cavern" },
+            { subid: "BJS", spot: { x: 1936, y: 3137 }, code: "BJS", hover: "The Lost Grove" },
+            { subid: "BKP", spot: { x: 2385, y: 3035 }, code: "BKP", hover: "Feldip Hills: South of Castle Wars" },
+            { subid: "BKQ", spot: { x: 3041, y: 4532 }, code: "BKQ", hover: "Other realms: Enchanted Valley" },
+            { subid: "BKR", spot: { x: 3469, y: 3431 }, code: "BKR", hover: "Morytania: Mort Myre, south of Canifis" },
+            { subid: "BLP", spot: { x: 4622, y: 5147 }, code: "BLP", hover: "Dungeons: TzHaar area" },
+            { subid: "BLR", spot: { x: 2740, y: 3351 }, code: "BLR", hover: "Kandarin: Legends´ Guild" },
+            { subid: "CIP", spot: { x: 2513, y: 3884 }, code: "CIP", hover: "Islands: Miscellania" },
+            { subid: "CIQ", spot: { x: 2528, y: 3127 }, code: "CIQ", hover: "Kandarin: North-west of Yanille" },
+            { subid: "CIS", spot: { x: 3419, y: 4772 }, code: "CIS", hover: "Other realms: ScapeRune (Evil Bob´s island)" },
+            { subid: "CJR", spot: { x: 2705, y: 3576 }, code: "CJR", hover: "Kandarin: Sinclair Mansion (east)" },
+            { subid: "CJS", spot: { x: 2901, y: 2930 }, code: "CJS", hover: "Karamja: Kharazi Jungle" },
+            //TODO: {subid: "CKP", spot: {x: 0, y: 0}, code: "CKP", hover: "Other realms: Cosmic entity´s plane"},
+            { subid: "CKQ", spot: { x: 3086, y: 2704 }, code: "CKQ", hover: "Menaphos: Imperial District" },
+            { subid: "CKR", spot: { x: 2801, y: 3003 }, code: "CKR", hover: "Karamja: South of Tai Bwo Wannai Village" },
+            { subid: "CKS", spot: { x: 3447, y: 3470 }, code: "CKS", hover: "Morytania: Canifis" },
+            { subid: "CLP", spot: { x: 3082, y: 3206 }, code: "CLP", hover: "Islands: South of Draynor Village" },
+            { subid: "CLS", spot: { x: 2682, y: 3081 }, code: "CLS", hover: "Islands: Jungle spiders near Yanille" },
+            { subid: "CLR", spot: { x: 2735, y: 2742 }, code: "CLR", hover: "Islands: Ape Atoll" },
+            { subid: "DIP", spot: { x: 3763, y: 2930 }, code: "DIP", hover: "Islands: Mos Le´Harmless" },
+            //TODO: {subid: "DIR", spot: {x: 0, y: 0}, code: "DIR", hover: "Other realms: Gorak`s Plane"},
+            //TODO: {subid: "kethsi", spot: {x: 0, y: 0}, hover: "Kethsi (DIR AKS)"},
+            { subid: "DIS", spot: { x: 3092, y: 3137 }, code: "DIS", hover: "Misthalin: Wizard´s Tower" },
+            { subid: "DJP", spot: { x: 2658, y: 3230 }, code: "DJP", hover: "Kandarin: Tower of Life" },
+            { subid: "DJR", spot: { x: 2676, y: 3587 }, code: "DJR", hover: "Kandarin: Sinclair Mansion (west)" },
+            { subid: "DJS", spot: { x: 2130, y: 3369 }, code: "DJS", hover: "Tirannwn: Prifddinas (Clan Amlodd)" },
+            { subid: "DKP", spot: { x: 2900, y: 3111 }, code: "DKP", hover: "Karamja: South of Musa Point" },
+            //TODO: {subid: "DKQ", spot: {x: 0, y: 0}, code: "DKQ", hover: "Dungeons: Glacor Cave"},
+            { subid: "DKR", spot: { x: 3129, y: 3496 }, code: "DKR", hover: "Misthalin: Edgeville" },
+            { subid: "DKS", spot: { x: 2744, y: 3719 }, code: "DKS", hover: "Kandarin: Snowy Hunter area" },
+            { subid: "DLQ", spot: { x: 3423, y: 3016 }, code: "DLQ", hover: "Kharidian Desert: North of Nardah" },
+            { subid: "DLR", spot: { x: 2213, y: 3099 }, code: "DLR", hover: "Zanaris" },
+            { subid: "DLR", spot: { x: 3501, y: 9821, level: 3 }, code: "DLS", hover: "Zanaris" },
+            { subid: "resistance", spot: { x: 2254, y: 4426, level: 0 }, hover: "Fairy Resistance HQ" },
+            { subid: "rift", spot: { x: 1626, y: 4176, level: 0 }, hover: "Ork´s Rift (BIR, DIP, CLR, ALP)" },
             //ais guthix dream
-            //ajq dorghes kaan agi dungeon
             //alr the abbyss
-            //bir stuck in forrest zanaris
-            //bjq waterfiends kura dung
             //bjr fisher realm
-            //bkq spirit realm
-            //blq yubuisk
-            //cis evil bobs island
-            //ckp floating space lsd thingy
-            //dir gorak plane
-            //dkq glacors
-            //dls canifis cave
+            //blq yubuisk0
         ]
     }, {
         id: "slayercape",
@@ -55348,7 +55377,7 @@ const raw = [{
             { subid: "mandrith", spot: { x: 3050, y: 3953 }, code: "1", hover: "Mandrith" },
             { subid: "laniakea", spot: { x: 5671, y: 2138 }, code: "2", hover: "Laniakea" },
             { subid: "morvran", spot: { x: 2197, y: 3327, level: 1 }, code: "3", hover: "Morvran" },
-            // 4 Kuradal
+            { subid: "kuradal", spot: { x: 1737, y: 5313, level: 1 }, code: "4", hover: "Kuradal" },
             { subid: "lapalok", spot: { x: 2870, y: 2982, level: 1 }, code: "5", hover: "Lapalok" },
             { subid: "sumona", spot: { x: 3359, y: 2993 }, code: "6", hover: "Sumona" },
             { subid: "chealdar", spot: { x: 2447, y: 4431 }, code: "7", hover: "Chealdar" },
@@ -55390,13 +55419,13 @@ const raw = [{
         name: "Quest Cape",
         img: "capequest.png",
         spots: [
-            //1 tds cave
+            { subid: "guthixtemple", spot: { x: 2540, y: 5774 }, code: "1", hover: "Ancient Guthix Temple" },
             //2 gower quest bts
             { subid: "championsguild", spot: { x: 3192, y: 3357 }, code: "3", hover: "Champion's Guild" },
             { subid: "emptythroneroom", spot: { x: 3375, y: 3402 }, code: "4", hover: "The empty throne room" },
             { subid: "glacorcavern", spot: { x: 2912, y: 3840 }, code: "5", hover: "Glacor cavern" },
-            //6 heroes guild underground
-            { subid: "legensguild", spot: { x: 2730, y: 3353 }, code: "7", hover: "Legends' Guild" },
+            { subid: "heroesguild", spot: { x: 2918, y: 9895 }, code: "6", hover: "Heroes's Guild - Fountain of Heroes" },
+            { subid: "legensguild", spot: { x: 2730, y: 3348 }, code: "7", hover: "Legends' Guild" },
             { subid: "tearsofguthix", spot: { x: 3250, y: 9518 }, code: "8", hover: "Tears of Guthix" },
             { subid: "museum", spot: { x: 3255, y: 3449 }, code: "9", hover: "Varrock Museum" },
             { subid: "worldgate", spot: { x: 2371, y: 3355 }, code: "0", hover: "The World Gate" },
@@ -55404,12 +55433,12 @@ const raw = [{
     }, {
         id: "sixthage",
         name: "Sixth Age Circuit",
-        img: "sixthagecircuit.gif",
+        img: "sixthagecircuit.png",
         spots: [
-            { subid: "shrine", spot: { x: 2709, y: 3373 }, code: "1", hover: "Guthix's Shrine" },
+            //TODO: This spot is underground, coordinates on the surface are bogus {subid: "shrine", spot: {x: 2709, y: 3373}, code: "1", hover: "Guthix's Shrine"},
             { subid: "worldgate", spot: { x: 2367, y: 3355 }, code: "2", hover: "World Gate" },
             { subid: "memorial", spot: { x: 2265, y: 3554 }, code: "3", hover: "Guthix Memorial" },
-            //4 Guthix temple
+            { subid: "temple", spot: { x: 2540, y: 5772 }, code: "4", hover: "Guthix Memorial" },
         ]
     }, {
         id: "desertamulet", name: "Desert Amulet", img: "desertamulet.gif", spots: [
@@ -55705,16 +55734,16 @@ const raw = [{
             { subid: "kharidet", spot: { x: 3349, y: 3195 }, code: "2", hover: "Kharid-et" },
             { subid: "infernal", spot: { x: 3271, y: 3504 }, code: "3", hover: "Infernal Source" },
             { subid: "everlight", spot: { x: 3695, y: 3209 }, code: "4", hover: "Everlight" },
-            { subid: "senntisten", spot: { x: 2682, y: 3403 }, code: "6", hover: "Senntisten" },
-            { subid: "stormguard", spot: { x: 2408, y: 2829 }, code: "7", hover: "Stormguard Citadel" },
-            { subid: "warforge", spot: { x: 3985, y: 4323 }, code: "8", hover: "Warforge" },
-            // Orthen
+            { subid: "senntisten", spot: { x: 1784, y: 1295 }, code: "5", hover: "Senntisten" },
+            { subid: "stormguard", spot: { x: 2682, y: 3403 }, code: "6", hover: "Stormguard Citadel" },
+            { subid: "warforge", spot: { x: 2408, y: 2829 }, code: "7", hover: "Warforge" },
+            { subid: "orthen", spot: { x: 5456, y: 2339 }, code: "8", hover: "Orthen" },
             { subid: "jacques", spot: { x: 3254, y: 3455 }, code: "9,1", hover: "Collectors - Art Critic Jacques" },
             { subid: "tess", spot: { x: 2550, y: 2854 }, code: "9,2", hover: "Collectors - Chief Tess" },
             { subid: "generals", spot: { x: 2957, y: 3510 }, code: "9,3", hover: "Collectors - Generals Bentnoze & Wartface" },
             { subid: "isaura", spot: { x: 2921, y: 9702 }, code: "9,4", hover: "Collectors - Isaura" },
             { subid: "lowse", spot: { x: 2988, y: 3269 }, code: "9,5", hover: "Collectors - Lowse" },
-            { subid: "sharrigan", spot: { x: 3985, y: 4329 }, code: "9,6", hover: "Collectors - Sharrigan" },
+            { subid: "sharrigan", spot: { x: 5456, y: 2344 }, code: "9,6", hover: "Collectors - Sharrigan" },
             { subid: "atcha", spot: { x: 2962, y: 3347 }, code: "9,7", hover: "Collectors - Sir Atcha" },
             { subid: "soran", spot: { x: 3182, y: 3418 }, code: "9,8", hover: "Collectors - Soran" },
             { subid: "velucia", spot: { x: 3342, y: 3384 }, code: "9,9", hover: "Collectors - Velucia" },
@@ -55757,7 +55786,7 @@ const raw = [{
         id: "legendscape",
         name: "Legends Cape",
         img: "legendscape.png",
-        spots: [{ subid: "legendsguild", spot: { x: 2729, y: 3349 } }]
+        spots: [{ subid: "legendsguild", spot: { x: 2728, y: 3348 } }]
     },
     {
         id: "archjounal",
@@ -55853,9 +55882,25 @@ const raw = [{
             { subid: "faladortree", spot: { x: 3006, y: 3375 }, hover: "Falador Tree Patch" },
             { subid: "harmonyallotment", spot: { x: 3793, y: 2832 }, hover: "Harony Island Allotment Patch" },
         ]
+    },
+    {
+        id: "tokkulzo", name: "TokKul-Zo", img: "tokkulzo.png",
+        spots: [
+            { subid: "plaza", spot: { x: 4672, y: 5155 }, hover: "Main Plaza", code: "1" },
+            { subid: "pit", spot: { x: 4603, y: 5062 }, hover: "Fight Pit", code: "2" },
+            { subid: "cave", spot: { x: 4616, y: 5131 }, hover: "Fight Cave", code: "3" },
+            { subid: "kiln", spot: { x: 4744, y: 5171 }, hover: "Fight Kiln", code: "4" },
+            { subid: "cauldron", spot: { x: 4787, y: 5127 }, hover: "Fight Cauldron", code: "5" },
+        ]
     }
     //TODO: Eagle transport system
     //TODO: Canoes
+    //TODO: Orthen Teleport network
+    //TODO: Anachronia teleport (totems)
+    //TODO: grand seed pod
+    //TODO: Boss portals
+    //      - 1912 4367 Dagannoth Kings
+    // TODO: Slayer masks
 ];
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (raw);
 
@@ -55876,9 +55921,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "pretty": () => (/* binding */ pretty)
 /* harmony export */ });
 /* harmony import */ var _data_clues__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../data/clues */ "./data/clues.ts");
-/* harmony import */ var _ui_map_map__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../ui/map/map */ "./ui/map/map.ts");
-/* harmony import */ var _ui_map_activeLayer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../ui/map/activeLayer */ "./ui/map/activeLayer.ts");
-/* harmony import */ var _ui_map_layers_ScanLayer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../ui/map/layers/ScanLayer */ "./ui/map/layers/ScanLayer.ts");
+/* harmony import */ var _ui_map_activeLayer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../ui/map/activeLayer */ "./ui/map/activeLayer.ts");
+/* harmony import */ var _ui_map_layers_ScanLayer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../ui/map/layers/ScanLayer */ "./ui/map/layers/ScanLayer.ts");
+/* harmony import */ var _ui_map_TileMarker__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../ui/map/TileMarker */ "./ui/map/TileMarker.ts");
 
 
 
@@ -55902,22 +55947,22 @@ class ClueSteps {
 function getSolutionLayer(clue, app, variant = 0) {
     // TODO: This probably does not belong here
     if (clue.type == "scan") {
-        return new _ui_map_layers_ScanLayer__WEBPACK_IMPORTED_MODULE_3__.ScanLayer(clue, app, { show_edit_button: true });
+        return new _ui_map_layers_ScanLayer__WEBPACK_IMPORTED_MODULE_2__.ScanLayer(clue, app, { show_edit_button: true });
     }
     if (clue.solution) {
         switch (clue.solution.type) {
             case "coordset":
-                return new _ui_map_activeLayer__WEBPACK_IMPORTED_MODULE_2__.SimpleMarkerLayer(clue.solution.candidates.map((e) => {
-                    return new _ui_map_map__WEBPACK_IMPORTED_MODULE_1__.TileMarker(e).withMarker().withX("#B21319");
+                return new _ui_map_activeLayer__WEBPACK_IMPORTED_MODULE_1__.SimpleMarkerLayer(clue.solution.candidates.map((e) => {
+                    return new _ui_map_TileMarker__WEBPACK_IMPORTED_MODULE_3__.TileMarker(e).withMarker().withX("#B21319");
                 }));
             case "simple":
-                return new _ui_map_activeLayer__WEBPACK_IMPORTED_MODULE_2__.SimpleMarkerLayer([
-                    new _ui_map_map__WEBPACK_IMPORTED_MODULE_1__.TileMarker(clue.solution.coordinates).withMarker().withX("#B21319")
+                return new _ui_map_activeLayer__WEBPACK_IMPORTED_MODULE_1__.SimpleMarkerLayer([
+                    new _ui_map_TileMarker__WEBPACK_IMPORTED_MODULE_3__.TileMarker(clue.solution.coordinates).withMarker().withX("#B21319")
                 ]);
             case "variants":
                 // TODO: Properly handle variant solutions
-                return new _ui_map_activeLayer__WEBPACK_IMPORTED_MODULE_2__.SimpleMarkerLayer([
-                    new _ui_map_map__WEBPACK_IMPORTED_MODULE_1__.TileMarker(clue.solution.variants[variant].solution.coordinates).withMarker().withX("#B21319")
+                return new _ui_map_activeLayer__WEBPACK_IMPORTED_MODULE_1__.SimpleMarkerLayer([
+                    new _ui_map_TileMarker__WEBPACK_IMPORTED_MODULE_3__.TileMarker(clue.solution.variants[variant].solution.coordinates).withMarker().withX("#B21319")
                 ]);
         }
     }
@@ -55935,6 +55980,7 @@ function getSolutionLayer(clue, app, variant = 0) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Vector2": () => (/* binding */ Vector2),
 /* harmony export */   "add": () => (/* binding */ add),
 /* harmony export */   "areaToPolygon": () => (/* binding */ areaToPolygon),
 /* harmony export */   "boxPolygon": () => (/* binding */ boxPolygon),
@@ -55945,7 +55991,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "t": () => (/* binding */ t),
 /* harmony export */   "tilePolygon": () => (/* binding */ tilePolygon),
 /* harmony export */   "toBounds": () => (/* binding */ toBounds),
-/* harmony export */   "toLeafletLatLngExpression": () => (/* binding */ toLeafletLatLngExpression),
+/* harmony export */   "toLL": () => (/* binding */ toLL),
 /* harmony export */   "toPoint": () => (/* binding */ toPoint)
 /* harmony export */ });
 /* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "../node_modules/leaflet/dist/leaflet-src.js");
@@ -55956,6 +56002,51 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var Vector2;
+(function (Vector2) {
+    function add(a, b) {
+        return {
+            x: a.x + b.x,
+            y: a.y + b.y
+        };
+    }
+    Vector2.add = add;
+    function sub(a, b) {
+        return {
+            x: a.x - b.x,
+            y: a.y - b.y
+        };
+    }
+    Vector2.sub = sub;
+    function scale(f, v) {
+        return {
+            x: v.x * f,
+            y: v.y * f
+        };
+    }
+    Vector2.scale = scale;
+    function length(a) {
+        return Math.sqrt(a.x * a.x + a.y * a.y);
+    }
+    Vector2.length = length;
+    function normalize(a) {
+        return scale(1 / length(a), a);
+    }
+    Vector2.normalize = normalize;
+    function rotate(v, angle_radians) {
+        let sin = Math.sin(angle_radians);
+        let cos = Math.cos(angle_radians);
+        return {
+            x: cos * v.x - sin * v.y,
+            y: sin * v.x + cos * v.y,
+        };
+    }
+    Vector2.rotate = rotate;
+    function eq(a, b) {
+        return a.x == b.x && a.y == b.y;
+    }
+    Vector2.eq = eq;
+})(Vector2 || (Vector2 = {}));
 function eq(a, b) {
     return a.x == b.x && a.y == b.y; // Ignores level for spot equality
 }
@@ -55988,8 +56079,8 @@ function contains(box, tile) {
         && box.botright.x >= tile.x
         && box.botright.y >= tile.y;
 }
-function toLeafletLatLngExpression(point) {
-    return [point.y, point.x];
+function toLL(point) {
+    return leaflet__WEBPACK_IMPORTED_MODULE_0__.latLng(point.y, point.x);
 }
 function t(area) {
     let bounds = leaflet__WEBPACK_IMPORTED_MODULE_0__.bounds(area.tiles.map((c) => leaflet__WEBPACK_IMPORTED_MODULE_0__.point(c.x, c.y)));
@@ -56077,7 +56168,7 @@ function areaToPolygon(raster, f, s) {
             }
         }
     } while (!done());
-    return leaflet__WEBPACK_IMPORTED_MODULE_0__.polygon(polygon.map(toLeafletLatLngExpression));
+    return leaflet__WEBPACK_IMPORTED_MODULE_0__.polygon(polygon.map(toLL));
     /*
     // Find a start point that is on the border of the shape. Assumes there are no holes in the shape
     let startpoint = area.tiles[0]
@@ -56139,7 +56230,7 @@ function tilePolygon(tile) {
         { x: tile.x - 0.5, y: tile.y + 0.5 },
         { x: tile.x + 0.5, y: tile.y + 0.5 },
         { x: tile.x + 0.5, y: tile.y - 0.5 },
-    ].map(toLeafletLatLngExpression));
+    ].map(toLL));
 }
 function boxPolygon(tile) {
     return leaflet__WEBPACK_IMPORTED_MODULE_0__.polygon([
@@ -56147,7 +56238,7 @@ function boxPolygon(tile) {
         { x: tile.botright.x + 0.5, y: tile.topleft.y + 0.5 },
         { x: tile.botright.x + 0.5, y: tile.botright.y - 0.5 },
         { x: tile.topleft.x - 0.5, y: tile.botright.y - 0.5 },
-    ].map(toLeafletLatLngExpression));
+    ].map(toLL));
 }
 function sextantToCoord(comp) {
     const sextant = {
@@ -56412,6 +56503,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _util_raster__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../util/raster */ "./util/raster.ts");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash */ "../node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _util_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/util */ "./util/util.ts");
+
 
 
 
@@ -56521,7 +56614,6 @@ class ScanEquivalenceClasses {
             this.layer = leaflet__WEBPACK_IMPORTED_MODULE_0__.featureGroup();
             this.equivalence_classes.forEach((c) => c.getPolygon().addTo(this.layer));
         }
-        console.log(this.layer.getLayers().length);
         return this.layer;
     }
     invalidate(options) {
@@ -56594,6 +56686,7 @@ function area_pulse(spot, area, range) {
 }
 var Pulse;
 (function (Pulse) {
+    var natural_order = _util_util__WEBPACK_IMPORTED_MODULE_4__.util.natural_order;
     function hash(pulse) {
         return (pulse.pulse - 1) + (pulse.different_level ? 3 : 0);
     }
@@ -56630,6 +56723,13 @@ var Pulse;
         }
     }
     Pulse.meta = meta;
+    function compare(a, b) {
+        return natural_order(hash(a), hash(b));
+        if (a.different_level != b.different_level)
+            return (a.different_level ? 1 : -1);
+        return a.pulse - b.pulse;
+    }
+    Pulse.compare = compare;
 })(Pulse || (Pulse = {}));
 var ScanProfile;
 (function (ScanProfile) {
@@ -60117,89 +60217,6 @@ class FilterControl {
 
 /***/ }),
 
-/***/ "./ui/HowToTabControl.ts":
-/*!*******************************!*\
-  !*** ./ui/HowToTabControl.ts ***!
-  \*******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ HowToTabControls)
-/* harmony export */ });
-/* harmony import */ var _util_storage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/storage */ "./util/storage.ts");
-/* harmony import */ var _map_map__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./map/map */ "./ui/map/map.ts");
-
-
-class HowToTabControls {
-    constructor(app) {
-        this.map = new _map_map__WEBPACK_IMPORTED_MODULE_1__.GameMapControl("map");
-        this.preferred = new _util_storage__WEBPACK_IMPORTED_MODULE_0__.storage.Variable("preferences/preferredtabs", []);
-        this.how_to = {};
-        $(".methodtab").on("click", (e) => {
-            let key = e.target.dataset.methodtype;
-            let preferred = this.preferred.get();
-            let index = preferred.indexOf(key);
-            if (index >= 0)
-                preferred.splice(index, 1);
-            preferred.unshift(key);
-            this.preferred.set(preferred);
-            this.activateHowToTab(key);
-        });
-        this.setHowToTabs({});
-        this.map.map.invalidateSize();
-    }
-    setHowToTabs(howto) {
-        if (!howto)
-            howto = {};
-        this.how_to = howto;
-        $(".methodtab").hide();
-        $(".methodtabcontent").hide();
-        // Always show map
-        $(`.methodtab[data-methodtype=map]`).show();
-        for (let key of Object.keys(howto)) {
-            $(`.methodtab[data-methodtype=${key}]`).show();
-        }
-        if (howto.text) {
-            $("#textmethodcontent").text(howto.text);
-        }
-        let available_tabs = Object.keys(howto).concat(["map"]);
-        if (available_tabs.length > 0) {
-            let best = this.preferred.get().concat(["map", "video", "text"]).find((e) => available_tabs.findIndex((l) => e == l) >= 0);
-            if (best)
-                this.activateHowToTab(best);
-            else
-                this.activateHowToTab(available_tabs[0]);
-        }
-    }
-    activateHowToTab(key) {
-        $(".methodtab").removeClass("activetab");
-        $(`.methodtab[data-methodtype=${key}]`).addClass("activetab");
-        if (key == "video" && this.how_to.video) {
-            // Activate video on demand
-            let video = $("#videoplayer").empty();
-            let vid = video.get()[0];
-            vid.pause();
-            video.empty();
-            video.append($("<source>")
-                .attr("src", this.how_to.video.ref)
-                .attr("type", "video/webm"));
-            vid.load();
-            vid.play();
-            $("#videoclipcontributor").text(this.how_to.video.contributor);
-        }
-        $(".methodtabcontent").hide();
-        $(`.methodtabcontent[data-methodtype=${key}]`).show();
-        if (key == "map") {
-            this.map.map.invalidateSize();
-        }
-    }
-}
-
-
-/***/ }),
-
 /***/ "./ui/MenuBarControl.ts":
 /*!******************************!*\
   !*** ./ui/MenuBarControl.ts ***!
@@ -60391,14 +60408,13 @@ class CluePanel {
             //this.parent.app.howtotabs.map.setActiveLayer(createMethodLayer(methods[0]))
         }
         else {
-            this.parent.app.howtotabs.map.setActiveLayer((0,_model_clues__WEBPACK_IMPORTED_MODULE_0__.getSolutionLayer)(clue, this.parent.app));
+            this.parent.app.map.setActiveLayer((0,_model_clues__WEBPACK_IMPORTED_MODULE_0__.getSolutionLayer)(clue, this.parent.app));
             this.parent.methods_panel.hide();
-            this.parent.app.howtotabs.setHowToTabs({});
         }
     }
     method(method) {
         // This stupid function is necessary to work around the stupid pile of shit that is Javascript Modules.
-        this.parent.app.howtotabs.map.setActiveLayer(createMethodLayer(method));
+        this.parent.app.map.setActiveLayer(createMethodLayer(method));
     }
 }
 class MethodPanel {
@@ -60549,29 +60565,84 @@ class ImageButton extends CustomControl {
 
 /***/ }),
 
-/***/ "./ui/map/activeLayer.ts":
-/*!*******************************!*\
-  !*** ./ui/map/activeLayer.ts ***!
-  \*******************************/
+/***/ "./ui/map/TileMarker.ts":
+/*!******************************!*\
+  !*** ./ui/map/TileMarker.ts ***!
+  \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ActiveLayer": () => (/* binding */ ActiveLayer),
-/* harmony export */   "LayerInteraction": () => (/* binding */ LayerInteraction),
-/* harmony export */   "SimpleMarkerLayer": () => (/* binding */ SimpleMarkerLayer),
-/* harmony export */   "TileMarkerWithActive": () => (/* binding */ TileMarkerWithActive)
+/* harmony export */   "TileMarker": () => (/* binding */ TileMarker)
 /* harmony export */ });
-/* harmony import */ var _map__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./map */ "./ui/map/map.ts");
-/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! leaflet */ "../node_modules/leaflet/dist/leaflet-src.js");
-/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "../node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _map__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./map */ "./ui/map/map.ts");
 
 
-class TileMarkerWithActive extends _map__WEBPACK_IMPORTED_MODULE_0__.TileMarker {
-    constructor() {
-        super(...arguments);
+class TileMarker extends leaflet__WEBPACK_IMPORTED_MODULE_0__.FeatureGroup {
+    constructor(spot) {
+        super();
+        this.spot = spot;
         this.active = true;
+        this.setOpacity(1);
+    }
+    withMarker(icon = null) {
+        const level_markers = [_map__WEBPACK_IMPORTED_MODULE_1__.red_icon, _map__WEBPACK_IMPORTED_MODULE_1__.blue_icon, _map__WEBPACK_IMPORTED_MODULE_1__.green_icon, _map__WEBPACK_IMPORTED_MODULE_1__.yellow_icon];
+        if (this.marker)
+            this.marker.remove();
+        this.marker = leaflet__WEBPACK_IMPORTED_MODULE_0__.marker([this.spot.y, this.spot.x], {
+            icon: icon || level_markers[this.spot.level],
+            title: `[${this.spot.x}, ${this.spot.y}]`
+        }).addTo(this);
+        return this;
+    }
+    withLabel(text, className, offset) {
+        if (this.label)
+            this.removeLabel();
+        this.label = leaflet__WEBPACK_IMPORTED_MODULE_0__.tooltip({
+            content: text,
+            className: className,
+            offset: offset,
+            permanent: true,
+            direction: "center"
+        });
+        this.bindTooltip(this.label);
+        return this;
+    }
+    removeLabel() {
+        if (this.label) {
+            this.label.remove();
+            this.label = null;
+        }
+    }
+    withX(color) {
+        if (this.x_marks_the_spot)
+            this.x_marks_the_spot.remove();
+        this.x_marks_the_spot = leaflet__WEBPACK_IMPORTED_MODULE_0__.polyline([
+            [[this.spot.y + 0.5, this.spot.x - 0.5], [this.spot.y - 0.5, this.spot.x + 0.5]],
+            [[this.spot.y - 0.5, this.spot.x - 0.5], [this.spot.y + 0.5, this.spot.x + 0.5]]
+        ], {
+            color: color,
+            fillColor: color,
+            interactive: false
+        }).addTo(this);
+        return this;
+    }
+    getSpot() {
+        return this.spot;
+    }
+    setOpacity(opacity) {
+        if (this.marker)
+            this.marker.setOpacity(opacity);
+        if (this.x_marks_the_spot)
+            this.x_marks_the_spot.setStyle(Object.assign(this.x_marks_the_spot.options, {
+                opacity: opacity * 0.75,
+                fillOpacity: opacity * 0.25,
+            }));
+        if (this.label)
+            this.label.setOpacity(opacity);
     }
     isActive() {
         return this.active;
@@ -60584,9 +60655,166 @@ class TileMarkerWithActive extends _map__WEBPACK_IMPORTED_MODULE_0__.TileMarker 
             this.setOpacity(0.2);
     }
 }
+
+
+/***/ }),
+
+/***/ "./ui/map/TopControl.ts":
+/*!******************************!*\
+  !*** ./ui/map/TopControl.ts ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ TopControl)
+/* harmony export */ });
+/* harmony import */ var _widgets_Widget__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../widgets/Widget */ "./ui/widgets/Widget.ts");
+
+class TopControl extends _widgets_Widget__WEBPACK_IMPORTED_MODULE_0__["default"] {
+    constructor() {
+        super();
+        this.addClass("nis-map-control-top").addClass("nis-map-control");
+    }
+}
+
+
+/***/ }),
+
+/***/ "./ui/map/activeLayer.ts":
+/*!*******************************!*\
+  !*** ./ui/map/activeLayer.ts ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ActiveLayer": () => (/* binding */ ActiveLayer),
+/* harmony export */   "SimpleMarkerLayer": () => (/* binding */ SimpleMarkerLayer)
+/* harmony export */ });
+/* harmony import */ var _map__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./map */ "./ui/map/map.ts");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! leaflet */ "../node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _model_coordinates__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../model/coordinates */ "./model/coordinates.ts");
+/* harmony import */ var _interactions_SimpleClickInteraction__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./interactions/SimpleClickInteraction */ "./ui/map/interactions/SimpleClickInteraction.ts");
+/* harmony import */ var _TileMarker__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./TileMarker */ "./ui/map/TileMarker.ts");
+
+
+
+
+
+class ActiveLayer extends leaflet__WEBPACK_IMPORTED_MODULE_1__.FeatureGroup {
+    constructor() {
+        super();
+        this.map = null;
+        this.controls = [];
+        this._tilemarker = null;
+    }
+    getMap() {
+        return this.map;
+    }
+    setInteraction(interaction) {
+        if (this.interaction) {
+            this.interaction.cancel();
+            this.interaction = null;
+            this.map.setTopControl(null);
+        }
+        this.interaction = interaction;
+        this.map.setTopControl(this.interaction.getTopControl());
+        this.interaction.start();
+    }
+    cancelInteraction() {
+        if (this.interaction) {
+            this.interaction.cancel();
+            this.interaction = null;
+            this.map.setTopControl(null);
+            let de = this.loadDefaultInteraction();
+            console.log(de.constructor.name);
+            de.activate();
+        }
+    }
+    addControl(control) {
+        this.controls.push(control);
+        if (this.map)
+            this.map.map.addControl(control);
+    }
+    loadDefaultInteraction() {
+        let self = this;
+        return new _interactions_SimpleClickInteraction__WEBPACK_IMPORTED_MODULE_3__["default"](this, {
+            "click": (p) => {
+                if (self._tilemarker && (0,_model_coordinates__WEBPACK_IMPORTED_MODULE_2__.eq)(p, self._tilemarker.getSpot())) {
+                    self.removeMarker();
+                }
+                else
+                    self.setMarker(p);
+            }
+        });
+    }
+    setMarker(spot) {
+        this.removeMarker();
+        this._tilemarker = new _TileMarker__WEBPACK_IMPORTED_MODULE_4__.TileMarker(spot)
+            .withX("white").withMarker(_map__WEBPACK_IMPORTED_MODULE_0__.blue_icon)
+            .on("click", () => this.removeMarker())
+            .addTo(this);
+    }
+    removeMarker() {
+        if (this._tilemarker) {
+            this._tilemarker.remove();
+            this._tilemarker = null;
+        }
+    }
+    activate(map) {
+        this.map = map;
+        let de = this.loadDefaultInteraction();
+        de.activate();
+        this.controls.forEach((e) => e.addTo(map.map));
+    }
+    deactivate() {
+        this.interaction.cancel();
+        this.interaction = null;
+        this.map.setTopControl(null);
+        this.map = null;
+        this.controls.forEach((e) => e.remove());
+    }
+}
+class SimpleMarkerLayer extends ActiveLayer {
+    constructor(markers) {
+        super();
+        this.markers = markers;
+        this.markers.forEach((e) => e.addTo(this));
+    }
+}
+
+
+/***/ }),
+
+/***/ "./ui/map/interactions/LayerInteraction.ts":
+/*!*************************************************!*\
+  !*** ./ui/map/interactions/LayerInteraction.ts ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ LayerInteraction)
+/* harmony export */ });
+/* harmony import */ var _widgets_Widget__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../widgets/Widget */ "./ui/widgets/Widget.ts");
+
 class LayerInteraction {
     constructor(layer) {
         this.layer = layer;
+        this.control = null;
+    }
+    getTopControl() {
+        if (!this.control)
+            this.control = this.constructTopControl();
+        return this.control;
+    }
+    constructTopControl() {
+        return _widgets_Widget__WEBPACK_IMPORTED_MODULE_0__["default"].wrap($(`<div class='nis-map-control'>Test Control for Interaction ${this.constructor.name}</div>`));
     }
     activate() {
         if (!this.is_active) {
@@ -60603,53 +60831,137 @@ class LayerInteraction {
         return this;
     }
 }
-class ActiveLayer extends leaflet__WEBPACK_IMPORTED_MODULE_1__.FeatureGroup {
-    constructor() {
-        super();
-        this.map = null;
-        this.controls = [];
+
+
+/***/ }),
+
+/***/ "./ui/map/interactions/SimpleClickInteraction.ts":
+/*!*******************************************************!*\
+  !*** ./ui/map/interactions/SimpleClickInteraction.ts ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ SimpleClickInteraction)
+/* harmony export */ });
+/* harmony import */ var _LayerInteraction__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LayerInteraction */ "./ui/map/interactions/LayerInteraction.ts");
+
+class SimpleClickInteraction extends _LayerInteraction__WEBPACK_IMPORTED_MODULE_0__["default"] {
+    constructor(layer, handlers) {
+        super(layer);
+        this.handlers = handlers;
+        this._maphooks = {
+            "click": (e) => {
+                this.handlers.click({ x: Math.round(e.latlng.lng), y: Math.round(e.latlng.lat) });
+            }
+        };
     }
-    getMap() {
-        return this.map;
+    cancel() {
+        this.layer.getMap().map.off(this._maphooks);
     }
-    setInteraction(interaction) {
-        if (this.interaction) {
-            this.interaction.cancel();
-            this.interaction = null;
-        }
-        this.interaction = interaction;
-        this.interaction.start();
+    start() {
+        this.layer.getMap().map.on(this._maphooks);
     }
-    cancelInteraction() {
-        if (this.interaction) {
-            this.interaction.cancel();
-            this.interaction = null;
-            this.loadDefaultInteraction();
-        }
-    }
-    addControl(control) {
-        this.controls.push(control);
-        if (this.map)
-            this.map.map.addControl(control);
-    }
-    loadDefaultInteraction() {
-    }
-    activate(map) {
-        this.map = map;
-        this.loadDefaultInteraction();
-        this.controls.forEach((e) => e.addTo(map.map));
-    }
-    deactivate() {
-        this.cancelInteraction();
-        this.map = null;
-        this.controls.forEach((e) => e.remove());
+    getTopControl() {
+        return null;
     }
 }
-class SimpleMarkerLayer extends ActiveLayer {
-    constructor(markers) {
+
+
+/***/ }),
+
+/***/ "./ui/map/layers/Graticule.ts":
+/*!************************************!*\
+  !*** ./ui/map/layers/Graticule.ts ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Graticule)
+/* harmony export */ });
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "../node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
+
+/**
+ *  File: Graticule.ts
+ *  Desc: A graticule for Leaflet maps in the leaflet.CRS.Simple coordinate system.
+ *  Original Author: Andrew Blakey (ablakey@gmaileaflet.com)
+ *  Ported to typescript and adjusted to this project's needs.
+ */
+class Graticule extends leaflet__WEBPACK_IMPORTED_MODULE_0__.FeatureGroup {
+    constructor(_options) {
         super();
-        this.markers = markers;
-        this.markers.forEach((e) => e.addTo(this));
+        this._options = _options;
+        this.last_drawn = null;
+        this._hook = () => this.redraw();
+        if (!this._options.offset)
+            this._options.offset = { x: 0.5, y: 0.5 };
+        if (!this._options.lineStyle)
+            this._options.lineStyle = {
+                stroke: true,
+                color: '#111',
+                opacity: 0.6,
+                weight: 1
+            };
+    }
+    onAdd(map) {
+        super.onAdd(map);
+        this._map = map;
+        let self = this;
+        this._map.on('zoomend', self._hook);
+        this._map.on('moveend', self._hook);
+        this.redraw();
+        return this;
+    }
+    onRemove(map) {
+        let self = this;
+        this._map.off('zoomend', self._hook);
+        this._map.off('moveend', self._hook);
+        return this;
+    }
+    redraw() {
+        let bounds = this._map.getBounds();
+        let interval = Math.min(...this._options.intervals.filter((i) => this._map.getZoom() >= i.min_zoom).map((i) => i.interval));
+        if (!this.last_drawn || !this.last_drawn.bounds.contains(bounds) || this.last_drawn.interval != interval) {
+            this.constructLines(this._map.getBounds().pad(0.5), interval);
+        }
+    }
+    constructLines(bounds, interval) {
+        this.last_drawn = {
+            bounds: bounds,
+            interval: interval
+        };
+        this.clearLayers();
+        let counts = {
+            x: Math.ceil((bounds.getEast() - bounds.getWest()) / interval),
+            y: Math.ceil((bounds.getNorth() - bounds.getSouth()) / interval)
+        };
+        let mins = {
+            x: Math.floor(bounds.getWest() / interval) * interval,
+            y: Math.floor(bounds.getSouth() / interval) * interval
+        };
+        //for horizontal lines
+        for (let i = 0; i <= counts.x; i++) {
+            let x = mins.x + i * interval + this._options.offset.x;
+            new leaflet__WEBPACK_IMPORTED_MODULE_0__.Polyline([
+                new leaflet__WEBPACK_IMPORTED_MODULE_0__.LatLng(bounds.getSouth(), x),
+                new leaflet__WEBPACK_IMPORTED_MODULE_0__.LatLng(bounds.getNorth(), x)
+            ], this._options.lineStyle)
+                .addTo(this);
+        }
+        //for vertical lines
+        for (let j = 0; j <= counts.y; j++) {
+            let y = mins.y + j * interval + this._options.offset.y;
+            new leaflet__WEBPACK_IMPORTED_MODULE_0__.Polyline([
+                new leaflet__WEBPACK_IMPORTED_MODULE_0__.LatLng(y, bounds.getWest()),
+                new leaflet__WEBPACK_IMPORTED_MODULE_0__.LatLng(y, bounds.getEast())
+            ], this._options.lineStyle)
+                .addTo(this);
+        }
     }
 }
 
@@ -60682,6 +60994,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../constants */ "./constants.ts");
 /* harmony import */ var _model_methods__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../model/methods */ "./model/methods.ts");
+/* harmony import */ var _interactions_SimpleClickInteraction__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../interactions/SimpleClickInteraction */ "./ui/map/interactions/SimpleClickInteraction.ts");
+/* harmony import */ var _TileMarker__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../TileMarker */ "./ui/map/TileMarker.ts");
+
+
 
 
 
@@ -60748,32 +61064,39 @@ class SpotPolygon extends leaflet__WEBPACK_IMPORTED_MODULE_0__.FeatureGroup {
         this.updateOpacity();
     }
 }
-class ScanRadiusTileMarker extends _map__WEBPACK_IMPORTED_MODULE_3__.TileMarker {
-    constructor(spot, range, complement) {
+class ScanRadiusTileMarker extends _TileMarker__WEBPACK_IMPORTED_MODULE_12__.TileMarker {
+    constructor(spot, range, is_complement) {
         super(spot);
         this.range = range;
-        this.complement = complement;
+        this.is_complement = is_complement;
         this.update();
     }
     update() {
-        if (this.range_polygon)
+        if (this.range_polygon) {
             this.range_polygon.remove();
+            this.range_polygon = null;
+        }
         this.range_polygon = leaflet__WEBPACK_IMPORTED_MODULE_0__.featureGroup().addTo(this);
-        let center = this.getSpot();
-        if (this.complement) {
+        if (this.is_complement) {
             (0,_model_coordinates__WEBPACK_IMPORTED_MODULE_1__.boxPolygon)({
-                topleft: { x: center.x - (this.range + 15), y: center.y + (this.range + 15) },
-                botright: { x: center.x + (this.range + 15), y: center.y - (this.range + 15) }
+                topleft: { x: this.spot.x - (this.range + 15), y: this.spot.y + (this.range + 15) },
+                botright: { x: this.spot.x + (this.range + 15), y: this.spot.y - (this.range + 15) }
+            }).setStyle({
+                interactive: false
             }).setStyle({ color: "blue", fillOpacity: 0 }).addTo(this.range_polygon);
         }
         else {
             (0,_model_coordinates__WEBPACK_IMPORTED_MODULE_1__.boxPolygon)({
-                topleft: { x: center.x - this.range, y: center.y + this.range },
-                botright: { x: center.x + this.range, y: center.y - this.range }
+                topleft: { x: this.spot.x - this.range, y: this.spot.y + this.range },
+                botright: { x: this.spot.x + this.range, y: this.spot.y - this.range }
+            }).setStyle({
+                interactive: false
             }).setStyle({ color: "green", fillOpacity: 0 }).addTo(this.range_polygon);
             (0,_model_coordinates__WEBPACK_IMPORTED_MODULE_1__.boxPolygon)({
-                topleft: { x: center.x - 2 * this.range, y: center.y + 2 * this.range },
-                botright: { x: center.x + 2 * this.range, y: center.y - 2 * this.range }
+                topleft: { x: this.spot.x - 2 * this.range, y: this.spot.y + 2 * this.range },
+                botright: { x: this.spot.x + 2 * this.range, y: this.spot.y - 2 * this.range }
+            }).setStyle({
+                interactive: false
             }).setStyle({ color: "yellow", fillOpacity: 0, dashArray: [5, 5] }).addTo(this.range_polygon);
         }
     }
@@ -60782,42 +61105,24 @@ class ScanRadiusTileMarker extends _map__WEBPACK_IMPORTED_MODULE_3__.TileMarker 
         this.update();
     }
 }
-class ClickMapInteraction extends _activeLayer__WEBPACK_IMPORTED_MODULE_5__.LayerInteraction {
-    constructor(layer, handlers) {
-        super(layer);
-        this.handlers = handlers;
-        this._maphooks = {
-            "click": (e) => {
-                console.log("Click");
-                this.handlers.click({ x: Math.round(e.latlng.lng), y: Math.round(e.latlng.lat) });
-            }
-        };
-    }
-    cancel() {
-        this.layer.getMap().map.off(this._maphooks);
-    }
-    start() {
-        this.layer.getMap().map.on(this._maphooks);
-    }
-}
 class ScanLayer extends _activeLayer__WEBPACK_IMPORTED_MODULE_5__.ActiveLayer {
     constructor(clue, app, options = {}) {
         super();
         this.clue = clue;
         this.app = app;
         this.events = new _skillbertssolver_eventemitter__WEBPACK_IMPORTED_MODULE_6__.TypedEmitter;
+        this._meerkats = true;
         this.tile_marker = null;
         this.complement_tile_marker = null;
-        this._meerkats = true;
         this.marker_layer = leaflet__WEBPACK_IMPORTED_MODULE_0__.featureGroup().addTo(this);
         this.complement_layer = leaflet__WEBPACK_IMPORTED_MODULE_0__.featureGroup().addTo(this);
         this.markers = clue.solution.candidates.map((e) => {
-            let m = new _activeLayer__WEBPACK_IMPORTED_MODULE_5__.TileMarkerWithActive(e).withMarker().withX("#B21319").addTo(this.marker_layer);
+            let m = new _TileMarker__WEBPACK_IMPORTED_MODULE_12__.TileMarker(e).withMarker().withX("#B21319").addTo(this.marker_layer);
             m.on("click", (e) => this.events.emit("dig_spot_clicked", m));
             return m;
         });
         this.complement_markers = clue.solution.candidates.map((e) => {
-            return new _activeLayer__WEBPACK_IMPORTED_MODULE_5__.TileMarkerWithActive((0,_model_scans_scans__WEBPACK_IMPORTED_MODULE_4__.complementSpot)(e)).withMarker().withX("#B21319").addTo(this.complement_layer);
+            return new _TileMarker__WEBPACK_IMPORTED_MODULE_12__.TileMarker((0,_model_scans_scans__WEBPACK_IMPORTED_MODULE_4__.complementSpot)(e)).withMarker().withX("#B21319").addTo(this.complement_layer);
         });
         if (!window.alt1) { // Only if not Alt1, because is laggs heavily inside
             if (options.show_edit_button && !app.in_alt1)
@@ -60837,15 +61142,18 @@ class ScanLayer extends _activeLayer__WEBPACK_IMPORTED_MODULE_5__.ActiveLayer {
     }
     loadDefaultInteraction() {
         let self = this;
-        new ClickMapInteraction(this, {
+        return new _interactions_SimpleClickInteraction__WEBPACK_IMPORTED_MODULE_11__["default"](this, {
             "click": (p) => {
-                if (self.tile_marker && (0,_model_coordinates__WEBPACK_IMPORTED_MODULE_1__.eq)(p, self.tile_marker.getSpot())
-                    || self.complement_tile_marker && (0,_model_coordinates__WEBPACK_IMPORTED_MODULE_1__.eq)(p, self.complement_tile_marker.getSpot()))
+                if ((self.tile_marker && (0,_model_coordinates__WEBPACK_IMPORTED_MODULE_1__.eq)(p, self.tile_marker.getSpot()))
+                    || (self.complement_tile_marker && (0,_model_coordinates__WEBPACK_IMPORTED_MODULE_1__.eq)(p, self.complement_tile_marker.getSpot()))) {
+                    console.log("Removing 1");
                     self.removeMarker();
-                else
+                }
+                else {
                     self.setMarker(p);
+                }
             }
-        }).activate();
+        });
     }
     getTree() {
         return null;
@@ -60879,6 +61187,7 @@ class ScanLayer extends _activeLayer__WEBPACK_IMPORTED_MODULE_5__.ActiveLayer {
         this.complement_markers.forEach((m) => m.setActive(spots.some((c) => (0,_model_coordinates__WEBPACK_IMPORTED_MODULE_1__.eq)((0,_model_scans_scans__WEBPACK_IMPORTED_MODULE_4__.complementSpot)(c), m.getSpot()))));
     }
     removeMarker() {
+        console.log("Removing");
         if (this.tile_marker) {
             this.tile_marker.remove();
             this.tile_marker = null;
@@ -60888,19 +61197,28 @@ class ScanLayer extends _activeLayer__WEBPACK_IMPORTED_MODULE_5__.ActiveLayer {
             this.complement_tile_marker = null;
         }
     }
-    setMarker(spot) {
+    setMarker(spot, include_marker = true, removeable = true) {
         this.removeMarker();
+        console.log("Adding");
         let complement = Math.floor(spot.y / 6400) != Math.floor(this.clue.solution.candidates[0].y / 6400);
         this.tile_marker = new ScanRadiusTileMarker(spot, this.clue.range + (this._meerkats ? 5 : 0), complement)
-            .withX("white")
-            .withMarker(_map__WEBPACK_IMPORTED_MODULE_3__.blue_icon)
-            .on("click", () => this.tile_marker.remove())
             .addTo(this);
         this.complement_tile_marker = new ScanRadiusTileMarker((0,_model_scans_scans__WEBPACK_IMPORTED_MODULE_4__.complementSpot)(spot), this.clue.range + (this._meerkats ? 5 : 0), complement)
-            .withX("white")
-            .withMarker(_map__WEBPACK_IMPORTED_MODULE_3__.blue_icon)
-            .on("click", () => this.tile_marker.remove())
             .addTo(this);
+        if (include_marker) {
+            this.tile_marker.withX("white").withMarker(_map__WEBPACK_IMPORTED_MODULE_3__.blue_icon);
+            this.complement_tile_marker.withX("white").withMarker(_map__WEBPACK_IMPORTED_MODULE_3__.blue_icon);
+        }
+        if (removeable) {
+            this.tile_marker.on("click", (e) => {
+                leaflet__WEBPACK_IMPORTED_MODULE_0__.DomEvent.stopPropagation(e);
+                this.removeMarker();
+            });
+            this.complement_tile_marker.on("click", (e) => {
+                leaflet__WEBPACK_IMPORTED_MODULE_0__.DomEvent.stopPropagation(e);
+                this.removeMarker();
+            });
+        }
     }
 }
 class ScanEditLayer extends ScanLayer {
@@ -61004,7 +61322,6 @@ class ToggleGroup extends _skillbertssolver_eventemitter__WEBPACK_IMPORTED_MODUL
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "GameMapControl": () => (/* binding */ GameMapControl),
-/* harmony export */   "TileMarker": () => (/* binding */ TileMarker),
 /* harmony export */   "blue_icon": () => (/* binding */ blue_icon),
 /* harmony export */   "blue_marker": () => (/* binding */ blue_marker),
 /* harmony export */   "green_icon": () => (/* binding */ green_icon),
@@ -61016,8 +61333,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "../node_modules/leaflet/dist/leaflet-src.js");
 /* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _CustomControl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CustomControl */ "./ui/map/CustomControl.ts");
-/* harmony import */ var _skillbertssolver_eventemitter__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../skillbertssolver/eventemitter */ "./skillbertssolver/eventemitter.ts");
+/* harmony import */ var _activeLayer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./activeLayer */ "./ui/map/activeLayer.ts");
+/* harmony import */ var _CustomControl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CustomControl */ "./ui/map/CustomControl.ts");
+/* harmony import */ var _layers_Graticule__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./layers/Graticule */ "./ui/map/layers/Graticule.ts");
+/* harmony import */ var _widgets_Widget__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../widgets/Widget */ "./ui/widgets/Widget.ts");
+
+
 
 
 
@@ -61075,69 +61396,7 @@ const yellow_icon = leaflet__WEBPACK_IMPORTED_MODULE_0__.icon({
     iconAnchor: [9, 30],
     className: "marker-icon"
 });
-class TileMarker extends leaflet__WEBPACK_IMPORTED_MODULE_0__.FeatureGroup {
-    constructor(spot) {
-        super();
-        this.spot = spot;
-        this.setOpacity(1);
-    }
-    withMarker(icon = null) {
-        const level_markers = [red_icon, blue_icon, green_icon, yellow_icon];
-        if (this.marker)
-            this.marker.remove();
-        this.marker = leaflet__WEBPACK_IMPORTED_MODULE_0__.marker([this.spot.y, this.spot.x], {
-            icon: icon || level_markers[this.spot.level],
-            title: `[${this.spot.x}, ${this.spot.y}]`
-        }).addTo(this);
-        return this;
-    }
-    withLabel(text, className, offset) {
-        if (this.label)
-            this.removeLabel();
-        this.label = leaflet__WEBPACK_IMPORTED_MODULE_0__.tooltip({
-            content: text,
-            className: className,
-            offset: offset,
-            permanent: true,
-            direction: "center"
-        });
-        this.bindTooltip(this.label);
-        return this;
-    }
-    removeLabel() {
-        if (this.label) {
-            this.label.remove();
-            this.label = null;
-        }
-    }
-    withX(color) {
-        if (this.x_marks_the_spot)
-            this.x_marks_the_spot.remove();
-        this.x_marks_the_spot = leaflet__WEBPACK_IMPORTED_MODULE_0__.polyline([
-            [[this.spot.y + 0.5, this.spot.x - 0.5], [this.spot.y - 0.5, this.spot.x + 0.5]],
-            [[this.spot.y - 0.5, this.spot.x - 0.5], [this.spot.y + 0.5, this.spot.x + 0.5]]
-        ], {
-            color: color,
-            fillColor: color,
-        }).addTo(this);
-        return this;
-    }
-    getSpot() {
-        return this.spot;
-    }
-    setOpacity(opacity) {
-        if (this.marker)
-            this.marker.setOpacity(opacity);
-        if (this.x_marks_the_spot)
-            this.x_marks_the_spot.setStyle(Object.assign(this.x_marks_the_spot.options, {
-                opacity: opacity * 0.75,
-                fillOpacity: opacity * 0.25,
-            }));
-        if (this.label)
-            this.label.setOpacity(opacity);
-    }
-}
-class FloorControl extends _CustomControl__WEBPACK_IMPORTED_MODULE_1__.CustomControl {
+class FloorControl extends _CustomControl__WEBPACK_IMPORTED_MODULE_2__.CustomControl {
     constructor(parent) {
         super($("<div style='display: flex' class='nis-map-control'>"), {});
         this.parent = parent;
@@ -61154,6 +61413,7 @@ class FloorControl extends _CustomControl__WEBPACK_IMPORTED_MODULE_1__.CustomCon
             this.parent.setFloor(this.parent.floor + 1);
         })
             .appendTo(this.container);
+        this.container.on("click", (e) => e.stopPropagation());
         parent.on("floorChanged", (f) => this.current.text(`Floor ${f}`));
     }
 }
@@ -61161,7 +61421,7 @@ class FloorControl extends _CustomControl__WEBPACK_IMPORTED_MODULE_1__.CustomCon
  * This map class wraps a leaflet map view and provides features needed for the solver.
  * Map data is sourced from Skillbert's amazing runeapps.org.
  */
-class GameMapControl extends _skillbertssolver_eventemitter__WEBPACK_IMPORTED_MODULE_2__.TypedEmitter {
+class GameMapControl extends _widgets_Widget__WEBPACK_IMPORTED_MODULE_4__["default"] {
     backupUrl(filename, version) {
         return `https://runeapps.org/node/map/getnamed?mapid=${this.mapid}&version=${version}&file=${filename}`;
     }
@@ -61171,23 +61431,31 @@ class GameMapControl extends _skillbertssolver_eventemitter__WEBPACK_IMPORTED_MO
             `https://runeapps.org/maps/map${this.mapid}/${this.version}/${filename}`,
         ];
     }
-    constructor(map_id) {
-        super();
-        this.activeLayer = null;
-        // Hardcoded
-        this.mapid = 4;
-        this.version = 0;
-        const chunkoffsetx = 16;
-        const chunkoffsetz = 16;
-        const mapsizex = 100;
-        const mapsizez = 200;
+    getCRS() {
+        const chunkoffset = {
+            x: 16,
+            z: 16
+        };
+        const mapsize = {
+            x: 100,
+            z: 200
+        };
         const chunksize = 64;
         let crs = leaflet__WEBPACK_IMPORTED_MODULE_0__.CRS.Simple;
         //add 0.5 to so coords are center of tile
         // @ts-ignore
-        crs.transformation = leaflet__WEBPACK_IMPORTED_MODULE_0__.transformation(1, chunkoffsetx + 0.5, -1, mapsizez * chunksize + -1 * (chunkoffsetz + 0.5));
-        this.map = leaflet__WEBPACK_IMPORTED_MODULE_0__.map(map_id, {
-            crs: crs,
+        crs.transformation = leaflet__WEBPACK_IMPORTED_MODULE_0__.transformation(1, chunkoffset.x + 0.5, -1, mapsize.z * chunksize + -1 * (chunkoffset.z + 0.5));
+        return crs;
+    }
+    constructor(container) {
+        super(container);
+        this.floor = 0;
+        this.activeLayer = null;
+        // Hardcoded
+        this.mapid = 4;
+        this.version = 0;
+        this.map = leaflet__WEBPACK_IMPORTED_MODULE_0__.map(container.get()[0], {
+            crs: this.getCRS(),
             zoomSnap: 0.25,
             minZoom: -5,
             maxZoom: 7,
@@ -61195,17 +61463,54 @@ class GameMapControl extends _skillbertssolver_eventemitter__WEBPACK_IMPORTED_MO
             doubleClickZoom: false,
             attributionControl: true
         }).setView([3200, 3000], 0);
-        this.floor = 0;
+        /*$(this.map.attributionControl.getContainer())
+            .addClass("nis-map-control")
+            .removeClass("leaflet-control-attribution")*/
+        this.top_control_container = _widgets_Widget__WEBPACK_IMPORTED_MODULE_4__["default"].wrap($("<div class='my-leaflet-topcenter'>Im a test test test</div>").appendTo(container.children(".leaflet-control-container")));
         this.map.addControl(new FloorControl(this).setPosition("bottomleft"));
+        /*
+        let e1 = new CustomControl($("<div class='nis-map-control'><img src='assets/icons/teleports/homeport.png'></div>")
+            .on("click", () => {
+                    if (e1.container.children("img").hasClass("nis-inactive")) e1.container.children("img").removeClass("nis-inactive")
+                    else e1.container.children("img").addClass("nis-inactive")
+                }
+            ))
+            .setPosition("bottomleft").addTo(this.map)
+
+        let e2 = new CustomControl($("<div  class='nis-map-control'><img src='assets/icons/walls.png'></div>")
+            .on("click", () => {
+                    if (e2.container.children("img").hasClass("nis-inactive")) e2.container.children("img").removeClass("nis-inactive")
+                    else e2.container.children("img").addClass("nis-inactive")
+                }
+            ))
+            .setPosition("bottomleft").addTo(this.map)*/
         // TODO: This is hardcoded, because I cant dynamically get the current version from runeapps because of CORS.
         this.version = 1685523317;
         this.updateBaseLayers();
+        new _layers_Graticule__WEBPACK_IMPORTED_MODULE_3__["default"]({
+            intervals: [
+                { min_zoom: -Infinity, interval: 64 },
+                { min_zoom: 0.5, interval: 8 },
+                { min_zoom: 1, interval: 4 },
+                { min_zoom: 2, interval: 1 },
+            ],
+            lineStyle: {
+                weight: 1,
+                color: '#111111',
+                opacity: 0.25,
+            }
+        })
+            .setZIndex(10)
+            .addTo(this.map);
+        // Set a default active layer
+        this.setActiveLayer(new _activeLayer__WEBPACK_IMPORTED_MODULE_1__.ActiveLayer());
         /*fetch(this.backupUrl("versions.json", 0), {mode: "cors"}).then(async (q) => {
             let content: { versions: { version: number, build: number, date: number, source: string }[] } = await q.json();
             this.version = content.versions[0].version;
 
             this.updateBaseLayers()
         });*/
+        // new PathLayer([]).setZIndex(20).addTo(this.map)
     }
     setFloor(floor) {
         let old = this.floor;
@@ -61222,7 +61527,7 @@ class GameMapControl extends _skillbertssolver_eventemitter__WEBPACK_IMPORTED_MO
         layers.push(new RsBaseTileLayer([
             { urls: this.geturls(`topdown-${this.floor}/{z}/{x}-{y}.webp`) }
         ], {
-            attribution: 'Skillbert (<a href="https://runeapps.org/">RuneApps.org</a>',
+            attribution: '<a href="https://runeapps.org/" title="Creator of Alt1 and RuneApps.org">Skillbert</a>',
             tileSize: 512,
             maxNativeZoom: 5,
             minZoom: -5
@@ -61252,6 +61557,12 @@ class GameMapControl extends _skillbertssolver_eventemitter__WEBPACK_IMPORTED_MO
         this.teleportLayer = layer;
         layer.addTo(this.map).setZIndex(100);
         return this;
+    }
+    setTopControl(widget) {
+        this.top_control_container.container.empty();
+        if (widget) {
+            widget.appendTo(this.top_control_container);
+        }
     }
     setActiveLayer(layer) {
         if (this.activeLayer) {
@@ -61310,8 +61621,8 @@ var template_resolvers = _model_scans_ScanTree2__WEBPACK_IMPORTED_MODULE_2__.Sca
 var spotNumber = _model_scans_ScanTree2__WEBPACK_IMPORTED_MODULE_2__.ScanTree2.spotNumber;
 var natural_join = _util_util__WEBPACK_IMPORTED_MODULE_5__.util.natural_join;
 var natural_order = _util_util__WEBPACK_IMPORTED_MODULE_5__.util.natural_order;
-var comparator_by = _util_util__WEBPACK_IMPORTED_MODULE_5__.util.comparator_by;
 
+var comap = _util_util__WEBPACK_IMPORTED_MODULE_5__.util.comap;
 function synthetic_triple_children(node) {
     return node.remaining_candidates.map((child) => {
         return {
@@ -61378,14 +61689,13 @@ class ScanTreeMethodLayer extends _layers_ScanLayer__WEBPACK_IMPORTED_MODULE_0__
         if (this.node.parent && this.node.parent.node.where)
             relevant_areas.push(this.node.parent.node.where);
         if (node.where) {
-            // TODO: This is experimental. Gather feedback and decide whether to keep
             this.getMap().setFloor(node.where.level);
             let c = (0,_model_coordinates__WEBPACK_IMPORTED_MODULE_4__.box_center)(node.where.area);
             this.setMarker({
                 x: c.x,
                 y: c.y,
                 level: node.where.level,
-            });
+            }, false, false);
         }
         else {
             this.getMap().setFloor(Math.min(...node.remaining_candidates.map((c) => c.level)));
@@ -61464,7 +61774,7 @@ class ScanTreeMethodLayer extends _layers_ScanLayer__WEBPACK_IMPORTED_MODULE_0__
         let resolver = _application__WEBPACK_IMPORTED_MODULE_1__.scantrainer.template_resolver["with"](template_resolvers(node.root, node.path));
         let line = $("<div>")
             .addClass("scantreeline")
-            .css("margin-left", `${depth * 12}px`)
+            .css("padding-left", `${depth * 18}px`)
             .css("margin-top", "3px")
             .css("margin-bottom", "3px")
             .css("font-size", `${13 /*/ (Math.pow(1.25, depth))*/}px`);
@@ -61485,14 +61795,18 @@ class ScanTreeMethodLayer extends _layers_ScanLayer__WEBPACK_IMPORTED_MODULE_0__
             }
         }
         else if (depth > 0) {
-            $("<span>")
-                .text(_model_scans_scans__WEBPACK_IMPORTED_MODULE_7__.Pulse.meta(node.parent.kind).pretty + ": ")
-                .appendTo(line);
+            // TODO: Link
+            let el = $("<span>- <span></span>: </span>");
+            el.children("span")
+                .text(_model_scans_scans__WEBPACK_IMPORTED_MODULE_7__.Pulse.meta(node.parent.kind).pretty)
+                .addClass("lightlink")
+                .on("click", () => this.setNode(node));
+            el.appendTo(line);
         }
         if (node.parent.kind.pulse == 3) {
             if (depth == 0 && node.remaining_candidates.length > 1) {
                 line.append($("<span>").text("at"));
-                synthetic_triple_children(node).sort(comparator_by((c) => spotNumber(node.root, c.remaining_candidates[0]))).forEach((child) => {
+                synthetic_triple_children(node).sort(comap(natural_order, (c) => spotNumber(node.root, c.remaining_candidates[0])) /*comparator_by((c) => spotNumber(node.root, c.remaining_candidates[0]))*/).forEach((child) => {
                     $("<span>")
                         .html(resolver.resolve(`{{digspot ${spotNumber(node.root, child.remaining_candidates[0])}}}`))
                         .addClass("lightbutton")
@@ -61508,9 +61822,13 @@ class ScanTreeMethodLayer extends _layers_ScanLayer__WEBPACK_IMPORTED_MODULE_0__
                         .appendTo(line);
                 }
                 else {
-                    $("<span>")
-                        .html(_application__WEBPACK_IMPORTED_MODULE_1__.scantrainer.template_resolver.resolve(`Spot ${natural_join(node.remaining_candidates.map((e) => spotNumber(node.root, e)).sort(natural_order).map((e) => `{{digspot ${e}}}`), "or")}`))
+                    let synthetic_children = synthetic_triple_children(node).sort(comap(natural_order, (c) => spotNumber(node.root, c.remaining_candidates[0])));
+                    let el = $("<span>")
+                        .html(`Spot ${natural_join(synthetic_children.map((e) => e.remaining_candidates[0]).map((e) => `<span class="lightlink spot-number">${spotNumber(node.root, e)}</span>`), "or")}`)
                         .appendTo(line);
+                    for (let i = 0; i < synthetic_children.length; i++) {
+                        $(el.children("span").get()[i]).on("click", () => this.setNode(synthetic_children[i]));
+                    }
                 }
             }
         }
@@ -61529,11 +61847,7 @@ class ScanTreeMethodLayer extends _layers_ScanLayer__WEBPACK_IMPORTED_MODULE_0__
         if (depth == 0 && node.parent && node.parent.kind.pulse == 3 && node.remaining_candidates.length > 1) {
             synthetic_triple_children(node).forEach((child) => this.generateList(child, depth, container));
         }
-        node.children.sort((a, b) => {
-            if (a.key.different_level != b.key.different_level)
-                return (a.key.different_level ? 1 : -1);
-            return a.key.pulse - b.key.pulse;
-        }).forEach((e) => this.generateList(e.value, depth, container));
+        node.children.sort(comap(_model_scans_scans__WEBPACK_IMPORTED_MODULE_7__.Pulse.compare, (a) => a.key)).forEach((e) => this.generateList(e.value, depth, container));
     }
     deactivate() {
         super.deactivate();
@@ -61561,32 +61875,38 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class TeleportIcon extends leaflet__WEBPACK_IMPORTED_MODULE_0__.Icon {
-    constructor(p) {
-        super(p);
+    constructor(options) {
+        super(options);
+        this.options = options;
     }
     createIcon() {
         let el = document.createElement("div");
         el.style.backgroundImage = `url("${this.options.iconUrl}")`;
         el.classList.add("marktele");
-        if (this.options.text) {
-            el.innerText = this.options.text;
+        if (this.options.teleport.code) {
+            el.innerText = this.options.teleport.code;
         }
-        if (this.options.title) {
-            el.title = this.options.title;
+        if (this.options.teleport.hover) {
+            el.title = this.options.teleport.hover;
+        }
+        if (typeof this.options.teleport.icon != "string") {
+            el.style.backgroundSize = `${this.options.teleport.icon.width ? this.options.teleport.icon.width + "px" : "auto"} ${this.options.teleport.icon.height ? this.options.teleport.icon.height + "px" : "auto"}`;
         }
         return el;
+    }
+    static fromTeleport(tele) {
+        return new TeleportIcon({
+            iconUrl: `./assets/icons/teleports/${typeof tele.icon == "string" ? tele.icon : tele.icon.url}`,
+            teleport: tele
+        });
     }
 }
 class TeleportLayer extends leaflet__WEBPACK_IMPORTED_MODULE_0__.FeatureGroup {
     constructor(teleports) {
         super();
         for (let tele of teleports) {
-            leaflet__WEBPACK_IMPORTED_MODULE_0__.marker((0,_model_coordinates__WEBPACK_IMPORTED_MODULE_1__.toLeafletLatLngExpression)(tele.spot), {
-                icon: new TeleportIcon({
-                    iconUrl: `./assets/icons/teleports/${tele.icon}`,
-                    text: tele.code,
-                    title: tele.hover
-                })
+            leaflet__WEBPACK_IMPORTED_MODULE_0__.marker((0,_model_coordinates__WEBPACK_IMPORTED_MODULE_1__.toLL)(tele.spot), {
+                icon: TeleportIcon.fromTeleport(tele)
             }).addTo(this);
         }
     }
@@ -61873,43 +62193,52 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ DrawAreaInteraction)
 /* harmony export */ });
-/* harmony import */ var _map_activeLayer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../map/activeLayer */ "./ui/map/activeLayer.ts");
-/* harmony import */ var _skillbertssolver_eventemitter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../skillbertssolver/eventemitter */ "./skillbertssolver/eventemitter.ts");
-/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! leaflet */ "../node_modules/leaflet/dist/leaflet-src.js");
-/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash */ "../node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _skillbertssolver_eventemitter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../skillbertssolver/eventemitter */ "./skillbertssolver/eventemitter.ts");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! leaflet */ "../node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash */ "../node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _map_interactions_LayerInteraction__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../map/interactions/LayerInteraction */ "./ui/map/interactions/LayerInteraction.ts");
+/* harmony import */ var _map_TopControl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../map/TopControl */ "./ui/map/TopControl.ts");
 
 
 
 
-class DrawAreaInteraction extends _map_activeLayer__WEBPACK_IMPORTED_MODULE_0__.LayerInteraction {
+
+class DrawTopControl extends _map_TopControl__WEBPACK_IMPORTED_MODULE_4__["default"] {
+    constructor(parent) {
+        super();
+        this.parent = parent;
+        this.container.text("Click and drag the map to draw an area.");
+    }
+}
+class DrawAreaInteraction extends _map_interactions_LayerInteraction__WEBPACK_IMPORTED_MODULE_3__["default"] {
     constructor(layer) {
         super(layer);
-        this.events = new _skillbertssolver_eventemitter__WEBPACK_IMPORTED_MODULE_1__.TypedEmitter();
+        this.events = new _skillbertssolver_eventemitter__WEBPACK_IMPORTED_MODULE_0__.TypedEmitter();
         this.dragstart = null;
         this.last_area = null;
         this._maphooks = {
             "click": (e) => {
                 // Capture and consume the click event so it does not get sent to the default interaction
-                leaflet__WEBPACK_IMPORTED_MODULE_2__.DomEvent.stopPropagation(e);
+                leaflet__WEBPACK_IMPORTED_MODULE_1__.DomEvent.stopPropagation(e);
                 if (this.dragstart) {
-                    leaflet__WEBPACK_IMPORTED_MODULE_2__.DomEvent.stopPropagation(e);
-                    this.events.emit("done", lodash__WEBPACK_IMPORTED_MODULE_3__.cloneDeep(this.last_area));
+                    leaflet__WEBPACK_IMPORTED_MODULE_1__.DomEvent.stopPropagation(e);
+                    this.events.emit("done", lodash__WEBPACK_IMPORTED_MODULE_2__.cloneDeep(this.last_area));
                     this.layer.cancelInteraction();
                 }
             },
             "mousedown": (e) => {
                 if (!this.dragstart) {
-                    leaflet__WEBPACK_IMPORTED_MODULE_2__.DomEvent.stopPropagation(e);
+                    leaflet__WEBPACK_IMPORTED_MODULE_1__.DomEvent.stopPropagation(e);
                     this.dragstart = this.layer.getMap().tileFromMouseEvent(e);
                     this.last_area = { topleft: this.dragstart, botright: this.layer.getMap().tileFromMouseEvent(e) };
-                    this.events.emit("changed", lodash__WEBPACK_IMPORTED_MODULE_3__.cloneDeep(this.last_area));
+                    this.events.emit("changed", lodash__WEBPACK_IMPORTED_MODULE_2__.cloneDeep(this.last_area));
                 }
             },
             "mousemove": (e) => {
                 if (this.dragstart) {
-                    leaflet__WEBPACK_IMPORTED_MODULE_2__.DomEvent.stopPropagation(e);
+                    leaflet__WEBPACK_IMPORTED_MODULE_1__.DomEvent.stopPropagation(e);
                     let now = this.layer.getMap().tileFromMouseEvent(e);
                     this.last_area =
                         {
@@ -61922,22 +62251,9 @@ class DrawAreaInteraction extends _map_activeLayer__WEBPACK_IMPORTED_MODULE_0__.
                                 y: Math.min(this.dragstart.y, now.y),
                             }
                         };
-                    this.events.emit("changed", lodash__WEBPACK_IMPORTED_MODULE_3__.cloneDeep(this.last_area));
+                    this.events.emit("changed", lodash__WEBPACK_IMPORTED_MODULE_2__.cloneDeep(this.last_area));
                 }
             },
-            /*
-            "mouseup": (e: LeafletMouseEvent) => {
-    
-                leaflet.DomEvent.stopPropagation(e)
-    
-                if (this.dragstart) {
-                    leaflet.DomEvent.stopPropagation(e)
-    
-                    this.events.emit("done", this.last_area)
-    
-                    this.layer.cancelInteraction()
-                }
-            }*/
         };
     }
     cancel() {
@@ -61947,6 +62263,9 @@ class DrawAreaInteraction extends _map_activeLayer__WEBPACK_IMPORTED_MODULE_0__.
     start() {
         this.layer.getMap().map.on(this._maphooks);
         this.layer.getMap().map.dragging.disable();
+    }
+    constructTopControl() {
+        return new DrawTopControl(this);
     }
 }
 
@@ -61968,12 +62287,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _model_scans_ScanTree2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../model/scans/ScanTree2 */ "./model/scans/ScanTree2.ts");
 /* harmony import */ var _application__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../application */ "./application.ts");
 /* harmony import */ var _widgets_modals_Collapsible__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../widgets/modals/Collapsible */ "./ui/widgets/modals/Collapsible.ts");
+/* harmony import */ var _widgets_TemplateStringEdit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../widgets/TemplateStringEdit */ "./ui/widgets/TemplateStringEdit.ts");
 
 
 var edgeSame = _model_scans_ScanTree2__WEBPACK_IMPORTED_MODULE_1__.ScanTree2.edgeSame;
 var spotNumber = _model_scans_ScanTree2__WEBPACK_IMPORTED_MODULE_1__.ScanTree2.spotNumber;
 
 var template_resolvers = _model_scans_ScanTree2__WEBPACK_IMPORTED_MODULE_1__.ScanTree2.template_resolvers;
+
 
 class ClipEdit extends _widgets_Widget__WEBPACK_IMPORTED_MODULE_0__["default"] {
     constructor() {
@@ -61987,28 +62308,18 @@ class EdgeEdit extends _widgets_Widget__WEBPACK_IMPORTED_MODULE_0__["default"] {
         this.parent = parent;
         this.value = value;
         this.append($(`<div style="text-align: center; font-weight: bold">${_model_scans_ScanTree2__WEBPACK_IMPORTED_MODULE_1__.ScanTree2.edgeTitle(this.value, this.parent.parent.value)}</div>`));
-        this.instruction_input = $("<input type='text' class='nisinput' style='width: 100%'>")
-            .val(value.short_instruction)
-            .on("input", () => {
-            this.value.short_instruction = this.instruction_input.val();
-            this.renderInstruction();
+        this.instruction_input = new _widgets_TemplateStringEdit__WEBPACK_IMPORTED_MODULE_4__["default"](_application__WEBPACK_IMPORTED_MODULE_2__.scantrainer.template_resolver["with"](template_resolvers(this.parent.parent.value, this.value)), this.value.short_instruction).on("changed", (v) => {
+            this.value.short_instruction = v;
             this.emit("changed", this.value);
         });
-        this.render_span = $("<div>");
         $("<div class='row'>")
             .append($("<div class='col-3'>Instruction</div>"))
-            .append($("<div class='col-9'>").append(this.instruction_input))
-            .appendTo(this.container);
-        $("<div class='row'>")
-            .append($("<div class='col-3'>Rendered</div>"))
-            .append($("<div class='col-9'>").append(this.render_span))
+            .append($("<div class='col-9'>").append(this.instruction_input.container))
             .appendTo(this.container);
         //this.clip_edit = new ClipEdit(null).appendTo(this)
-        this.renderInstruction();
     }
-    renderInstruction() {
-        this.render_span.html(_application__WEBPACK_IMPORTED_MODULE_2__.scantrainer.template_resolver["with"](template_resolvers(this.parent.parent.value, this.value))
-            .resolve(this.value.short_instruction));
+    update() {
+        this.instruction_input.setResolver(_application__WEBPACK_IMPORTED_MODULE_2__.scantrainer.template_resolver["with"](template_resolvers(this.parent.parent.value, this.value)));
     }
 }
 class PathEdit extends _widgets_Widget__WEBPACK_IMPORTED_MODULE_0__["default"] {
@@ -62021,6 +62332,7 @@ class PathEdit extends _widgets_Widget__WEBPACK_IMPORTED_MODULE_0__["default"] {
         this.clean();
     }
     clean() {
+        this.edges.forEach((e) => e.update());
         let needed = _model_scans_ScanTree2__WEBPACK_IMPORTED_MODULE_1__.ScanTree2.gatherPaths(_model_scans_ScanTree2__WEBPACK_IMPORTED_MODULE_1__.ScanTree2.augment(this.parent.value));
         this.edges.forEach((e) => e.remove());
         // Remove paths that aren't needed anymore and create paths for new edges
@@ -62249,7 +62561,7 @@ class ScanTools extends _widgets_Widget__WEBPACK_IMPORTED_MODULE_0__["default"] 
         $("<div class='lightbutton'>Center on Spots</div>")
             .on("click", () => {
             let bounds = leaflet__WEBPACK_IMPORTED_MODULE_2__.latLngBounds([]);
-            this.parent.clue.solution.candidates.forEach((c) => bounds.extend((0,_model_coordinates__WEBPACK_IMPORTED_MODULE_3__.toLeafletLatLngExpression)(c)));
+            this.parent.clue.solution.candidates.forEach((c) => bounds.extend((0,_model_coordinates__WEBPACK_IMPORTED_MODULE_3__.toLL)(c)));
             bounds.pad(0.1);
             this.parent.layer.getMap().map.fitBounds(bounds);
         })
@@ -62258,7 +62570,7 @@ class ScanTools extends _widgets_Widget__WEBPACK_IMPORTED_MODULE_0__["default"] 
             .on("click", () => {
             let bounds = leaflet__WEBPACK_IMPORTED_MODULE_2__.latLngBounds([]);
             this.parent.clue.solution.candidates.forEach((c) => {
-                bounds.extend((0,_model_coordinates__WEBPACK_IMPORTED_MODULE_3__.toLeafletLatLngExpression)({
+                bounds.extend((0,_model_coordinates__WEBPACK_IMPORTED_MODULE_3__.toLL)({
                     x: c.x,
                     y: (c.y < 6400 ? c.y + 6400 : c.y - 6400)
                 }));
@@ -62270,12 +62582,8 @@ class ScanTools extends _widgets_Widget__WEBPACK_IMPORTED_MODULE_0__["default"] 
         $("<div style='font-weight: bold'>Show Equivalence Classes</div>").appendTo(this.collapsible.content.container);
         $("<div style='display: flex; padding-left: 5px'>")
             .append(new _widgets_Checkbox__WEBPACK_IMPORTED_MODULE_4__["default"]().on("changed", (v) => {
-            console.log("Changed S: " + v);
-            if (v) {
-                console.log("Adding");
+            if (v)
                 this.equivalence_classes.normal.getLayer().addTo(this.parent.layer);
-                console.log("Added");
-            }
             else {
                 this.equivalence_classes.normal.getLayer().remove();
                 this.equivalence_classes.normal.layer = null;
@@ -62285,7 +62593,6 @@ class ScanTools extends _widgets_Widget__WEBPACK_IMPORTED_MODULE_0__["default"] 
             .appendTo(this.collapsible.content.container);
         $("<div style='display: flex; padding-left: 5px'>")
             .append(new _widgets_Checkbox__WEBPACK_IMPORTED_MODULE_4__["default"]().on("changed", (v) => {
-            console.log("Changed C");
             if (v)
                 this.equivalence_classes.complement.getLayer().addTo(this.parent.layer);
             else {
@@ -62336,35 +62643,81 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ SelectDigSpotsInteraction)
 /* harmony export */ });
-/* harmony import */ var _map_activeLayer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../map/activeLayer */ "./ui/map/activeLayer.ts");
-/* harmony import */ var _skillbertssolver_eventemitter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../skillbertssolver/eventemitter */ "./skillbertssolver/eventemitter.ts");
-/* harmony import */ var _model_coordinates__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../model/coordinates */ "./model/coordinates.ts");
+/* harmony import */ var _skillbertssolver_eventemitter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../skillbertssolver/eventemitter */ "./skillbertssolver/eventemitter.ts");
+/* harmony import */ var _model_coordinates__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../model/coordinates */ "./model/coordinates.ts");
+/* harmony import */ var _map_interactions_LayerInteraction__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../map/interactions/LayerInteraction */ "./ui/map/interactions/LayerInteraction.ts");
+/* harmony import */ var _map_TopControl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../map/TopControl */ "./ui/map/TopControl.ts");
 
 
 
-class SelectDigSpotsInteraction extends _map_activeLayer__WEBPACK_IMPORTED_MODULE_0__.LayerInteraction {
+
+class SelectDigSpotsTopControl extends _map_TopControl__WEBPACK_IMPORTED_MODULE_3__["default"] {
+    constructor(parent) {
+        super();
+        this.parent = parent;
+        this.addClass("nis-map-control").css("padding", "5px");
+        this.container.text("Click digspots on the map to select/deselect them.");
+        this.status = $("<div></div>").appendTo(this.container);
+        $("<span>");
+        let control_row = $("<div style='text-align: center'></div>").appendTo(this.container);
+        this.save_btn = $("<div class='lightbutton'>Finish</div>")
+            .on("click", () => this.parent.finish())
+            .appendTo(control_row);
+        $("<div class='lightbutton'>Cancel</div>")
+            .on("click", () => this.parent.abort())
+            .appendTo(control_row);
+        parent.events.on("changed", (v) => this.update(v.length));
+        this.update(0);
+    }
+    update(n) {
+        this.status.text(`${n}/${this.parent.layer.clue.solution.candidates.length} spots selected.`);
+        if (n == this.parent.layer.clue.solution.candidates.length)
+            this.save_btn.text("Save");
+        else
+            this.save_btn.text("Finish");
+    }
+}
+class SelectDigSpotsInteraction extends _map_interactions_LayerInteraction__WEBPACK_IMPORTED_MODULE_2__["default"] {
     constructor(layer) {
         super(layer);
-        this.events = new _skillbertssolver_eventemitter__WEBPACK_IMPORTED_MODULE_1__.TypedEmitter();
+        this.events = new _skillbertssolver_eventemitter__WEBPACK_IMPORTED_MODULE_0__.TypedEmitter();
+        this._finished_properly = false;
         this._hook = (m) => {
             let s = m.getSpot();
-            let i = this.selection.findIndex((e) => (0,_model_coordinates__WEBPACK_IMPORTED_MODULE_2__.eq)(e, s));
+            let i = this.selection.findIndex((e) => (0,_model_coordinates__WEBPACK_IMPORTED_MODULE_1__.eq)(e, s));
             if (i >= 0)
                 this.selection.splice(i, 1);
             else
                 this.selection.push(s);
             this.events.emit("changed", this.selection);
         };
+        this._controlBar = null;
     }
     start() {
         this.selection = [];
+        this._finished_properly = false;
         let self = this;
         this.layer.events.on("dig_spot_clicked", self._hook);
     }
     cancel() {
         let self = this;
         this.layer.events.off("dig_spot_clicked", self._hook);
+        if (!this._finished_properly)
+            this.events.emit("cancelled", null);
+    }
+    finish() {
+        this._finished_properly = true;
         this.events.emit("done", this.selection);
+        this.deactivate();
+    }
+    abort() {
+        this.events.emit("cancelled", null);
+        this.deactivate();
+    }
+    getTopControl() {
+        if (!this._controlBar)
+            this._controlBar = new SelectDigSpotsTopControl(this);
+        return this._controlBar;
     }
 }
 
@@ -62396,7 +62749,6 @@ class SpotOrderingWidget extends _widgets_Widget__WEBPACK_IMPORTED_MODULE_0__["d
         this.layer = layer;
         this.value = value;
         this.interaction = null;
-        this.old_value = null;
         this.collapsible = new _widgets_modals_Collapsible__WEBPACK_IMPORTED_MODULE_3__["default"](this.container, "Dig spots").appendTo(this);
         this.reselect_button = $("<div class='lightbutton'>Select new spot numbering</div>")
             .on("click", (e) => {
@@ -62432,20 +62784,27 @@ class SpotOrderingWidget extends _widgets_Widget__WEBPACK_IMPORTED_MODULE_0__["d
         this.layer.setSpotOrder(this.value);
     }
     startSelection() {
-        this.old_value = this.value;
+        let old_value = this.value;
         let interaction = new _SelectDigSpotsInteraction__WEBPACK_IMPORTED_MODULE_2__["default"](this.layer);
-        this.reselect_button.text("Save");
+        this.reselect_button.hide();
         let old_hightlight = this.layer.highlightedCandidates();
-        interaction.events.on("changed", (l) => {
-            //this.layer.highlightCandidates(l)
+        interaction.events
+            .on("changed", (l) => {
             this.setValue(l);
         })
             .on("done", (l) => {
-            this.reselect_button.text("Select new order");
-            let unaccounted = this.old_value.filter((c) => !l.some((i) => (0,_model_coordinates__WEBPACK_IMPORTED_MODULE_1__.eq)(i, c)));
+            this.interaction = null;
+            this.reselect_button.show();
+            let unaccounted = old_value.filter((c) => !l.some((i) => (0,_model_coordinates__WEBPACK_IMPORTED_MODULE_1__.eq)(i, c)));
             l = l.concat(...unaccounted);
             this.setValue(l);
             this.emit("changed", l);
+            this.layer.highlightCandidates(old_hightlight);
+        })
+            .on("cancelled", () => {
+            this.interaction = null;
+            this.reselect_button.show();
+            this.setValue(old_value);
             this.layer.highlightCandidates(old_hightlight);
         });
         this.setValue([]);
@@ -62689,6 +63048,46 @@ class SmallImageButton extends _Widget__WEBPACK_IMPORTED_MODULE_0__["default"] {
         let btn = new SmallImageButton($("<div class='nissmallimagebutton'><img></div>"));
         btn.setIcon(icon);
         return btn;
+    }
+}
+
+
+/***/ }),
+
+/***/ "./ui/widgets/TemplateStringEdit.ts":
+/*!******************************************!*\
+  !*** ./ui/widgets/TemplateStringEdit.ts ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ TemplateStringEdit)
+/* harmony export */ });
+/* harmony import */ var _Widget__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Widget */ "./ui/widgets/Widget.ts");
+
+class TemplateStringEdit extends _Widget__WEBPACK_IMPORTED_MODULE_0__["default"] {
+    constructor(resolver, value = "") {
+        super();
+        this.resolver = resolver;
+        this.value = value;
+        this.instruction_input = $("<input type='text' class='nisinput' style='width: 100%'>")
+            .val(value)
+            .on("input", () => {
+            this.value = this.instruction_input.val();
+            this.render();
+            this.emit("changed", this.value);
+        }).appendTo(this.container);
+        this.render_view = $("<div>").appendTo(this.container);
+        this.render();
+    }
+    setResolver(resolver) {
+        this.resolver = resolver;
+        this.render();
+    }
+    render() {
+        this.render_view.html(this.resolver.resolve(this.value));
     }
 }
 
@@ -63183,10 +63582,10 @@ var util;
         return a - b;
     }
     util.natural_order = natural_order;
-    function comparator_by(f) {
-        return (a, b) => f(a) - f(b);
+    function comap(cmp, f) {
+        return (a, b) => cmp(f(a), f(b));
     }
-    util.comparator_by = comparator_by;
+    util.comap = comap;
 })(util || (util = {}));
 
 
@@ -97904,9 +98303,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 //tell webpack to add index.html and appconfig.json to output
-__webpack_require__(/*! !file-loader?name=[name].[ext]!./index.html */ "../node_modules/file-loader/dist/cjs.js?name=[name].[ext]!./index.html");
-__webpack_require__(/*! !file-loader?name=[name].[ext]!./style.css */ "../node_modules/file-loader/dist/cjs.js?name=[name].[ext]!./style.css");
-__webpack_require__(/*! !file-loader?name=[name].[ext]!./appconfig.json */ "../node_modules/file-loader/dist/cjs.js?name=[name].[ext]!./appconfig.json");
+__webpack_require__(/*! !file-loader?name=[name].[ext]!../static/index.html */ "../node_modules/file-loader/dist/cjs.js?name=[name].[ext]!../static/index.html");
+__webpack_require__(/*! !file-loader?name=[name].[ext]!../static/style.css */ "../node_modules/file-loader/dist/cjs.js?name=[name].[ext]!../static/style.css");
+__webpack_require__(/*! !file-loader?name=[name].[ext]!../static/appconfig.json */ "../node_modules/file-loader/dist/cjs.js?name=[name].[ext]!../static/appconfig.json");
 document.addEventListener("DOMContentLoaded", (e) => {
     //check if we are running inside alt1 by checking if the alt1 global exists
     if (window.alt1) {
